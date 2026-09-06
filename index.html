@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmritFlow — Sovereign Mailbox Intelligence & Enterprise Automation</title>
+<meta name="description" content="AmritFlow audits fragmented departmental email workflows and deploys tailor-made, air-gapped intake engines that transform unstructured mail streams into structured, local decision packages.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          obsidian: '#090D16',
+          panel: '#0F1522',
+          navy: '#0B192C',
+          ice: '#F8FAFC',
+          brand: {
+            teal: '#00A896',
+            tealLight: '#02C39A',
+            violet: '#9D4EDD',
+            violetLight: '#E056FD',
+          },
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #090D16;
+    background-image:
+      radial-gradient(ellipse 900px 550px at 8% -5%, rgba(0,168,150,0.16), transparent 60%),
+      radial-gradient(ellipse 900px 550px at 95% 5%, rgba(157,78,221,0.16), transparent 60%);
+  }
+  .glass {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glow-teal { box-shadow: 0 0 40px -12px rgba(0,168,150,0.3); }
+  .glow-violet { box-shadow: 0 0 40px -12px rgba(157,78,221,0.3); }
+  .status-dot { width: 7px; height: 7px; border-radius: 999px; box-shadow: 0 0 8px currentColor; }
+  ::selection { background: rgba(157,78,221,0.3); }
+  .term-line { opacity: 0; animation: term-in 0.4s ease-out forwards; }
+  @keyframes term-in { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-enter { animation: modal-in 0.25s ease-out forwards; }
+  @keyframes modal-in { from { opacity: 0; transform: scale(0.97) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .term-line, .modal-enter { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+  .focus-ring:focus-visible { outline: 2px solid #9D4EDD; outline-offset: 2px; }
+  .brand-gradient-text {
+    background: linear-gradient(90deg, #02C39A, #9D4EDD);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tab-btn[data-active="true"] {
+    background-color: rgba(0,168,150,0.12);
+    border-color: rgba(0,168,150,0.4);
+    color: #F8FAFC;
+  }
+  .tab-panel { display: none; }
+  .tab-panel[data-active="true"] { display: block; }
+  .tally-iframe {
+    color-scheme: dark;
+  }
+</style>
+</head>
+<body class="text-slate-300 font-sans antialiased">
+
+<!-- ====== AMRITFLOW PEACOCK INFINITY EMBLEM ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="amritflow-emblem" viewBox="0 0 120 64">
+      <linearGradient id="emblemFeather" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#00A896"/>
+        <stop offset="1" stop-color="#02C39A"/>
+      </linearGradient>
+      <linearGradient id="emblemRingL" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00A896"/>
+        <stop offset="1" stop-color="#02C39A"/>
+      </linearGradient>
+      <linearGradient id="emblemRingR" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#02C39A"/>
+        <stop offset="1" stop-color="#9D4EDD"/>
+      </linearGradient>
+      <g>
+        <g transform="rotate(-66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#emblemFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        <g transform="rotate(-44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#emblemFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        <g transform="rotate(-22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#emblemFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        <g transform="rotate(0 16 32)"><ellipse cx="0" cy="32" rx="18" ry="6" fill="url(#emblemFeather)" opacity="0.85"/><circle cx="-11" cy="32" r="3.2" fill="#F8FAFC"/><circle cx="-11" cy="32" r="3.2" fill="none" stroke="#00A896" stroke-width="1.2"/></g>
+        <g transform="rotate(22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#emblemFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        <g transform="rotate(44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#emblemFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        <g transform="rotate(66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#emblemFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+      </g>
+      <circle cx="32" cy="32" r="16" fill="none" stroke="url(#emblemRingL)" stroke-width="6"/>
+      <circle cx="62" cy="32" r="16" fill="none" stroke="url(#emblemRingR)" stroke-width="6"/>
+      <line x1="72" y1="20" x2="80" y2="26" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
+      <line x1="80" y1="26" x2="78" y2="40" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
+      <line x1="78" y1="40" x2="68" y2="45" stroke="#9D4EDD" stroke-width="0.9" opacity="0.7"/>
+      <circle cx="72" cy="20" r="1.8" fill="#E056FD"/>
+      <circle cx="80" cy="26" r="1.8" fill="#E056FD"/>
+      <circle cx="78" cy="40" r="1.8" fill="#9D4EDD"/>
+      <circle cx="68" cy="45" r="1.8" fill="#9D4EDD"/>
+      <circle cx="47" cy="32" r="3.6" fill="#F8FAFC"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="sticky top-0 z-40 border-b border-slate-800/70 bg-obsidian/85 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <svg width="44" height="24" viewBox="0 0 120 64" aria-hidden="true" class="shrink-0">
+        <use href="#amritflow-emblem"></use>
+      </svg>
+      <div class="leading-tight">
+        <div class="flex items-baseline gap-0.5">
+          <span class="text-lg font-extrabold tracking-tight" style="color:#F8FAFC">Amrit<span class="font-medium text-slate-400">Flow</span></span>
+        </div>
+        <p class="hidden sm:block text-xs text-slate-500 -mt-0.5">The Essence of Seamless Data.</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+      <a href="#domains" class="hover:text-slate-100 transition-colors">Domain Specialization</a>
+      <a href="#frameworks" class="hover:text-slate-100 transition-colors">Advisory Frameworks</a>
+      <a href="#engagement" class="hover:text-slate-100 transition-colors">Engagement Model</a>
+    </nav>
+    <button data-open-modal class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
+      Request Architecture Evaluation
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative max-w-6xl mx-auto px-6 pt-20 pb-24 grid lg:grid-cols-2 gap-16 items-center">
+  <div>
+    <div class="flex flex-wrap gap-2">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-brand-teal/40 bg-brand-teal/10 px-3 py-1.5 text-xs font-mono font-semibold text-brand-tealLight">
+        <span class="status-dot bg-brand-teal text-brand-teal"></span>
+        100% ON-PREMISE SOVEREIGN
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-brand-violet/40 bg-brand-violet/10 px-3 py-1.5 text-xs font-mono font-semibold text-brand-violetLight">
+        <span class="status-dot bg-brand-violet text-brand-violet"></span>
+        MULTI-DOMAIN AGENTIC INFRA
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-500/40 bg-slate-500/10 px-3 py-1.5 text-xs font-mono font-semibold text-slate-200">
+        <span class="status-dot bg-slate-300 text-slate-300"></span>
+        HUMAN-IN-THE-LOOP GOVERNANCE
+      </span>
+    </div>
+    <h1 class="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+      Sovereign Mailbox Intelligence & Enterprise Automation
+    </h1>
+    <p class="mt-6 text-lg text-slate-300 max-w-md leading-relaxed">
+      We audit fragmented departmental email workflows and deploy tailor-made, air-gapped intake engines that transform unstructured, high-friction mail streams into structured, local decision packages.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center gap-4">
+      <button data-open-modal class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity glow-violet">
+        Request 60-Day Evaluation Pass
+      </button>
+      <a href="#domains" class="text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors">
+        View domain specialization <i class="fa-solid fa-arrow-right-long ml-1 text-xs"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="glass glow-violet rounded-2xl p-1.5">
+    <div class="rounded-xl overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-2.5 bg-slate-900/80 border-b border-slate-700/50">
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+        <span class="ml-3 text-xs font-mono text-slate-400">amritflow — sovereign_engine.local</span>
+      </div>
+      <div class="p-5 text-sm font-mono leading-relaxed bg-[#0b0f1a]">
+        <p class="term-line text-brand-violetLight font-semibold" style="animation-delay:.05s">[AMRITFLOW SOVEREIGN ENGINE v2.4]</p>
+        <p class="term-line text-slate-300" style="animation-delay:.3s">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></p>
+        <p class="term-line text-slate-300" style="animation-delay:.5s">&gt; TELEMETRY: <span class="text-brand-tealLight">Disabled (Zero-Cloud Egress)</span></p>
+        <p class="term-line text-slate-300" style="animation-delay:.7s">&gt; ACTIVE MONITORS: [ap-inbox, ar-remittance, treasury-statements, admin-facility]</p>
+        <p class="term-line text-slate-300" style="animation-delay:.9s">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></p>
+        <p class="term-line text-slate-300" style="animation-delay:1.1s">&gt; INCIDENT INTERCEPTION: <span class="text-brand-tealLight">0 Missed SLAs</span> | <span class="text-brand-tealLight">84% Operational Noise Distilled</span></p>
+        <div class="term-line mt-4 space-y-2" style="animation-delay:1.4s">
+          <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
+            <span class="text-slate-300">ap-inbox // invoice_batch_0417.pdf</span>
+            <span class="text-brand-tealLight">[VERIFIED]</span>
+          </div>
+          <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
+            <span class="text-slate-300">ar-remittance // advice_2291.eml</span>
+            <span class="text-brand-violetLight">[AWAITING HITL]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTAL SPECIALIZATION MATRIX ============ -->
+<section id="domains" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Domain specialization matrix</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Sovereign intelligence, configured to your operational perimeter</h2>
+    <p class="mt-4 text-slate-300 leading-relaxed">
+      AmritFlow deploys domain-tuned intelligence across every department that lives in email — each with its own risk checks, triage rules, and approval routing.
+    </p>
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-2" role="tablist">
+    <button data-tab-btn data-tab="ap" data-active="true" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
+      Accounts Payable
+    </button>
+    <button data-tab-btn data-tab="ar" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
+      Accounts Receivable
+    </button>
+    <button data-tab-btn data-tab="treasury" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
+      Treasury & Controllership
+    </button>
+    <button data-tab-btn data-tab="facilities" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
+      Facilities & Admin
+    </button>
+  </div>
+
+  <div class="mt-6 glass rounded-2xl p-8">
+    <div data-tab-panel="ap" data-active="true" class="tab-panel">
+      <h3 class="text-xl font-bold text-white">Accounts Payable (AP)</h3>
+      <p class="mt-2 text-sm text-slate-300">Vendor mailbox intake, tuned for spend integrity and processing velocity.</p>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-truck-ramp-box text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Vendor Ingest</p>
+          <p class="mt-1 text-sm text-slate-300">Structured perimeter filtering across all supplier aliases and shared mailboxes.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-file-invoice text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Automated Synthesis</p>
+          <p class="mt-1 text-sm text-slate-300">Instant conversion of complex invoice streams into ledger-ready decision packages.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-shield-halved text-brand-violetLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Perimeter Security</p>
+          <p class="mt-1 text-sm text-slate-300">Local detection of spoofed accounts, altered banking details, and duplicate demands.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab-panel="ar" class="tab-panel">
+      <h3 class="text-xl font-bold text-white">Accounts Receivable (AR)</h3>
+      <p class="mt-2 text-sm text-slate-300">Customer remittance mailbox intake, tuned for cash application accuracy.</p>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-envelope-open-text text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Remittance Triage</p>
+          <p class="mt-1 text-sm text-slate-300">Automated matching of unstructured customer payment advice against open ledger items.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-triangle-exclamation text-brand-violetLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Dispute Interception</p>
+          <p class="mt-1 text-sm text-slate-300">Early identification and escalation of payment holds and invoice deductions.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-scale-balanced text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">SLA Protection</p>
+          <p class="mt-1 text-sm text-slate-300">Real-time tracking of high-value payment notifications to maintain liquidity streams.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab-panel="treasury" class="tab-panel">
+      <h3 class="text-xl font-bold text-white">Treasury & Controllership</h3>
+      <p class="mt-2 text-sm text-slate-300">Bank and statement mailbox intake, tuned for reconciliation and audit readiness.</p>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-building-columns text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Statement Parsing</p>
+          <p class="mt-1 text-sm text-slate-300">Local-first extraction and summary of daily bank feeds and liquidity reports.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-clipboard-check text-brand-violetLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Audit-Ready Logging</p>
+          <p class="mt-1 text-sm text-slate-300">Immutable execution trails generated on-premise for statutory compliance.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-magnifying-glass-dollar text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Unallocated Cash Detection</p>
+          <p class="mt-1 text-sm text-slate-300">Instant synthesis of ambiguous wire transfers and bank receipts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab-panel="facilities" class="tab-panel">
+      <h3 class="text-xl font-bold text-white">Facilities & Admin</h3>
+      <p class="mt-2 text-sm text-slate-300">Operational mailbox intake, tuned for vendor and site-level requests.</p>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-screwdriver-wrench text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Work-Order Routing</p>
+          <p class="mt-1 text-sm text-slate-300">Intelligent triage of internal service requests, lease notices, and vendor maintenance.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-file-signature text-brand-violetLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Contract Verification</p>
+          <p class="mt-1 text-sm text-slate-300">Automated metadata indexing for active vendor SLA renewals and compliance documents.</p>
+        </div>
+        <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+          <i class="fa-solid fa-volume-xmark text-brand-tealLight"></i>
+          <p class="mt-2 text-sm font-semibold text-white">Noise Elimination</p>
+          <p class="mt-1 text-sm text-slate-300">Interception of low-priority operational chatter to keep management inboxes focused.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-10 glass rounded-2xl p-6 sm:p-8">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Governance workflow</p>
+    <div class="mt-5 grid sm:grid-cols-3 gap-4 items-stretch">
+      <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
+        <span class="font-mono text-sm text-brand-tealLight">01</span>
+        <p class="mt-2 font-semibold text-white">Unstructured Ingest</p>
+        <p class="mt-1 text-sm text-slate-300">Raw, high-volume mail streams arrive from any departmental inbox. Local intake filters strip out operational noise and prevent capacity exhaustion.</p>
+      </div>
+      <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
+        <span class="font-mono text-sm text-brand-tealLight">02</span>
+        <p class="mt-2 font-semibold text-white">Domain-Tailored Neural Triage</p>
+        <p class="mt-1 text-sm text-slate-300">Sovereign engines classify messy email threads and multi-page attachments, distilling 20-message chains into concise, high-signal briefs.</p>
+      </div>
+      <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
+        <span class="font-mono text-sm text-brand-violetLight">03</span>
+        <p class="mt-2 font-semibold text-white">Sovereign HITL 1-Click Workbench</p>
+        <p class="mt-1 text-sm text-slate-300">Department heads review pre-verified decision packages on a clean interface, executing 1-click approvals without entering manual data loops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAMEWORK ============ -->
+<section id="frameworks" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Tailored framework</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Sovereign Mailbox Intelligence</h2>
+    <p class="mt-4 text-slate-300 leading-relaxed">
+      Curing mailbox exhaustion: every engagement begins here, showing how a bespoke architecture solves the inbox bottleneck before we deploy deeper department-wide modules.
+    </p>
+  </div>
+  <div class="mt-12 grid md:grid-cols-3 gap-5">
+    <div class="glass rounded-xl p-6">
+      <i class="fa-solid fa-inbox text-brand-tealLight text-lg"></i>
+      <h3 class="mt-4 font-semibold text-white">Automated Inbox Triage</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Cures departmental mailbox fatigue—intercepting high-volume noise before storage limits are hit and surfacing urgent stakeholder emails before SLA deadlines expire.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i class="fa-solid fa-shield-halved text-brand-violetLight text-lg"></i>
+      <h3 class="mt-4 font-semibold text-white">Local Header Authentication</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Intercepts spoofed vendor accounts and unauthorized operational changes directly inside local mail streams without cloud transmission.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i class="fa-solid fa-server text-brand-tealLight text-lg"></i>
+      <h3 class="mt-4 font-semibold text-white">Absolute Data Sovereignty</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Runs entirely on client hardware—zero financial records, email content, or attachments ever leave the enterprise perimeter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGAGEMENT MODEL ============ -->
+<section id="engagement" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Engagement model</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">How we architect your sovereign environment</h2>
+  </div>
+  <div class="mt-12 space-y-4">
+    <div class="glass rounded-xl p-6 flex gap-5">
+      <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 1</span>
+      <div>
+        <h3 class="font-semibold text-white">Operational Discovery & Security Audit</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Analysis of team-level data entry bottlenecks, email volume spikes, SLA risks, and local security requirements.</p>
+      </div>
+    </div>
+    <div class="glass rounded-xl p-6 flex gap-5">
+      <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 2</span>
+      <div>
+        <h3 class="font-semibold text-white">Custom Engine Deployment</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Configuration of a dedicated, air-gapped core engine with modular capabilities tailored strictly to your internal workflows.</p>
+      </div>
+    </div>
+    <div class="glass rounded-xl p-6 flex gap-5">
+      <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 3</span>
+      <div>
+        <h3 class="font-semibold text-white">Controller Empowerment</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Training for finance and operational leads to process higher volume with high-signal, pre-verified decision packages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="max-w-6xl mx-auto px-6 pb-24">
+  <div class="glass glow-violet rounded-2xl p-10 sm:p-14 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ready to evaluate a sovereign deployment?</h2>
+    <p class="mt-3 text-slate-300 max-w-lg mx-auto">We whitelist a limited number of enterprise environments each quarter for tailor-made deployment.</p>
+    <button data-open-modal class="focus-ring mt-7 rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
+      Request Architecture Evaluation
+    </button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-slate-800/60">
+  <div class="max-w-6xl mx-auto px-6 py-14">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="leading-tight">
+        <span class="text-lg font-extrabold text-white">Amrit<span class="font-medium text-slate-400">Flow</span></span>
+        <p class="text-xs text-slate-400">The Essence of Seamless Data.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <svg width="36" height="20" viewBox="0 0 120 64" aria-hidden="true" class="shrink-0">
+          <use href="#amritflow-emblem"></use>
+        </svg>
+        <span class="inline-flex items-center gap-2 rounded-full border border-brand-teal/30 bg-brand-teal/10 px-3 py-1.5 text-xs font-mono text-brand-tealLight">
+          <span class="status-dot bg-brand-teal text-brand-teal"></span>
+          System Status: On-Premise Engine Active
+        </span>
+      </div>
+    </div>
+    <p class="mt-6 text-sm text-slate-300 max-w-2xl leading-relaxed">
+      Bespoke security architectures, advanced ledger engines, and compliance plugins available on special request for whitelisted accounts.
+    </p>
+    <div class="mt-10 grid sm:grid-cols-3 gap-8 text-xs text-slate-400 leading-relaxed">
+      <div>
+        <h4 class="font-semibold text-slate-300 mb-2">Evaluation terms</h4>
+        <p>The 60-day evaluation pass is strictly for corporate validation purposes within the client's own environment.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-300 mb-2">Data sovereignty guarantee</h4>
+        <p>AmritFlow does not collect, transmit, parse, or store client emails, attachments, or ledger data on external servers. All processing occurs locally.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-300 mb-2">Advisory disclaimer</h4>
+        <p>AmritFlow is a decision-support and workflow software suite. It is not a licensed statutory tax authority or accounting firm.</p>
+      </div>
+    </div>
+    <p class="mt-10 text-xs text-slate-500">Copyright &copy; 2026 AmritFlow. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ QUALIFICATION MODAL (FINAL - NO GAP, NO SCROLLBAR) ============ -->
+<div data-modal-backdrop class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-3">
+  <div class="modal-enter glass glow-violet rounded-2xl w-full max-w-md overflow-hidden relative p-4 sm:p-5">
+    
+    <!-- Absolutely Positioned Close Button -->
+    <button data-close-modal aria-label="Close" class="focus-ring absolute top-3 right-3 text-slate-400 hover:text-white z-10 p-1.5 rounded-lg bg-slate-900/60 transition-colors">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+
+    <!-- Negative Top Margin Pulls Content Up to Fill the Gap -->
+    <div class="w-full -mt-8 sm:-mt-10">
+      <iframe 
+        src="https://tally.so/embed/D48kWq?alignLeft=1&dynamicHeight=1" 
+        width="100%" 
+        height="500" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0" 
+        title="AmritFlow Evaluation Pass"
+        class="tally-iframe w-full border-0 bg-transparent block"
+        style="background: transparent; border: none; overflow: hidden;"
+        scrolling="no"
+      ></iframe>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    const backdrop = document.querySelector('[data-modal-backdrop]');
+    const openBtns = document.querySelectorAll('[data-open-modal]');
+    const closeBtns = document.querySelectorAll('[data-close-modal]');
+
+    function openModal() {
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      const closeBtn = backdrop.querySelector('[data-close-modal]');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    openBtns.forEach(function (btn) { btn.addEventListener('click', openModal); });
+    closeBtns.forEach(function (btn) { btn.addEventListener('click', closeModal); });
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    const tabBtns = document.querySelectorAll('[data-tab-btn]');
+    const tabPanels = document.querySelectorAll('[data-tab-panel]');
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const target = btn.getAttribute('data-tab');
+        tabBtns.forEach(function (b) { b.setAttribute('data-active', b === btn ? 'true' : 'false'); });
+        tabPanels.forEach(function (p) {
+          p.setAttribute('data-active', p.getAttribute('data-tab-panel') === target ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+</script>
+
+<!-- Tally Dynamic Height Script -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+
+</body>
+</html>
