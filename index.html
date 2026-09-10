@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('amritflow-theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch (e) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AmritFlow — Sovereign Mailbox Intelligence & Enterprise Automation</title>
-<meta name="description" content="AmritFlow audits fragmented departmental email workflows and deploys tailor-made, air-gapped intake engines that transform unstructured mail streams into structured, local decision packages.">
+<title>AmritFlow — Leading the Sovereign Revolution in Enterprise Mailbox Intelligence</title>
+<meta name="description" content="AmritFlow empowers finance leaders to eliminate manual friction, prevent cash leakage, and reclaim total operational autonomy with air-gapped, zero-egress ERP reconciliation.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,8 +64,26 @@
   @keyframes term-in { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
   .modal-enter { animation: modal-in 0.25s ease-out forwards; }
   @keyframes modal-in { from { opacity: 0; transform: scale(0.97) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  /* Type-then-drop reveal animation (hero terminal + before/after method panel) */
+  .anim-caret {
+    display: inline-block;
+    width: 6px; height: 1em;
+    background: #02C39A;
+    margin-left: 1px;
+    vertical-align: -2px;
+    animation: anim-blink 0.8s steps(1) infinite;
+  }
+  @keyframes anim-blink { 50% { opacity: 0; } }
+  .anim-drop {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.55s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
+  }
+  .anim-drop.anim-show { opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) {
     .term-line, .modal-enter { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .anim-caret { animation: none !important; }
+    .anim-drop { transition: none !important; opacity: 1 !important; transform: none !important; }
   }
   .focus-ring:focus-visible { outline: 2px solid #9D4EDD; outline-offset: 2px; }
   .brand-gradient-text {
@@ -72,34 +99,154 @@
   }
   .tab-panel { display: none; }
   .tab-panel[data-active="true"] { display: block; }
-  .tally-iframe {
-    color-scheme: dark;
+
+  /* ============ LIGHT THEME ============ */
+  html[data-theme="light"] body {
+    background-color: #F4F6FA;
+    background-image:
+      radial-gradient(ellipse 900px 550px at 8% -5%, rgba(0,168,150,0.10), transparent 60%),
+      radial-gradient(ellipse 900px 550px at 95% 5%, rgba(157,78,221,0.10), transparent 60%);
+  }
+  html[data-theme="light"] .glass {
+    background-color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(15,23,42,0.08);
+  }
+  html[data-theme="light"] .tab-btn[data-active="true"] { color: #0B192C; }
+  html[data-theme="light"] .text-white:not(.bg-gradient-to-r):not(.bg-brand-violet) { color: #0B192C !important; }
+  html[data-theme="light"] .text-slate-100 { color: #0F172A !important; }
+  html[data-theme="light"] .text-slate-200 { color: #1E293B !important; }
+  html[data-theme="light"] .text-slate-300 { color: #334155 !important; }
+  html[data-theme="light"] .text-slate-400 { color: #475569 !important; }
+  html[data-theme="light"] .text-slate-500 { color: #64748B !important; }
+  html[data-theme="light"] .border-slate-700,
+  html[data-theme="light"] .border-slate-700\/50,
+  html[data-theme="light"] .border-slate-600,
+  html[data-theme="light"] .border-slate-800\/60,
+  html[data-theme="light"] .border-slate-800\/70,
+  html[data-theme="light"] .border-slate-500\/40 {
+    border-color: rgba(15,23,42,0.10) !important;
+  }
+  html[data-theme="light"] .bg-slate-900\/50 {
+    background-color: rgba(255,255,255,0.7) !important;
+  }
+  html[data-theme="light"] .bg-slate-900\/70,
+  html[data-theme="light"] .bg-slate-900:not(.term-box *) {
+    background-color: #FFFFFF !important;
+  }
+  html[data-theme="light"] .hover\:bg-slate-800\/60:hover {
+    background-color: rgba(15,23,42,0.05) !important;
+  }
+  html[data-theme="light"] .placeholder\:text-slate-500::placeholder {
+    color: #94A3B8 !important;
+  }
+  /* Terminal panel stays dark in both themes */
+  html[data-theme="light"] .term-box .border-slate-700\/50 {
+    border-color: rgba(51,65,85,0.5) !important;
+  }
+  html[data-theme="light"] .term-box .bg-slate-900\/50,
+  html[data-theme="light"] .term-box .bg-slate-900\/60,
+  html[data-theme="light"] .term-box .bg-slate-900\/70,
+  html[data-theme="light"] .term-box .bg-slate-900\/80 {
+    background-color: rgba(15,23,42,0.6) !important;
+  }
+  html[data-theme="light"] .term-box .text-slate-300 { color: #cbd5e1 !important; }
+  html[data-theme="light"] .term-box .text-slate-400 { color: #94a3b8 !important; }
+  html[data-theme="light"] .term-box .text-white { color: #F8FAFC !important; }
+  html[data-theme="light"] .bg-slate-900\/40 {
+    background-color: rgba(255,255,255,0.5) !important;
+  }
+  /* Accent text contrast fix: brand teal/violet are tuned for dark
+     backgrounds and fail WCAG AA on light surfaces (~2.3:1). Darken
+     them in light mode; terminal-locked areas keep the vivid tone. */
+  html[data-theme="light"] .text-brand-tealLight { color: #0F766E !important; }
+  html[data-theme="light"] .text-brand-violetLight { color: #7C3AED !important; }
+  html[data-theme="light"] .term-box .text-brand-tealLight { color: #02C39A !important; }
+  html[data-theme="light"] .term-box .text-brand-violetLight { color: #E056FD !important; }
+  html[data-theme="light"] .brand-gradient-text {
+    background: linear-gradient(90deg, #0F766E, #7C3AED);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  #theme-toggle {
+    transition: background-color 0.2s ease;
+  }
+
+  /* Header is intentionally decoupled from the light/dark toggle:
+     it stays on its own fixed light band matching the brand mark,
+     with only a subtle shadow shift between modes. */
+  .site-header {
+    background-color: rgba(248,250,252,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 1px 24px rgba(0,0,0,0.35);
+  }
+  html[data-theme="light"] .site-header {
+    box-shadow: 0 1px 8px rgba(15,23,42,0.06);
   }
 </style>
 </head>
 <body class="text-slate-300 font-sans antialiased">
 
-
 <!-- ============ NAV ============ -->
-<header class="sticky top-0 z-40 border-b border-slate-800/70 bg-obsidian/85 backdrop-blur">
+<header class="site-header sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <img src="assets/logo.png" alt="AmritFlow Logo" class="h-9 w-auto shrink-0 object-contain -mt-1">
+      <svg width="38" height="20" viewBox="0 0 120 64" aria-hidden="true" class="shrink-0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navFeather" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#00A896"/>
+            <stop offset="1" stop-color="#02C39A"/>
+          </linearGradient>
+          <linearGradient id="navRingL" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#00A896"/>
+            <stop offset="1" stop-color="#02C39A"/>
+          </linearGradient>
+          <linearGradient id="navRingR" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#02C39A"/>
+            <stop offset="1" stop-color="#9D4EDD"/>
+          </linearGradient>
+        </defs>
+        <g>
+          <g transform="rotate(-66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#navFeather)" opacity="0.75"/><circle cx="-9" cy="32" r="2.6" fill="#0B192C"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          <g transform="rotate(-44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#navFeather)" opacity="0.82"/><circle cx="-10" cy="32" r="2.8" fill="#0B192C"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          <g transform="rotate(-22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#navFeather)" opacity="0.9"/><circle cx="-10.5" cy="32" r="3" fill="#0B192C"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          <g transform="rotate(0 16 32)"><ellipse cx="0" cy="32" rx="18" ry="6" fill="url(#navFeather)"/><circle cx="-11" cy="32" r="3.2" fill="#0B192C"/><circle cx="-11" cy="32" r="3.2" fill="none" stroke="#00A896" stroke-width="1.2"/></g>
+          <g transform="rotate(22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#navFeather)" opacity="0.9"/><circle cx="-10.5" cy="32" r="3" fill="#0B192C"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          <g transform="rotate(44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#navFeather)" opacity="0.82"/><circle cx="-10" cy="32" r="2.8" fill="#0B192C"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          <g transform="rotate(66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#navFeather)" opacity="0.75"/><circle cx="-9" cy="32" r="2.6" fill="#0B192C"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+        </g>
+        <circle cx="32" cy="32" r="16" fill="none" stroke="url(#navRingL)" stroke-width="6"/>
+        <circle cx="62" cy="32" r="16" fill="none" stroke="url(#navRingR)" stroke-width="6"/>
+        <line x1="72" y1="20" x2="80" y2="26" stroke="#9D4EDD" stroke-width="0.9" opacity="0.6"/>
+        <line x1="80" y1="26" x2="78" y2="40" stroke="#9D4EDD" stroke-width="0.9" opacity="0.6"/>
+        <line x1="78" y1="40" x2="68" y2="45" stroke="#9D4EDD" stroke-width="0.9" opacity="0.6"/>
+        <circle cx="72" cy="20" r="1.8" fill="#9D4EDD"/>
+        <circle cx="80" cy="26" r="1.8" fill="#9D4EDD"/>
+        <circle cx="78" cy="40" r="1.8" fill="#9D4EDD"/>
+        <circle cx="68" cy="45" r="1.8" fill="#9D4EDD"/>
+        <circle cx="47" cy="32" r="3.6" fill="#38BDF8" stroke="#0B192C" stroke-width="1"/>
+      </svg>
       <div class="leading-tight">
         <div class="flex items-baseline gap-0.5">
-          <span class="text-lg font-extrabold tracking-tight" style="color:#F8FAFC">Amrit<span class="font-medium text-slate-400">Flow</span></span>
+          <span class="text-lg font-extrabold tracking-tight" style="color:#0B192C">Amrit<span class="font-extrabold" style="color:#0B192C">Flow</span></span>
         </div>
-        <p class="hidden sm:block text-xs text-slate-500 -mt-0.5">The Essence of Seamless Data.</p>
+        <p class="hidden sm:block text-xs font-medium -mt-0.5" style="color:#0B192C">The Essence of Seamless Data.</p>
       </div>
     </div>
-    <nav class="hidden md:flex items-center gap-8 text-sm text-slate-300">
-      <a href="#domains" class="hover:text-slate-100 transition-colors">Domain Specialization</a>
-      <a href="#frameworks" class="hover:text-slate-100 transition-colors">Advisory Frameworks</a>
-      <a href="#engagement" class="hover:text-slate-100 transition-colors">Engagement Model</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm" style="color:#334155">
+      <a href="#domains" class="hover:opacity-70 transition-opacity">Domain Specialization</a>
+      <a href="#frameworks" class="hover:opacity-70 transition-opacity">Advisory Frameworks</a>
+      <a href="#engagement" class="hover:opacity-70 transition-opacity">Engagement Model</a>
     </nav>
-    <button data-open-modal class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
-      Request Architecture Evaluation
-    </button>
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" aria-label="Toggle light and dark mode" class="focus-ring w-9 h-9 rounded-full border flex items-center justify-center transition-colors" style="border-color: rgba(15,23,42,0.15); color:#334155">
+        <i id="theme-toggle-icon" class="fa-solid fa-sun text-sm"></i>
+      </button>
+      <button data-open-modal class="focus-ring rounded-lg bg-brand-violet px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
+        Request Architecture Evaluation
+      </button>
+    </div>
   </div>
 </header>
 
@@ -121,47 +268,86 @@
       </span>
     </div>
     <h1 class="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
-      Sovereign Mailbox Intelligence & Enterprise Automation
+      Leading the Sovereign Revolution in Enterprise Mailbox Intelligence.
     </h1>
     <p class="mt-6 text-lg text-slate-300 max-w-md leading-relaxed">
-      We audit fragmented departmental email workflows and deploy tailor-made, air-gapped intake engines that transform unstructured, high-friction mail streams into structured, local decision packages.
+      Empowering finance leaders to eliminate manual friction, prevent cash leakage, and reclaim total operational autonomy with air-gapped, zero-egress ERP reconciliation.
     </p>
     <div class="mt-9 flex flex-wrap items-center gap-4">
       <button data-open-modal class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity glow-violet">
-        Request 60-Day Evaluation Pass
+        Request AP Diagnostic & Audit Pass
       </button>
-      <a href="#domains" class="text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors">
-        View domain specialization <i class="fa-solid fa-arrow-right-long ml-1 text-xs"></i>
+      <a href="technical-brief.pdf" download data-telemetry="technical_brief_downloaded" class="focus-ring rounded-lg border border-slate-700 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors inline-flex items-center justify-center">
+        Download Technical Brief (PDF)
       </a>
     </div>
+    <a href="#domains" class="mt-4 inline-flex text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors">
+      View domain specialization <i class="fa-solid fa-arrow-right-long ml-1 text-xs"></i>
+    </a>
   </div>
 
-  <div class="glass glow-violet rounded-2xl p-1.5">
-    <div class="rounded-xl overflow-hidden">
+  <!-- UI Showcase: teaser video <-> simulation loop, with human-interrupt controls -->
+  <div class="term-box glass glow-violet rounded-2xl p-1.5">
+    <div class="rounded-xl overflow-hidden relative">
       <div class="flex items-center gap-1.5 px-4 py-2.5 bg-slate-900/80 border-b border-slate-700/50">
         <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
-        <span class="ml-3 text-xs font-mono text-slate-400">amritflow — sovereign_engine.local</span>
+        <span class="ml-3 text-xs font-mono text-slate-300">amritflow — sovereign_engine.local</span>
+        <button id="showcase-pause" aria-label="Pause autoplay" aria-pressed="false" class="focus-ring ml-auto w-6 h-6 rounded-full border border-slate-600 text-slate-300 hover:text-white flex items-center justify-center text-[10px]">
+          <i class="fa-solid fa-pause" id="showcase-pause-icon"></i>
+        </button>
       </div>
-      <div class="p-5 text-sm font-mono leading-relaxed bg-[#0b0f1a]">
-        <p class="term-line text-brand-violetLight font-semibold" style="animation-delay:.05s">[AMRITFLOW SOVEREIGN ENGINE v2.4]</p>
-        <p class="term-line text-slate-300" style="animation-delay:.3s">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></p>
-        <p class="term-line text-slate-300" style="animation-delay:.5s">&gt; TELEMETRY: <span class="text-brand-tealLight">Disabled (Zero-Cloud Egress)</span></p>
-        <p class="term-line text-slate-300" style="animation-delay:.7s">&gt; ACTIVE MONITORS: [ap-inbox, ar-remittance, treasury-statements, admin-facility]</p>
-        <p class="term-line text-slate-300" style="animation-delay:.9s">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></p>
-        <p class="term-line text-slate-300" style="animation-delay:1.1s">&gt; INCIDENT INTERCEPTION: <span class="text-brand-tealLight">0 Missed SLAs</span> | <span class="text-brand-tealLight">84% Operational Noise Distilled</span></p>
-        <div class="term-line mt-4 space-y-2" style="animation-delay:1.4s">
-          <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
-            <span class="text-slate-300">ap-inbox // invoice_batch_0417.pdf</span>
-            <span class="text-brand-tealLight">[VERIFIED]</span>
-          </div>
-          <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
-            <span class="text-slate-300">ar-remittance // advice_2291.eml</span>
-            <span class="text-brand-violetLight">[AWAITING HITL]</span>
-          </div>
+
+      <div class="relative bg-[#0b0f1a]" id="showcase-body" style="min-height: 320px;">
+        <!-- Teaser video state -->
+        <video id="showcase-video" class="w-full h-full block" style="min-height: 320px; object-fit: cover;" muted playsinline preload="auto">
+          <source src="amritflow-teaser.mp4" type="video/mp4">
+        </video>
+
+        <!-- Simulation state (type/drop terminal reveal) -->
+        <div class="p-4 sm:p-5 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto hidden" id="hero-terminal-anim" data-anim-panel></div>
+
+        <!-- Human-interrupt controls (hidden until a real visitor is verified + a simulation finishes) -->
+        <div id="showcase-controls" class="hidden absolute inset-x-0 bottom-0 p-4 flex flex-wrap gap-2 justify-center bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/90 to-transparent">
+          <button id="showcase-replay" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Play Again
+          </button>
+          <button id="showcase-next" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Next Simulation
+          </button>
+          <button id="showcase-watch" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Watch Video
+          </button>
+          <button id="showcase-demo" class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-3.5 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity">
+            Book Live Demo
+          </button>
         </div>
       </div>
+
+      <noscript>
+        <div class="p-4 sm:p-5 text-xs sm:text-sm font-mono leading-relaxed bg-[#0b0f1a] overflow-x-auto">
+          <p class="text-brand-violetLight font-semibold">[AMRITFLOW SOVEREIGN ENGINE v2.4]</p>
+          <p class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></p>
+          <p class="text-slate-300">&gt; TELEMETRY: <span class="text-brand-tealLight">Disabled (Zero-Cloud Egress)</span></p>
+          <p class="text-slate-300">&gt; ACTIVE MONITORS: [ap-inbox, ar-remittance, treasury-statements, admin-facility]</p>
+          <p class="text-slate-300">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></p>
+          <div class="mt-3">
+            <span class="block text-xs text-slate-400 uppercase tracking-widest">[ Target SLA Benchmark / Architecture Design Spec ]</span>
+            <p class="mt-1">&gt; INCIDENT INTERCEPTION: <span class="text-brand-tealLight">0 Missed SLAs</span> | <span class="text-brand-tealLight">84% Operational Noise Distilled</span></p>
+          </div>
+          <div class="mt-4 space-y-2">
+            <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
+              <span class="text-slate-300">ap-inbox // invoice_batch_0417.pdf</span>
+              <span class="text-brand-tealLight">[VERIFIED]</span>
+            </div>
+            <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
+              <span class="text-slate-300">ar-remittance // advice_2291.eml</span>
+              <span class="text-brand-violetLight">[AWAITING HITL]</span>
+            </div>
+          </div>
+        </div>
+      </noscript>
     </div>
   </div>
 </section>
@@ -176,6 +362,7 @@
     </p>
   </div>
 
+  <!-- Tabs -->
   <div class="mt-10 flex flex-wrap gap-2" role="tablist">
     <button data-tab-btn data-tab="ap" data-active="true" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
       Accounts Payable
@@ -194,22 +381,22 @@
   <div class="mt-6 glass rounded-2xl p-8">
     <div data-tab-panel="ap" data-active="true" class="tab-panel">
       <h3 class="text-xl font-bold text-white">Accounts Payable (AP)</h3>
-      <p class="mt-2 text-sm text-slate-300">Vendor mailbox intake, tuned for spend integrity and processing velocity.</p>
+      <p class="mt-2 text-sm text-slate-300">Zero-leakage vendor intake tuned for 4-file ERP reconciliation and fraud prevention.</p>
       <div class="mt-6 grid sm:grid-cols-3 gap-4">
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
-          <i class="fa-solid fa-truck-ramp-box text-brand-tealLight"></i>
+          <i class="fa-solid fa-truck text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Vendor Ingest</p>
-          <p class="mt-1 text-sm text-slate-300">Structured perimeter filtering across all supplier aliases and shared mailboxes.</p>
+          <p class="mt-1 text-sm text-slate-300">Air-gapped intake across multi-attachment vendor emails directly inside your local perimeter.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i class="fa-solid fa-file-invoice text-brand-tealLight"></i>
-          <p class="mt-2 text-sm font-semibold text-white">Automated Synthesis</p>
-          <p class="mt-1 text-sm text-slate-300">Instant conversion of complex invoice streams into ledger-ready decision packages.</p>
+          <p class="mt-2 text-sm font-semibold text-white">Deterministic 4-File Reconciliation</p>
+          <p class="mt-1 text-sm text-slate-300">Real-time cross-matching against your ERP's vendor, PO, invoice, and cost-center records.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i class="fa-solid fa-shield-halved text-brand-violetLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Perimeter Security</p>
-          <p class="mt-1 text-sm text-slate-300">Local detection of spoofed accounts, altered banking details, and duplicate demands.</p>
+          <p class="mt-1 text-sm text-slate-300">Intercepts duplicate claims, altered routing numbers, and invalid line items at the front door.</p>
         </div>
       </div>
     </div>
@@ -251,7 +438,7 @@
           <p class="mt-1 text-sm text-slate-300">Immutable execution trails generated on-premise for statutory compliance.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
-          <i class="fa-solid fa-magnifying-glass-dollar text-brand-tealLight"></i>
+          <i class="fa-solid fa-sack-dollar text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Unallocated Cash Detection</p>
           <p class="mt-1 text-sm text-slate-300">Instant synthesis of ambiguous wire transfers and bank receipts.</p>
         </div>
@@ -273,7 +460,7 @@
           <p class="mt-1 text-sm text-slate-300">Automated metadata indexing for active vendor SLA renewals and compliance documents.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
-          <i class="fa-solid fa-volume-xmark text-brand-tealLight"></i>
+          <i class="fa-solid fa-volume-off text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Noise Elimination</p>
           <p class="mt-1 text-sm text-slate-300">Interception of low-priority operational chatter to keep management inboxes focused.</p>
         </div>
@@ -281,8 +468,9 @@
     </div>
   </div>
 
+  <!-- Governance workflow strip -->
   <div class="mt-10 glass rounded-2xl p-6 sm:p-8">
-    <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Governance workflow</p>
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Governance workflow</p>
     <div class="mt-5 grid sm:grid-cols-3 gap-4 items-stretch">
       <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
         <span class="font-mono text-sm text-brand-tealLight">01</span>
@@ -303,20 +491,78 @@
   </div>
 </section>
 
+<!-- ============ BEFORE / AFTER COMPARISON (asymmetric highlight block) ============ -->
+<section class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">The shift</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">From fragmented inbox to structured decision</h2>
+  </div>
+  <div class="mt-10 grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-slate-700/50">
+    <!-- Legacy method: muted, deliberately flat -->
+    <div class="bg-slate-900/40 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-700/50">
+      <p class="text-xs font-mono uppercase tracking-widest text-slate-400">Legacy method</p>
+      <h3 class="mt-3 text-xl font-bold text-slate-300">Manual Data Typing & High Exposure</h3>
+      <div class="mt-6 space-y-3 font-mono text-sm">
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fa-solid fa-envelope text-slate-500 w-4"></i> 10 min/invoice, re-typing PDFs by hand
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fa-solid fa-file-excel text-slate-500 w-4"></i> Fat-finger errors & duplicate payouts
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fa-solid fa-clock text-slate-500 w-4"></i> 60-day clawback fights over bad payouts
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fa-solid fa-triangle-exclamation text-slate-500 w-4"></i> No audit trail, no verification
+        </div>
+      </div>
+    </div>
+    <!-- AmritFlow method: glowing, dark terminal-style -->
+    <div class="term-box bg-[#0b0f1a] p-8 sm:p-10 relative">
+      <div class="absolute inset-0 pointer-events-none opacity-40" style="background: radial-gradient(ellipse 500px 300px at 100% 0%, rgba(157,78,221,0.15), transparent 60%);"></div>
+      <div class="relative" id="method-panel-anim" data-anim-panel></div>
+      <noscript>
+        <div class="relative">
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-tealLight">AmritFlow method</p>
+          <h3 class="mt-3 text-xl font-bold text-white">Air-Gapped Ingestion & 1-Click Verification</h3>
+          <div class="mt-6 rounded-lg border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto">
+<pre class="whitespace-pre">{
+  "source": "ap-inbox",
+  "vendor": "verified",
+  "amount": "structured",
+  "sla_status": "<span class="text-brand-tealLight">on_track</span>",
+  "security": "<span class="text-brand-tealLight">air_gapped</span>",
+  "approval": "<span class="text-brand-violetLight">awaiting_hitl</span>"
+}</pre>
+          </div>
+          <div class="mt-4 space-y-2 text-sm">
+            <div class="flex items-center gap-2 text-slate-300">
+              <i class="fa-solid fa-circle-check text-brand-tealLight w-4"></i> Line items pre-staged for 5-second approval
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <i class="fa-solid fa-circle-check text-brand-tealLight w-4"></i> 100% on-premise dry-run before it hits your ledger
+            </div>
+          </div>
+        </div>
+      </noscript>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FRAMEWORK ============ -->
 <section id="frameworks" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
   <div class="max-w-2xl">
     <p class="text-sm font-semibold brand-gradient-text">Tailored framework</p>
-    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Sovereign Mailbox Intelligence</h2>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">The Defensive AP Security Perimeter</h2>
     <p class="mt-4 text-slate-300 leading-relaxed">
-      Curing mailbox exhaustion: every engagement begins here, showing how a bespoke architecture solves the inbox bottleneck before we deploy deeper department-wide modules.
+      Automation doesn't mean uncontrolled payments — we deploy an automated security gate that stops cash leakage before it ever touches your ledger.
     </p>
   </div>
   <div class="mt-12 grid md:grid-cols-3 gap-5">
     <div class="glass rounded-xl p-6">
       <i class="fa-solid fa-inbox text-brand-tealLight text-lg"></i>
-      <h3 class="mt-4 font-semibold text-white">Automated Inbox Triage</h3>
-      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Cures departmental mailbox fatigue—intercepting high-volume noise before storage limits are hit and surfacing urgent stakeholder emails before SLA deadlines expire.</p>
+      <h3 class="mt-4 font-semibold text-white">Front-Door Interception</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Intercepts multi-attachment supplier streams and structures line-item data without a single byte leaving your enterprise network.</p>
     </div>
     <div class="glass rounded-xl p-6">
       <i class="fa-solid fa-shield-halved text-brand-violetLight text-lg"></i>
@@ -335,28 +581,28 @@
 <section id="engagement" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
   <div class="max-w-2xl">
     <p class="text-sm font-semibold brand-gradient-text">Engagement model</p>
-    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">How we architect your sovereign environment</h2>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Architect-Led Deployment & Engagement Model</h2>
   </div>
   <div class="mt-12 space-y-4">
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 1</span>
       <div>
-        <h3 class="font-semibold text-white">Operational Discovery & Security Audit</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Analysis of team-level data entry bottlenecks, email volume spikes, SLA risks, and local security requirements.</p>
+        <h3 class="font-semibold text-white">Phase 1: Paid Diagnostic & ERP Schema Audit</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">We map your ERP structures, audit mailbox leakages, and run a zero-risk dry-run simulation.</p>
       </div>
     </div>
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 2</span>
       <div>
-        <h3 class="font-semibold text-white">Custom Engine Deployment</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Configuration of a dedicated, air-gapped core engine with modular capabilities tailored strictly to your internal workflows.</p>
+        <h3 class="font-semibold text-white">Phase 2: Managed System Integration</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Our integration engineers configure your mail connections and deploy the air-gapped engine within your firewall.</p>
       </div>
     </div>
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 3</span>
       <div>
-        <h3 class="font-semibold text-white">Controller Empowerment</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Training for finance and operational leads to process higher volume with high-signal, pre-verified decision packages.</p>
+        <h3 class="font-semibold text-white">Phase 3: Managed SLA & Governance</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Dedicated technical support, ongoing schema adjustments, and zero-egress maintenance backed by an SLA.</p>
       </div>
     </div>
   </div>
@@ -378,12 +624,44 @@
   <div class="max-w-6xl mx-auto px-6 py-14">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div class="leading-tight">
-        <span class="text-lg font-extrabold text-white">Amrit<span class="font-medium text-slate-400">Flow</span></span>
-        <p class="text-xs text-slate-400">The Essence of Seamless Data.</p>
+        <span class="text-lg font-extrabold text-white">Amrit<span class="font-medium text-slate-300">Flow</span></span>
+        <p class="text-xs text-slate-300">The Essence of Seamless Data.</p>
       </div>
       <div class="flex items-center gap-3">
-        <svg width="36" height="20" viewBox="0 0 120 64" aria-hidden="true" class="shrink-0">
-          <use href="#amritflow-emblem"></use>
+        <svg width="30" height="16" viewBox="0 0 120 64" aria-hidden="true" class="shrink-0" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="footFeather" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#00A896"/>
+              <stop offset="1" stop-color="#02C39A"/>
+            </linearGradient>
+            <linearGradient id="footRingL" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#00A896"/>
+              <stop offset="1" stop-color="#02C39A"/>
+            </linearGradient>
+            <linearGradient id="footRingR" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#02C39A"/>
+              <stop offset="1" stop-color="#9D4EDD"/>
+            </linearGradient>
+          </defs>
+          <g>
+            <g transform="rotate(-66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#footFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+            <g transform="rotate(-44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#footFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+            <g transform="rotate(-22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#footFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+            <g transform="rotate(0 16 32)"><ellipse cx="0" cy="32" rx="18" ry="6" fill="url(#footFeather)" opacity="0.85"/><circle cx="-11" cy="32" r="3.2" fill="#F8FAFC"/><circle cx="-11" cy="32" r="3.2" fill="none" stroke="#00A896" stroke-width="1.2"/></g>
+            <g transform="rotate(22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#footFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
+            <g transform="rotate(44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#footFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
+            <g transform="rotate(66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#footFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
+          </g>
+          <circle cx="32" cy="32" r="16" fill="none" stroke="url(#footRingL)" stroke-width="6"/>
+          <circle cx="62" cy="32" r="16" fill="none" stroke="url(#footRingR)" stroke-width="6"/>
+          <line x1="72" y1="20" x2="80" y2="26" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
+          <line x1="80" y1="26" x2="78" y2="40" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
+          <line x1="78" y1="40" x2="68" y2="45" stroke="#9D4EDD" stroke-width="0.9" opacity="0.7"/>
+          <circle cx="72" cy="20" r="1.8" fill="#E056FD"/>
+          <circle cx="80" cy="26" r="1.8" fill="#E056FD"/>
+          <circle cx="78" cy="40" r="1.8" fill="#9D4EDD"/>
+          <circle cx="68" cy="45" r="1.8" fill="#9D4EDD"/>
+          <circle cx="47" cy="32" r="3.6" fill="#F8FAFC"/>
         </svg>
         <span class="inline-flex items-center gap-2 rounded-full border border-brand-teal/30 bg-brand-teal/10 px-3 py-1.5 text-xs font-mono text-brand-tealLight">
           <span class="status-dot bg-brand-teal text-brand-teal"></span>
@@ -391,10 +669,12 @@
         </span>
       </div>
     </div>
+
     <p class="mt-6 text-sm text-slate-300 max-w-2xl leading-relaxed">
       Bespoke security architectures, advanced ledger engines, and compliance plugins available on special request for whitelisted accounts.
     </p>
-    <div class="mt-10 grid sm:grid-cols-3 gap-8 text-xs text-slate-400 leading-relaxed">
+
+    <div class="mt-10 grid sm:grid-cols-3 gap-8 text-xs text-slate-300 leading-relaxed">
       <div>
         <h4 class="font-semibold text-slate-300 mb-2">Evaluation terms</h4>
         <p>The 60-day evaluation pass is strictly for corporate validation purposes within the client's own environment.</p>
@@ -408,35 +688,130 @@
         <p>AmritFlow is a decision-support and workflow software suite. It is not a licensed statutory tax authority or accounting firm.</p>
       </div>
     </div>
-    <p class="mt-10 text-xs text-slate-500">Copyright &copy; 2026 AmritFlow. All Rights Reserved.</p>
+
+    <!--
+      SOCIAL LINKS: each icon below points to href="#" as a placeholder.
+      To activate one, just replace its href="#" with your real profile URL
+      (e.g. href="https://linkedin.com/company/amritflow") — nothing else
+      needs to change. Until then, clicking any of them opens the request
+      modal instead, so nothing is ever a dead link.
+    -->
+    <div class="mt-10 flex items-center gap-3">
+      <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on LinkedIn"
+        class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
+        <i class="fa-brands fa-linkedin-in text-sm"></i>
+      </a>
+      <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on X"
+        class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
+        <i class="fa-brands fa-x-twitter text-sm"></i>
+      </a>
+      <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on Facebook"
+        class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
+        <i class="fa-brands fa-facebook-f text-sm"></i>
+      </a>
+      <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on Instagram"
+        class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
+        <i class="fa-brands fa-instagram text-sm"></i>
+      </a>
+      <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on YouTube"
+        class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
+        <i class="fa-brands fa-youtube text-sm"></i>
+      </a>
+    </div>
+
+    <p class="mt-6 text-xs text-slate-400">Copyright © 2026 AmritFlow. All Rights Reserved.</p>
   </div>
 </footer>
 
-<!-- ============ QUALIFICATION MODAL (FINAL - NO GAP, NO SCROLLBAR) ============ -->
-<div data-modal-backdrop class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-3">
-  <div class="modal-enter glass glow-violet rounded-2xl w-full max-w-md overflow-hidden relative p-4 sm:p-5">
-    
-    <!-- Absolutely Positioned Close Button -->
-    <button data-close-modal aria-label="Close" class="focus-ring absolute top-3 right-3 text-slate-400 hover:text-white z-10 p-1.5 rounded-lg bg-slate-900/60 transition-colors">
-      <i class="fa-solid fa-xmark text-lg"></i>
-    </button>
+<!-- ============ QUALIFICATION MODAL ============ -->
+<div data-modal-backdrop class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+  <div class="modal-enter glass glow-violet rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div class="p-7 sm:p-8">
+      <div class="flex items-start justify-between">
+        <div>
+          <h3 class="text-xl font-bold text-white">Request a sovereign 60-day evaluation pass</h3>
+          <p class="mt-2 text-sm text-slate-300">We evaluate high-volume enterprise environments for whitelisted, tailor-made deployment.</p>
+        </div>
+        <button data-close-modal aria-label="Close" class="focus-ring text-slate-400 hover:text-slate-200 shrink-0 ml-4">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
 
-    <!-- Negative Top Margin Pulls Content Up to Fill the Gap -->
-    <div class="w-full -mt-8 sm:-mt-10">
-      <iframe 
-        src="https://tally.so/embed/D48kWq?alignLeft=1&dynamicHeight=1" 
-        width="100%" 
-        height="500" 
-        frameborder="0" 
-        marginheight="0" 
-        marginwidth="0" 
-        title="AmritFlow Evaluation Pass"
-        class="tally-iframe w-full border-0 bg-transparent block"
-        style="background: transparent; border: none; overflow: hidden;"
-        scrolling="no"
-      ></iframe>
+      <form id="qual-form" class="mt-7 space-y-5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Work email address</label>
+          <input required type="email" pattern=".+@.+\..+" placeholder="you@company.com"
+            class="focus-ring w-full rounded-lg bg-slate-900/70 border border-slate-700 px-3.5 py-2.5 text-sm text-slate-200 placeholder:text-slate-400 focus:border-brand-violet">
+          <p class="mt-1 text-xs text-slate-400">Free email domains are not eligible for evaluation.</p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Primary operational bottleneck</label>
+          <select required class="focus-ring w-full rounded-lg bg-slate-900/70 border border-slate-700 px-3.5 py-2.5 text-sm text-slate-200 focus:border-brand-violet">
+            <option value="" disabled selected>Select one</option>
+            <option>Vendor Inbox Triage</option>
+            <option>Bank Fraud</option>
+            <option>High Volume</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Daily vendor email volume</label>
+          <select required class="focus-ring w-full rounded-lg bg-slate-900/70 border border-slate-700 px-3.5 py-2.5 text-sm text-slate-200 focus:border-brand-violet">
+            <option value="" disabled selected>Select one</option>
+            <option>Fewer than 100</option>
+            <option>100–500</option>
+            <option>500+</option>
+          </select>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Target deployment OS</label>
+            <select required class="focus-ring w-full rounded-lg bg-slate-900/70 border border-slate-700 px-3.5 py-2.5 text-sm text-slate-200 focus:border-brand-violet">
+              <option value="" disabled selected>Select one</option>
+              <option>RHEL / Ubuntu Enterprise</option>
+              <option>Windows Server 2022+</option>
+              <option>Isolated Bare-Metal</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Security layer</label>
+            <select required class="focus-ring w-full rounded-lg bg-slate-900/70 border border-slate-700 px-3.5 py-2.5 text-sm text-slate-200 focus:border-brand-violet">
+              <option value="" disabled selected>Select one</option>
+              <option>Air-Gapped / Zero-Egress</option>
+              <option>BitLocker / Encrypted at Rest</option>
+              <option>VPC / Private Endpoint</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="flex items-start gap-3 pt-1 cursor-pointer">
+          <input required type="checkbox" class="focus-ring mt-0.5 w-4 h-4 rounded border-slate-600 bg-slate-900 accent-brand-violet">
+          <span class="text-xs text-slate-300 leading-relaxed">If an air-gapped evaluation proves 5x ROI, I am authorized to evaluate AmritFlow for bespoke deployment.</span>
+        </label>
+
+        <button type="submit" class="focus-ring w-full rounded-lg bg-brand-violet px-5 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
+          Submit Environment Specification
+        </button>
+
+        <p class="text-xs text-slate-400 leading-relaxed border-t border-slate-700/50 pt-4">
+          <i class="fa-solid fa-shield-halved text-brand-tealLight mr-1"></i>
+          <strong class="text-slate-300">Zero-Persistence Intake:</strong> form submissions are encrypted locally and evaluated under strict non-disclosure. We never share or sell enterprise infrastructure telemetry.
+        </p>
+      </form>
+
+      <div id="qual-success" class="hidden text-center py-6">
+        <div class="mx-auto w-12 h-12 rounded-full bg-brand-teal/10 border border-brand-teal/30 flex items-center justify-center">
+          <i class="fa-solid fa-check text-brand-tealLight"></i>
+        </div>
+        <h3 class="mt-4 font-semibold text-white">Specification received</h3>
+        <p class="mt-2 text-sm text-slate-300 max-w-sm mx-auto">Your environment is queued for review. A member of our advisory team will follow up if your organization is whitelisted for evaluation.</p>
+        <button data-close-modal class="focus-ring mt-6 rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-800/60 transition-colors">
+          Close
+        </button>
+      </div>
     </div>
-
   </div>
 </div>
 
@@ -445,19 +820,21 @@
     const backdrop = document.querySelector('[data-modal-backdrop]');
     const openBtns = document.querySelectorAll('[data-open-modal]');
     const closeBtns = document.querySelectorAll('[data-close-modal]');
+    const form = document.getElementById('qual-form');
+    const success = document.getElementById('qual-success');
 
     function openModal() {
       backdrop.classList.remove('hidden');
       backdrop.classList.add('flex');
       document.body.style.overflow = 'hidden';
-      const closeBtn = backdrop.querySelector('[data-close-modal]');
-      if (closeBtn) closeBtn.focus();
     }
-
     function closeModal() {
       backdrop.classList.add('hidden');
       backdrop.classList.remove('flex');
       document.body.style.overflow = '';
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      form.reset();
     }
 
     openBtns.forEach(function (btn) { btn.addEventListener('click', openModal); });
@@ -465,6 +842,36 @@
     backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    });
+
+    // Technical brief download (direct PDF link — no modal/email capture)
+    const briefLink = document.querySelector('[data-telemetry="technical_brief_downloaded"]');
+    if (briefLink) {
+      briefLink.addEventListener('click', function () {
+        sendTelemetry('technical_brief_downloaded', {});
+      });
+    }
+
+    // Social links — placeholder until real URLs are added (see comment above
+    // the markup). Checked at click-time, so no JS edit is ever needed:
+    // href="#" still present -> opens the request modal instead of a dead link.
+    // href replaced with a real URL -> normal navigation happens untouched.
+    document.querySelectorAll('[data-social-link]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') {
+          e.preventDefault();
+          sendTelemetry('social_placeholder_clicked', { label: link.getAttribute('aria-label') || '' });
+          openModal();
+        }
+      });
+    });
+
+    // Domain specialization tabs
     const tabBtns = document.querySelectorAll('[data-tab-btn]');
     const tabPanels = document.querySelectorAll('[data-tab-panel]');
     tabBtns.forEach(function (btn) {
@@ -476,11 +883,377 @@
         });
       });
     });
+
+    // Light / dark theme toggle
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-toggle-icon');
+    function syncThemeIcon() {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      themeIcon.className = isLight ? 'fa-solid fa-moon text-sm' : 'fa-solid fa-sun text-sm';
+    }
+    syncThemeIcon();
+    themeBtn.addEventListener('click', function () {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+      } else {
+        root.setAttribute('data-theme', 'light');
+      }
+      try { localStorage.setItem('amritflow-theme', isLight ? 'dark' : 'light'); } catch (e) {}
+      syncThemeIcon();
+    });
+
+    // ============ Type-then-drop reveal (Variation 4) ============
+    // Plays once per panel when it scrolls into view. Falls back to
+    // plain visible content (via <noscript>) if JS never runs.
+    function typeInto(el, text, speed) {
+      return new Promise(function (resolve) {
+        el.innerHTML = '<span class="anim-typed"></span><span class="anim-caret"></span>';
+        const target = el.querySelector('.anim-typed');
+        let i = 0;
+        const timer = setInterval(function () {
+          target.textContent = text.slice(0, i + 1);
+          i++;
+          if (i >= text.length) {
+            clearInterval(timer);
+            setTimeout(resolve, 150);
+          }
+        }, speed);
+      });
+    }
+    function dropIn(el, html) {
+      return new Promise(function (resolve) {
+        el.classList.add('anim-drop');
+        el.innerHTML = html;
+        void el.offsetWidth;
+        el.classList.add('anim-show');
+        setTimeout(resolve, 650);
+      });
+    }
+    function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    function child(container, tagClass) {
+      const div = document.createElement('div');
+      if (tagClass) div.className = tagClass;
+      container.appendChild(div);
+      return div;
+    }
+
+    async function playTypeDropSequence(container, items) {
+      container.innerHTML = '';
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) {
+        items.forEach(function (item) {
+          const el = child(container, item.rowClass);
+          el.innerHTML = item.html;
+        });
+        return;
+      }
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const el = child(container, item.rowClass);
+        const step = i % 2; // 0 = type, 1 = drop — alternating all the way down
+        if (step === 0) {
+          await typeInto(el, item.text, item.speed || 26);
+          el.innerHTML = item.html;
+        } else {
+          await dropIn(el, item.html);
+        }
+        await wait(180);
+      }
+    }
+
+    const scenarioNames = ['Accounts Payable', 'Accounts Receivable', 'Treasury & Controllership', 'Facilities & Admin'];
+    const scenarios = [
+      // 0. Accounts Payable
+      [
+        { text: '[AMRITFLOW SOVEREIGN ENGINE v2.4]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW SOVEREIGN ENGINE v2.4]</span>' },
+        { text: '> STATUS: Air-Gapped Network Isolated', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></span>' },
+        { text: '> ACTIVE MONITOR: ap-inbox', html: '<span class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">ap-inbox</span></span>' },
+        { text: '> GOVERNANCE: Human-in-the-Loop Verification Enforced', html: '<span class="text-slate-300">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></span>' },
+        {
+          text: 'ap-inbox // invoice_batch_0417.pdf   [VERIFIED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">ap-inbox // invoice_batch_0417.pdf</span><span class="text-brand-tealLight">[VERIFIED]</span>'
+        },
+        {
+          text: 'ap-inbox // bank_detail_change.eml   [AWAITING HITL]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">ap-inbox // bank_detail_change.eml</span><span class="text-brand-violetLight">[AWAITING HITL]</span>'
+        }
+      ],
+      // 1. Accounts Receivable
+      [
+        { text: '[AMRITFLOW SOVEREIGN ENGINE v2.4]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW SOVEREIGN ENGINE v2.4]</span>' },
+        { text: '> STATUS: Air-Gapped Network Isolated', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></span>' },
+        { text: '> ACTIVE MONITOR: ar-remittance', html: '<span class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">ar-remittance</span></span>' },
+        { text: '> GOVERNANCE: Human-in-the-Loop Verification Enforced', html: '<span class="text-slate-300">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></span>' },
+        {
+          text: 'ar-remittance // advice_2291.eml   [MATCHED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">ar-remittance // advice_2291.eml</span><span class="text-brand-tealLight">[MATCHED]</span>'
+        },
+        {
+          text: 'ar-remittance // dispute_0098.eml   [ESCALATED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">ar-remittance // dispute_0098.eml</span><span class="text-brand-violetLight">[ESCALATED]</span>'
+        }
+      ],
+      // 2. Treasury & Controllership
+      [
+        { text: '[AMRITFLOW SOVEREIGN ENGINE v2.4]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW SOVEREIGN ENGINE v2.4]</span>' },
+        { text: '> STATUS: Air-Gapped Network Isolated', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></span>' },
+        { text: '> ACTIVE MONITOR: treasury-statements', html: '<span class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">treasury-statements</span></span>' },
+        { text: '> GOVERNANCE: Human-in-the-Loop Verification Enforced', html: '<span class="text-slate-300">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></span>' },
+        {
+          text: 'treasury-statements // daily_feed_0912.csv   [RECONCILED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">treasury-statements // daily_feed_0912.csv</span><span class="text-brand-tealLight">[RECONCILED]</span>'
+        },
+        {
+          text: 'treasury-statements // wire_unallocated.txt   [FLAGGED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">treasury-statements // wire_unallocated.txt</span><span class="text-brand-violetLight">[FLAGGED]</span>'
+        }
+      ],
+      // 3. Facilities & Admin
+      [
+        { text: '[AMRITFLOW SOVEREIGN ENGINE v2.4]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW SOVEREIGN ENGINE v2.4]</span>' },
+        { text: '> STATUS: Air-Gapped Network Isolated', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Air-Gapped Network Isolated</span></span>' },
+        { text: '> ACTIVE MONITOR: admin-facility', html: '<span class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">admin-facility</span></span>' },
+        { text: '> GOVERNANCE: Human-in-the-Loop Verification Enforced', html: '<span class="text-slate-300">&gt; GOVERNANCE: <span class="text-brand-violetLight">Human-in-the-Loop Verification Enforced</span></span>' },
+        {
+          text: 'admin-facility // workorder_2210.eml   [ROUTED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">admin-facility // workorder_2210.eml</span><span class="text-brand-tealLight">[ROUTED]</span>'
+        },
+        {
+          text: 'admin-facility // lease_renewal.pdf   [INDEXED]',
+          rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
+          html: '<span class="text-slate-300">admin-facility // lease_renewal.pdf</span><span class="text-brand-tealLight">[INDEXED]</span>'
+        }
+      ]
+    ];
+
+    const methodPanelItems = [
+      { text: 'AmritFlow method', speed: 30, html: '<p class="text-xs font-mono uppercase tracking-widest text-brand-tealLight">AmritFlow method</p>' },
+      { text: 'Air-Gapped Ingestion & 1-Click Verification', html: '<h3 class="mt-3 text-xl font-bold text-white">Air-Gapped Ingestion &amp; 1-Click Verification</h3>' },
+      {
+        text: '{ "source": "ap-inbox", "vendor": "verified", "amount": "structured", "sla_status": "on_track", "security": "air_gapped", "approval": "awaiting_hitl" }',
+        speed: 8,
+        rowClass: 'mt-6',
+        html: '<div class="rounded-lg border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto">' +
+              '<pre class="whitespace-pre">{\n  "source": "ap-inbox",\n  "vendor": "verified",\n  "amount": "structured",\n  "sla_status": "<span class="text-brand-tealLight">on_track</span>",\n  "security": "<span class="text-brand-tealLight">air_gapped</span>",\n  "approval": "<span class="text-brand-violetLight">awaiting_hitl</span>"\n}</pre></div>'
+      },
+      {
+        text: 'Line items pre-staged for 5-second approval',
+        rowClass: 'mt-4 flex items-center gap-2 text-sm text-slate-300',
+        html: '<i class="fa-solid fa-circle-check text-brand-tealLight w-4"></i> Line items pre-staged for 5-second approval'
+      },
+      {
+        text: '100% on-premise dry-run before it hits your ledger',
+        rowClass: 'mt-2 flex items-center gap-2 text-sm text-slate-300',
+        html: '<i class="fa-solid fa-circle-check text-brand-tealLight w-4"></i> 100% on-premise dry-run before it hits your ledger'
+      }
+    ];
+
+    function setupScrollTriggeredAnimation(elId, items) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      let played = false;
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !played) {
+            played = true;
+            playTypeDropSequence(el, items);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+      observer.observe(el);
+    }
+
+    if ('IntersectionObserver' in window) {
+      setupScrollTriggeredAnimation('method-panel-anim', methodPanelItems);
+    } else {
+      playTypeDropSequence(document.getElementById('method-panel-anim'), methodPanelItems);
+    }
+
+    // ============ Telemetry (no backend wired here — see note) ============
+    // This posts to a RELATIVE path, so it's ready to work the moment this
+    // page is served from an origin that has a real /api/telemetry/engagement
+    // route (a new public endpoint you deploy for this site — NOT the
+    // existing AP mailbox agent-swarm backend, which is intentionally
+    // bound to 127.0.0.1 only and unrelated to this static landing page).
+    // Fails silently and never blocks the UI if no such route exists yet.
+    function sendTelemetry(eventName, payload) {
+      const body = JSON.stringify(Object.assign({ event: eventName, ts: Date.now() }, payload || {}));
+      try {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/telemetry/engagement', new Blob([body], { type: 'application/json' }));
+        } else if (window.fetch) {
+          fetch('/api/telemetry/engagement', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+        }
+      } catch (e) { /* no endpoint yet — ignore */ }
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:') {
+        console.log('[AmritFlow telemetry]', eventName, payload || {});
+      }
+    }
+
+    // ============ Hero showcase: teaser video <-> simulation loop ============
+    (function () {
+      const video = document.getElementById('showcase-video');
+      const terminalEl = document.getElementById('hero-terminal-anim');
+      const controls = document.getElementById('showcase-controls');
+      const replayBtn = document.getElementById('showcase-replay');
+      const nextBtn = document.getElementById('showcase-next');
+      const watchBtn = document.getElementById('showcase-watch');
+      const demoBtn = document.getElementById('showcase-demo');
+      const pauseBtn = document.getElementById('showcase-pause');
+      const pauseIcon = document.getElementById('showcase-pause-icon');
+      if (!video || !terminalEl) return;
+
+      let currentScenario = 0;
+      let humanVerified = false;
+      let autoplayPaused = false;
+      let videoAvailable = true; // flips to false permanently if the video never actually plays
+      let videoWatchdog = null;
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function safePlay() {
+        try {
+          const p = video.play();
+          if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+        } catch (e) {}
+      }
+      function clearVideoWatchdog() { if (videoWatchdog) { clearTimeout(videoWatchdog); videoWatchdog = null; } }
+      function markVideoUnavailable() {
+        videoAvailable = false;
+        if (watchBtn) watchBtn.classList.add('hidden');
+      }
+      function showTeaser() {
+        if (!videoAvailable) { runSimulation(currentScenario); return; }
+        terminalEl.classList.add('hidden');
+        controls.classList.add('hidden');
+        video.classList.remove('hidden');
+        try { video.currentTime = 0; } catch (e) {}
+        if (!autoplayPaused) {
+          safePlay();
+          clearVideoWatchdog();
+          // If the video never actually starts producing frames (broken relative
+          // path, blocked sandbox, file missing, etc.) within a few seconds,
+          // stop trying and fall back to the simulation loop permanently rather
+          // than leaving visitors staring at a stuck black box.
+          videoWatchdog = setTimeout(function () {
+            if (video.readyState < 2) {
+              markVideoUnavailable();
+              runSimulation(currentScenario);
+            }
+          }, 4000);
+        }
+      }
+      function showTerminalContainer() {
+        video.pause();
+        video.classList.add('hidden');
+        terminalEl.classList.remove('hidden');
+      }
+      function freezeWithControls() {
+        controls.classList.remove('hidden');
+      }
+      async function runSimulation(index) {
+        currentScenario = index;
+        showTerminalContainer();
+        await playTypeDropSequence(terminalEl, scenarios[index]);
+        if (humanVerified || autoplayPaused) {
+          freezeWithControls();
+          return;
+        }
+        await wait(1800);
+        if (humanVerified || autoplayPaused) {
+          freezeWithControls();
+          return;
+        }
+        currentScenario = (index + 1) % scenarios.length;
+        showTeaser();
+      }
+
+      video.addEventListener('playing', clearVideoWatchdog);
+      video.addEventListener('ended', function () { clearVideoWatchdog(); runSimulation(currentScenario); });
+      video.addEventListener('error', function () { clearVideoWatchdog(); markVideoUnavailable(); runSimulation(currentScenario); });
+
+      if (reduceMotion) {
+        // Skip the autoplaying video entirely; show one simulation, static, with controls immediately.
+        showTerminalContainer();
+        playTypeDropSequence(terminalEl, scenarios[0]).then(freezeWithControls);
+      } else {
+        showTeaser();
+      }
+
+      // --- Passive human-engagement detection ---
+      let lastX = null, lastY = null, travel = 0;
+      function markHumanVerified() {
+        if (humanVerified) return;
+        humanVerified = true;
+        sendTelemetry('visitor_type_verified_human', {});
+        document.removeEventListener('mousemove', onMouseMove);
+      }
+      function onMouseMove(e) {
+        if (lastX !== null) {
+          const dx = e.clientX - lastX, dy = e.clientY - lastY;
+          travel += Math.sqrt(dx * dx + dy * dy);
+        }
+        lastX = e.clientX; lastY = e.clientY;
+        if (travel > 50) markHumanVerified();
+      }
+      document.addEventListener('mousemove', onMouseMove, { passive: true });
+      document.addEventListener('scroll', markHumanVerified, { passive: true, once: true });
+      document.addEventListener('touchstart', markHumanVerified, { passive: true, once: true });
+      document.addEventListener('keydown', markHumanVerified, { once: true });
+
+      // --- Accessible pause control (WCAG 2.2.2 — independent of human detection) ---
+      pauseBtn.addEventListener('click', function () {
+        autoplayPaused = !autoplayPaused;
+        pauseBtn.setAttribute('aria-pressed', String(autoplayPaused));
+        pauseBtn.setAttribute('aria-label', autoplayPaused ? 'Resume autoplay' : 'Pause autoplay');
+        pauseIcon.className = autoplayPaused ? 'fa-solid fa-play' : 'fa-solid fa-pause';
+        if (autoplayPaused) {
+          if (!video.classList.contains('hidden')) video.pause();
+        } else if (!video.classList.contains('hidden') && !humanVerified) {
+          safePlay();
+        }
+      });
+
+      // --- Human-interrupt controls ---
+      replayBtn.addEventListener('click', function () {
+        sendTelemetry('simulation_interacted', { action: 'play_again', scenario: scenarioNames[currentScenario] });
+        controls.classList.add('hidden');
+        runSimulation(currentScenario);
+      });
+      nextBtn.addEventListener('click', function () {
+        const next = (currentScenario + 1) % scenarios.length;
+        sendTelemetry('simulation_interacted', { action: 'next_simulation', scenario: scenarioNames[next] });
+        controls.classList.add('hidden');
+        runSimulation(next);
+      });
+      watchBtn.addEventListener('click', function () {
+        sendTelemetry('simulation_interacted', { action: 'watch_video', scenario: scenarioNames[currentScenario] });
+        controls.classList.add('hidden');
+        // An explicit click to watch the video always plays it, even if
+        // autoplay had been manually paused earlier — sync the pause
+        // control to reflect that.
+        autoplayPaused = false;
+        pauseBtn.setAttribute('aria-pressed', 'false');
+        pauseBtn.setAttribute('aria-label', 'Pause autoplay');
+        pauseIcon.className = 'fa-solid fa-pause';
+        showTeaser();
+      });
+      demoBtn.addEventListener('click', function () {
+        sendTelemetry('simulation_interacted', { action: 'book_live_demo', scenario: scenarioNames[currentScenario] });
+        openModal();
+      });
+    })();
   })();
 </script>
-
-<!-- Tally Dynamic Height Script -->
-<script async src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
