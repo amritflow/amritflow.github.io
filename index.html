@@ -68,7 +68,7 @@
             </div>
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                 <a href="#architecture" class="hover:text-brand-400 transition-colors">Mailbox Intelligence</a>
-                <a href="#roadmap" class="hover:text-brand-400 transition-colors">Architecture Roadmap</a>
+                <a href="#governance" class="hover:text-brand-400 transition-colors">Architecture Roadmap</a>
                 <a href="#engagement" class="hover:text-brand-400 transition-colors">Pilot Engagement</a>
             </div>
             <button onclick="openModal()" class="bg-brand-500 hover:bg-brand-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm transition-all glow-effect">
@@ -98,8 +98,8 @@
                 <button onclick="openModal()" class="bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-base text-center transition-all glow-effect">
                     Request 14-Day Shadow Pilot
                 </button>
-                <a href="#roadmap" class="border border-slate-700 hover:border-slate-500 bg-dark-card text-slate-200 font-medium px-6 py-3.5 rounded-xl text-base text-center transition-all">
-                    Download Architecture Brief (PDF)
+                <a href="#architecture" class="border border-slate-700 hover:border-slate-500 bg-dark-card text-slate-200 font-medium px-6 py-3.5 rounded-xl text-base text-center transition-all">
+                    Explore Architecture Modules
                 </a>
             </div>
 
@@ -205,7 +205,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 3 PANEL (TEASER CARD ONLY) -->
+                <!-- TAB 3 PANEL -->
                 <div id="tab-panel-3" data-tab-panel="3" class="hidden space-y-6">
                     <p class="text-sm text-slate-400">Direct enterprise schema synchronization bridging your intake pipeline with your financial core.</p>
                     <div class="max-w-2xl bg-dark-card p-6 rounded-xl border border-amber-500/20 bg-amber-950/10">
@@ -224,7 +224,7 @@
     </section>
 
     <!-- GOVERNANCE WORKFLOW -->
-    <section class="py-20 bg-dark-bg border-b border-dark-border">
+    <section id="governance" class="py-20 bg-dark-bg border-b border-dark-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <span class="text-xs font-bold text-brand-400 uppercase tracking-widest block mb-2">PROGRESSIVE OPERATIONAL PATH</span>
             <h2 class="text-3xl font-bold text-white mb-12">Controlled, Phased Deployment</h2>
@@ -469,92 +469,98 @@
 
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Primary Operational Friction</label>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
+                        <div class="space-y-2 text-xs text-slate-300">
                             <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="rounded border-slate-700 bg-dark-bg text-brand-500 focus:ring-0">
-                                <span>Morning Triage Time</span>
+                                <input type="checkbox" class="rounded border-dark-border text-brand-500 focus:ring-0 bg-dark-bg">
+                                <span>Morning triage takes too long</span>
                             </label>
                             <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="rounded border-slate-700 bg-dark-bg text-brand-500 focus:ring-0">
-                                <span>Bank Update Fraud Risks</span>
+                                <input type="checkbox" class="rounded border-dark-border text-brand-500 focus:ring-0 bg-dark-bg">
+                                <span>Risk of wire fraud / bank account detail changes</span>
                             </label>
                             <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="rounded border-slate-700 bg-dark-bg text-brand-500 focus:ring-0">
-                                <span>Uneven Work Allocation</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="rounded border-slate-700 bg-dark-bg text-brand-500 focus:ring-0">
-                                <span>Missing Invoices / Noise</span>
+                                <input type="checkbox" class="rounded border-dark-border text-brand-500 focus:ring-0 bg-dark-bg">
+                                <span>Duplicate processor effort & unassigned emails</span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="pt-2">
-                        <label class="flex items-start space-x-2 text-xs text-slate-400">
-                            <input type="checkbox" required class="mt-0.5 rounded border-slate-700 bg-dark-bg text-brand-500">
-                            <span>I am interested in running an offline diagnostic or 14-day shadow pilot on historical/forwarded mailbox data.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold py-3 rounded-lg text-sm transition-all glow-effect mt-4">
-                        Submit Pilot Specification
+                    <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold py-3 rounded-xl text-sm transition-all glow-effect mt-4">
+                        Submit Audit Request
                     </button>
-
-                    <p class="text-[10px] text-slate-400 text-center mt-3">
-                        Confidential Intake: Pilot specifications are evaluated under mutual non-disclosure. We never sell or share enterprise communication telemetry.
-                    </p>
                 </form>
             </div>
 
-            <div id="modal-success-container" class="hidden text-center py-8">
-                <div class="w-12 h-12 bg-brand-500/20 text-brand-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
-                <h3 class="text-2xl font-bold text-white mb-2">Specification Received</h3>
-                <p class="text-sm text-slate-300 mb-6">Our technical team will follow up within 24 business hours to coordinate your offline triage pass or shadow pilot setup.</p>
-                <button onclick="closeModal()" class="bg-dark-border hover:bg-slate-700 text-white font-medium px-6 py-2.5 rounded-lg text-sm">
-                    Return to Site
+            <div id="modal-success-container" class="hidden text-center py-8 space-y-4">
+                <div class="w-12 h-12 bg-brand-500/20 text-brand-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+                <h3 class="text-xl font-bold text-white">Request Received</h3>
+                <p class="text-sm text-slate-300">Our solution engineering team will reach out within 24 hours to initiate your offline diagnostic.</p>
+                <button onclick="closeModal()" class="bg-dark-card border border-dark-border hover:border-slate-600 text-slate-200 px-6 py-2 rounded-lg text-sm transition-all">
+                    Close Window
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- JS LOGIC -->
+    <!-- JAVASCRIPT FOR INTERACTION -->
     <script>
-        // TERMINAL SIMULATIONS
+        // Interactive Tab Selector
+        function selectTab(tabIndex) {
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                const panel = document.getElementById(`tab-panel-${i}`);
+                if (i === tabIndex) {
+                    btn.className = "tab-active py-3 px-4 font-semibold text-sm border-b-2 border-brand-400 text-brand-400 whitespace-nowrap";
+                    panel.classList.remove('hidden');
+                } else {
+                    btn.className = "py-3 px-4 font-semibold text-sm border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap";
+                    panel.classList.add('hidden');
+                }
+            }
+        }
+
+        // Terminal Interactive Simulations
         const simulations = [
-            `[AMRITFLOW AP RUNTIME v1.2]
-> STATUS: Local Perimeter Isolated | Zero External Egress
-> ACTIVE MONITOR: shared-ap-inbox
-> TRIAGE ENGINE: Intent & Attachment Classification Running
-ap-inbox // vendor_invoice_9081.pdf        [EXTRACTED -> BATCH_A]
-ap-inbox // urgent_banking_change.eml      [QUARANTINED -> SEC_OPS]`,
+            `> INGEST: 142 unread emails from shared AP mailbox...
+> CLASSIFYING INBOUND TRAFFIC...
+  ├─ [INVOICE] 98 items identified -> Queue: Processor Batching
+  ├─ [STATEMENT] 24 items identified -> Queue: Vendor Reconciliation Log
+  ├─ [NOISE/PROMO] 16 items identified -> Action: Auto-Archived
+  └─ [SECURITY RISK] 4 bank account updates -> ACTION: QUARANTINED
+> TRIAGE COMPLETE (Execution time: 1.4s)`,
 
-            `[AMRITFLOW AP RUNTIME v1.2]
-> TARGET: 15-Item Deterministic Processor Queues
-> LOAD BALANCER: Active Across 6 AP Associates
-allocation // batch_0417_nam.xlsx          [ALLOCATED -> ASSOCIATE_1]
-allocation // statement_reconcile.pdf      [ROUTED -> RESEARCH_QUEUE]`,
+            `> INITIALIZING WORKLOAD BALANCER...
+> ACTIVE PROCESSORS DETECTED: 4 Associates
+> BATCH ALLOCATION PLAN:
+  ├─ Associate_01: 25 Invoices (Vendor Group: A-D)
+  ├─ Associate_02: 25 Invoices (Vendor Group: E-K)
+  ├─ Associate_03: 24 Invoices (Vendor Group: L-R)
+  └─ Associate_04: 24 Invoices (Vendor Group: S-Z)
+> STATUS: Work queues distributed. Zero duplicate touches.`,
 
-            `[AMRITFLOW AP RUNTIME v1.2]
-> EXTRACTION PIPELINE: Multi-Page OCR Staging
-> STATUS: Local Staging Dry-Run Active
-invoice_9081 // header_totals_matched     [CONFIRMED]
-invoice_9081 // tax_breakdown_parsed       [READY FOR LEDGER PASS]`,
+            `> EXTRACTING ATTACHMENT: INV_88492_AcmeCorp.pdf...
+> OCR / HEADER PARSING:
+  ├─ Vendor Name: Acme Industrial Solutions
+  ├─ Tax ID / GSTIN: 27AAAAA0000A1Z5
+  ├─ Invoice Date: 2026-08-14 | Due Date: 2026-09-13
+  ├─ Total Amount: $14,250.00 | Tax Amount: $1,425.00
+> LINE-ITEM DECOMPOSITION COMPLETE: 12 Line Items Staged.`,
 
-            `[AMRITFLOW AP RUNTIME v1.2]
-> PHASE 2/3 BRIDGE: Ledger Schema Validation
-> STATUS: Architecture Validation Engine
-erp_bridge // 4_way_po_matching           [SIMULATION VERIFIED]
-erp_bridge // duplicate_claim_filter       [INTERCEPTED AT ENTRY]`
+            `> ROADMAP MODULE: ERP CONNECTOR (STAGE 3)
+> CONNECTING TO ENTERPRISE LEDGER...
+> 4-WAY MATCHING SIMULATION:
+  ├─ PO #88392 -> MATCH CONFIRMED ($14,250.00)
+  ├─ GRN #11029 -> MATCH CONFIRMED (Goods Received)
+  └─ Vendor Master -> MATCH CONFIRMED
+> READY FOR AUTO-VOUCHER POSTING.`
         ];
 
-        let currentSim = 0;
-        function renderSimulation(index) {
+        function switchSimulation(index) {
             const screen = document.getElementById('terminal-screen');
-            screen.innerHTML = `<pre class="whitespace-pre-wrap">${simulations[index]}</pre>`;
-            
-            for(let i=0; i<4; i++) {
+            screen.innerText = simulations[index];
+            for (let i = 0; i < 4; i++) {
                 const btn = document.getElementById(`sim-btn-${i}`);
-                if(i === index) {
+                if (i === index) {
                     btn.className = "px-3 py-1.5 rounded text-xs font-medium bg-brand-500/20 text-brand-300 border border-brand-500/30";
                 } else {
                     btn.className = "px-3 py-1.5 rounded text-xs font-medium bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700";
@@ -562,34 +568,10 @@ erp_bridge // duplicate_claim_filter       [INTERCEPTED AT ENTRY]`
             }
         }
 
-        function switchSimulation(index) {
-            currentSim = index;
-            renderSimulation(currentSim);
-        }
+        // Initialize First Terminal View
+        switchSimulation(0);
 
-        // Initialize terminal
-        renderSimulation(0);
-
-        // TAB SWITCHING LOGIC
-        function selectTab(tabNum) {
-            const tabs = [1, 2, 3];
-            tabs.forEach(num => {
-                const btn = document.querySelector(`[data-tab-btn="${num}"]`);
-                const panel = document.querySelector(`[data-tab-panel="${num}"]`);
-                
-                if (num === tabNum) {
-                    btn.classList.add('tab-active');
-                    btn.classList.remove('text-slate-400', 'border-transparent');
-                    panel.classList.remove('hidden');
-                } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('text-slate-400', 'border-transparent');
-                    panel.classList.add('hidden');
-                }
-            });
-        }
-
-        // MODAL FUNCTIONS
+        // Modal Controls
         function openModal() {
             document.getElementById('pilot-modal').classList.remove('hidden');
         }
