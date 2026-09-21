@@ -294,7 +294,7 @@
         <circle cx="68" cy="45" r="1.8" fill="#9D4EDD"/>
         <circle cx="47" cy="32" r="3.6" fill="#38BDF8" stroke="#0B192C" stroke-width="1"/>
       </svg>
-      <div class="leading-tight">
+     <div class="leading-tight">
         <div class="flex items-baseline gap-0.5">
           <span class="brand-wordmark text-lg font-extrabold tracking-tight">Amrit<span class="font-extrabold">Flow</span></span>
         </div>
@@ -306,12 +306,13 @@
       <a href="#institutional" class="nav-link hover:opacity-70 transition-colors">Institutional</a>
       <a href="#engagement" class="nav-link hover:opacity-70 transition-colors">Deployment</a>
     </nav>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2">
       <button id="theme-toggle" aria-label="Toggle light and dark mode" class="focus-ring w-9 h-9 rounded-full border flex items-center justify-center transition-colors">
         <i id="theme-toggle-icon" data-lucide="sun" style="width:14px;height:14px;"></i>
       </button>
-      <button data-open-modal class="focus-ring rounded-lg bg-brand-violet px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
-        Request AP Mailbox Audit
+      <button data-open-modal class="focus-ring rounded-lg bg-brand-violet px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:opacity-90 transition-opacity whitespace-nowrap shrink-0">
+        <span class="sm:hidden">Request Audit</span>
+        <span class="hidden sm:inline">Request AP Mailbox Audit</span>
       </button>
     </div>
   </div>
@@ -370,26 +371,26 @@
 
       <div class="relative bg-[#0b0f1a]" id="showcase-body" style="min-height: 320px;">
         <!-- Teaser video state -->
-        <video id="showcase-video" class="w-full h-full block" style="min-height: 320px; object-fit: cover;" muted playsinline preload="auto">
+        <video id="showcase-video" class="w-full block" style="min-height: 240px; max-height: 360px; object-fit: contain;" muted playsinline preload="auto">
           <source src="amritflow-teaser.mp4" type="video/mp4">
         </video>
 
         <!-- Simulation state (type/drop terminal reveal) -->
-        <div class="p-4 sm:p-5 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto hidden" id="hero-terminal-anim" data-anim-panel></div>
+        <div class="p-4 sm:p-5 text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto pb-32 sm:pb-24 hidden" id="hero-terminal-anim" data-anim-panel></div>
 
-        <!-- Human-interrupt controls (hidden until a real visitor is verified + a simulation finishes) -->
-        <div id="showcase-controls" class="hidden absolute inset-x-0 bottom-0 p-4 flex flex-wrap gap-2 justify-center bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/90 to-transparent">
-          <button id="showcase-replay" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
-            Play Again
+       <!-- Human-interrupt controls (compacted for clean mobile and desktop alignment) -->
+        <div id="showcase-controls" class="hidden absolute inset-x-0 bottom-0 p-3 sm:p-4 flex flex-wrap gap-1.5 sm:gap-2 justify-center bg-gradient-to-t from-[#0b0f1a] via-[#0b0f1a]/95 to-transparent backdrop-blur-[2px]">
+          <button id="showcase-replay" class="focus-ring rounded-md border border-slate-600 px-2.5 py-1.5 text-[11px] sm:text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Replay
           </button>
-          <button id="showcase-next" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
-            Next Simulation
+          <button id="showcase-next" class="focus-ring rounded-md border border-slate-600 px-2.5 py-1.5 text-[11px] sm:text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Next
           </button>
-          <button id="showcase-watch" class="focus-ring rounded-lg border border-slate-600 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
-            Watch Walkthrough
+          <button id="showcase-watch" class="focus-ring rounded-md border border-slate-600 px-2.5 py-1.5 text-[11px] sm:text-xs font-semibold text-slate-200 hover:border-brand-teal/50 hover:text-white transition-colors">
+            Walkthrough
           </button>
-          <button id="showcase-demo" class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-3.5 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity">
-            Request Shadow Pilot
+          <button id="showcase-demo" class="focus-ring rounded-md bg-gradient-to-r from-brand-teal to-brand-violet px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-white hover:opacity-90 transition-opacity">
+            Shadow Pilot
           </button>
         </div>
       </div>
@@ -735,7 +736,7 @@
           <p class="text-xs text-slate-300">The Essence of Seamless Data.</p>
         </div>
         <p class="mt-4 text-xs text-slate-400 leading-relaxed">
-          AmritFlow Technologies — An Enterprise Sovereign Automation Initiative.<br />
+          AmritFlow — An Enterprise Sovereign Automation Initiative.<br />
           Registered under Udyam (MSME) regulatory frameworks.<br />
           Engineered with zero telemetry egress to guarantee total data privacy.
         </p>
@@ -814,7 +815,7 @@
       </a>
     </div>
 
-    <p class="mt-6 text-xs text-slate-500">© AmritFlow Technologies. All Rights Reserved.</p>
+    <p class="mt-6 text-xs text-slate-500">© AmritFlow. All Rights Reserved.</p>
   </div>
 </footer>
 
