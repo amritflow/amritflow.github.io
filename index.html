@@ -12,8 +12,17 @@
   })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AmritFlow — Intelligent Outlook Mailbox Triage & Allocation for Accounts Payable</title>
-<meta name="description" content="Eliminate morning triage drag, intercept bank fraud, and automate processor batch allocation with a local-first email intelligence layer built for modern finance teams.">
+<title>AmritFlow — Sovereign Local-First Automation for Enterprise Financial Operations</title>
+<meta name="description" content="Eliminate morning inbox triage drag, intercept bank fraud, and elevate AP teams with AmritFlow Stream and Masterpiece — sovereign, local-first automation built for enterprise financial operations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.amritflow.com/">
+<meta property="og:title" content="AmritFlow — Sovereign Local-First Automation for Enterprise Financial Operations">
+<meta property="og:description" content="Eliminate morning inbox triage drag, intercept bank fraud, and elevate AP teams with AmritFlow Stream and Masterpiece — sovereign, local-first automation built for enterprise financial operations.">
+<meta property="og:image" content="https://www.amritflow.com/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AmritFlow — Sovereign Local-First Automation for Enterprise Financial Operations">
+<meta name="twitter:description" content="Eliminate morning inbox triage drag, intercept bank fraud, and elevate AP teams with AmritFlow Stream and Masterpiece — sovereign, local-first automation built for enterprise financial operations.">
+<meta name="twitter:image" content="https://www.amritflow.com/og-preview.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest" onload="lucide.createIcons();" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +73,6 @@
   @keyframes term-in { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
   .modal-enter { animation: modal-in 0.25s ease-out forwards; }
   @keyframes modal-in { from { opacity: 0; transform: scale(0.97) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-  /* Type-then-drop reveal animation (hero terminal + before/after method panel) */
   .anim-caret {
     display: inline-block;
     width: 6px; height: 1em;
@@ -164,7 +172,6 @@
   html[data-theme="light"] .placeholder\:text-slate-500::placeholder {
     color: #94A3B8 !important;
   }
-  /* Terminal panel stays dark in both themes */
   html[data-theme="light"] .term-box .border-slate-700\/50 {
     border-color: rgba(51,65,85,0.5) !important;
   }
@@ -180,9 +187,6 @@
   html[data-theme="light"] .bg-slate-900\/40 {
     background-color: rgba(255,255,255,0.5) !important;
   }
-  /* Accent text contrast fix: brand teal/violet are tuned for dark
-     backgrounds and fail WCAG AA on light surfaces (~2.3:1). Darken
-     them in light mode; terminal-locked areas keep the vivid tone. */
   html[data-theme="light"] .text-brand-tealLight { color: #0F766E !important; }
   html[data-theme="light"] .text-brand-violetLight { color: #7C3AED !important; }
   html[data-theme="light"] .term-box .text-brand-tealLight { color: #02C39A !important; }
@@ -196,18 +200,56 @@
     transition: background-color 0.2s ease;
   }
 
-  /* Header is intentionally decoupled from the light/dark toggle:
-     it stays on its own fixed light band matching the brand mark,
-     with only a subtle shadow shift between modes. */
+  /* Header now follows the theme: dark obsidian band in dark mode,
+     light band in light mode. Backdrop blur preserved for depth. */
   .site-header {
-    background-color: rgba(248,250,252,0.94);
+    background-color: rgba(9, 13, 22, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(15,23,42,0.08);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.4);
     box-shadow: 0 1px 24px rgba(0,0,0,0.35);
   }
   html[data-theme="light"] .site-header {
+    background-color: rgba(248, 250, 252, 0.94);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     box-shadow: 0 1px 8px rgba(15,23,42,0.06);
+  }
+
+  /* Header text colors — theme-aware so the wordmark and nav stay legible
+     on both the dark obsidian band and the light band. */
+  .site-header .brand-wordmark,
+  .site-header .brand-wordmark span,
+  .site-header .brand-sublabel {
+    color: #F8FAFC;
+  }
+  .site-header .nav-link {
+    color: #CBD5E1;
+  }
+  .site-header .nav-link:hover {
+    color: #F8FAFC;
+  }
+  .site-header #theme-toggle {
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #CBD5E1;
+  }
+  .site-header #theme-toggle:hover {
+    color: #F8FAFC;
+    border-color: rgba(2, 195, 154, 0.5);
+  }
+  html[data-theme="light"] .site-header .brand-wordmark,
+  html[data-theme="light"] .site-header .brand-wordmark span,
+  html[data-theme="light"] .site-header .brand-sublabel {
+    color: #0B192C;
+  }
+  html[data-theme="light"] .site-header .nav-link {
+    color: #334155;
+  }
+  html[data-theme="light"] .site-header .nav-link:hover {
+    color: #0B192C;
+  }
+  html[data-theme="light"] .site-header #theme-toggle {
+    border-color: rgba(15, 23, 42, 0.15);
+    color: #334155;
   }
 </style>
 </head>
@@ -254,18 +296,18 @@
       </svg>
       <div class="leading-tight">
         <div class="flex items-baseline gap-0.5">
-          <span class="text-lg font-extrabold tracking-tight" style="color:#0B192C">Amrit<span class="font-extrabold" style="color:#0B192C">Flow</span></span>
+          <span class="brand-wordmark text-lg font-extrabold tracking-tight">Amrit<span class="font-extrabold">Flow</span></span>
         </div>
-        <p class="hidden sm:block text-xs font-medium -mt-0.5" style="color:#0B192C">The Essence of Seamless Data.</p>
+        <p class="brand-sublabel hidden sm:block text-xs font-medium -mt-0.5">Enterprise Sovereign Automation Initiative</p>
       </div>
     </div>
-    <nav class="hidden md:flex items-center gap-8 text-sm" style="color:#334155">
-      <a href="#domains" class="hover:opacity-70 transition-opacity">Mailbox Intelligence</a>
-      <a href="#frameworks" class="hover:opacity-70 transition-opacity">Architecture Roadmap</a>
-      <a href="#engagement" class="hover:opacity-70 transition-opacity">Pilot Engagement</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#domains" class="nav-link hover:opacity-70 transition-colors">Products</a>
+      <a href="#institutional" class="nav-link hover:opacity-70 transition-colors">Institutional</a>
+      <a href="#engagement" class="nav-link hover:opacity-70 transition-colors">Deployment</a>
     </nav>
     <div class="flex items-center gap-3">
-      <button id="theme-toggle" aria-label="Toggle light and dark mode" class="focus-ring w-9 h-9 rounded-full border flex items-center justify-center transition-colors" style="border-color: rgba(15,23,42,0.15); color:#334155">
+      <button id="theme-toggle" aria-label="Toggle light and dark mode" class="focus-ring w-9 h-9 rounded-full border flex items-center justify-center transition-colors">
         <i id="theme-toggle-icon" data-lucide="sun" style="width:14px;height:14px;"></i>
       </button>
       <button data-open-modal class="focus-ring rounded-lg bg-brand-violet px-4 py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
@@ -285,18 +327,18 @@
       </span>
       <span class="inline-flex items-center gap-1.5 rounded-full border border-brand-violet/40 bg-brand-violet/10 px-3 py-1.5 text-xs font-mono font-semibold text-brand-violetLight">
         <span class="status-dot bg-brand-violet text-brand-violet"></span>
-        DETERMINISTIC BATCH ALLOCATION
+        UNIVERSAL INBOX ADAPTATION
       </span>
       <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-500/40 bg-slate-500/10 px-3 py-1.5 text-xs font-mono font-semibold text-slate-200">
         <span class="status-dot bg-slate-300 text-slate-300"></span>
-        ADAPTIVE EXTRACTION ROADMAP
+        DETERMINISTIC ALLOCATION
       </span>
     </div>
     <h1 class="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
       The Intelligent Front Door for Enterprise AP Mailboxes.
     </h1>
     <p class="mt-6 text-lg text-slate-300 max-w-md leading-relaxed">
-      Stop losing the first two hours of every morning to manual email sorting. AmritFlow classifies unstructured supplier streams, intercepts fraudulent account updates, and balances processor workloads — while laying the deterministic foundation for autonomous ledger reconciliation.
+      Stop losing the first two hours of every morning to manual email sorting. Stream classifies unstructured supplier streams, intercepts fraudulent account updates, and eliminates manual triage across Microsoft Outlook, Google Workspace, and multi-mailbox enterprise environments — laying the deterministic foundation for Masterpiece, our full enterprise orchestration suite.
     </p>
     <div class="mt-9 flex flex-col gap-3">
       <div class="flex flex-wrap items-center gap-4">
@@ -320,7 +362,7 @@
         <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-        <span class="ml-3 text-xs font-mono text-slate-300">amritflow — mailbox_engine.local</span>
+        <span class="ml-3 text-xs font-mono text-slate-300">amritflow_stream — mailbox_engine.local</span>
         <button id="showcase-pause" aria-label="Pause autoplay" aria-pressed="false" class="focus-ring ml-auto w-6 h-6 rounded-full border border-slate-600 text-slate-300 hover:text-white flex items-center justify-center text-[10px]">
           <i id="showcase-pause-icon" data-lucide="pause" style="width:10px;height:10px;"></i>
         </button>
@@ -354,18 +396,18 @@
 
       <noscript>
         <div class="p-4 sm:p-5 text-xs sm:text-sm font-mono leading-relaxed bg-[#0b0f1a] overflow-x-auto">
-          <p class="text-brand-violetLight font-semibold">[AMRITFLOW AP RUNTIME v1.2]</p>
-          <p class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Local Perimeter Isolated | Zero External Egress</span></p>
-          <p class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">shared-ap-inbox</span></p>
-          <p class="text-slate-300">&gt; TRIAGE ENGINE: <span class="text-brand-violetLight">Intent & Attachment Classification Running</span></p>
+          <p class="text-brand-violetLight font-semibold">[STREAM INGESTION]</p>
+          <p class="text-slate-300">&gt; Multi-Mailbox Gateway Active: Exchange ap-inbox | IMAP vendor-desk</p>
+          <p class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Local Perimeter Active | Zero Telemetry Egress</span></p>
+          <p class="text-slate-300">&gt; TRIAGE ENFORCE: <span class="text-brand-violetLight">Invoice #INV-88341 Parsed | Priority HIGH</span></p>
           <div class="mt-4 space-y-2">
             <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
-              <span class="text-slate-300">ap-inbox // vendor_invoice_9081.pdf</span>
-              <span class="text-brand-tealLight">[EXTRACTED → BATCH_A]</span>
+              <span class="text-slate-300">invoice_88341 // assigned Exception_Analyst_Group_A</span>
+              <span class="text-brand-tealLight">[ROUTED]</span>
             </div>
             <div class="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2">
-              <span class="text-slate-300">ap-inbox // urgent_banking_change.eml</span>
-              <span class="text-brand-violetLight">[QUARANTINED → SEC_OPS]</span>
+              <span class="text-slate-300">banking_change // ACME Corp domain mismatch</span>
+              <span class="text-brand-violetLight">[ISOLATION VAULT]</span>
             </div>
           </div>
         </div>
@@ -378,79 +420,79 @@
 <section id="domains" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
   <div class="max-w-2xl">
     <p class="text-sm font-semibold brand-gradient-text">Progressive deployment model</p>
-    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Start at the Mailbox Gate. Expand Directly to the Ledger.</h2>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Start at the Mailbox Gate with Stream. Expand to the Masterpiece Ledger.</h2>
     <p class="mt-4 text-slate-300 leading-relaxed">
-      Tackle operational friction today without waiting for multi-month ERP integration cycles. AmritFlow deploys as a standalone intake gate and activates downstream extraction and matching as your operational perimeter matures.
+      Tackle operational friction today without waiting for multi-month ERP integration cycles. Stream deploys as a sovereign edge intake node and activates downstream extraction and matching as your operational perimeter matures into the Masterpiece orchestration suite.
     </p>
   </div>
 
   <!-- Tabs -->
   <div class="mt-10 flex flex-wrap gap-2" role="tablist">
     <button data-tab-btn data-tab="ap" data-active="true" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
-      Phase 1: Mailbox Triage & Allocation
+      Mailbox Ingestion & Triage (Stream Engine)
     </button>
     <button data-tab-btn data-tab="ar" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
-      Phase 2: Line-Item Extraction & Staging
+      Line-Item Extraction & Variance Review (Local OCR)
     </button>
-    <button data-tab-btn data-tab="treasury" class="tab-btn focus-ring rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors">
-      Phase 3: Autonomous Ledger Sync
-      <span class="ml-2 inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-mono text-amber-400">ROADMAP</span>
+    <button data-tab-btn data-tab="treasury" class="tab-btn tab-roadmap focus-ring rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors">
+      Multi-Entity Ledger Reconciliation (Masterpiece Horizon)
+      <span class="roadmap-badge">ROADMAP / IN PREVIEW</span>
     </button>
   </div>
 
   <div class="mt-6 glass rounded-2xl p-8">
     <div data-tab-panel="ap" data-active="true" class="tab-panel">
-      <h3 class="text-xl font-bold text-white">Phase 1: Mailbox Triage & Allocation</h3>
-      <p class="mt-2 text-sm text-slate-300">Immediate relief for shared-services teams handling 200–500+ daily vendor emails.</p>
+      <h3 class="text-xl font-bold text-white">Mailbox Ingestion & Triage (Stream Engine)</h3>
+      <p class="mt-2 text-sm text-slate-300">Sovereign edge intake for shared-services teams handling 200–500+ daily vendor emails across multi-mailbox environments.</p>
       <div class="mt-6 grid sm:grid-cols-3 gap-4">
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="layers" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Deterministic Batching</p>
-          <p class="mt-1 text-sm text-slate-300">Automatically partitions incoming invoices into clean, 15-count balanced work allocations across your processing team.</p>
+          <p class="mt-1 text-sm text-slate-300">Automatically route inbound supplier emails based on line-item volume and vendor tiers, routing clean invoices to auto-queues and complex discrepancies directly to designated Exception Analysts.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="shield" style="width:18px;height:18px;" class="text-brand-violetLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Front-Door Fraud Interception</p>
-          <p class="mt-1 text-sm text-slate-300">Automatically traps suspicious bank detail change requests and unauthorized payment reroutes before they enter processor queues.</p>
+          <p class="mt-1 text-sm text-slate-300">Detect out-of-band banking changes, domain typosquatting, and suspicious attachment payloads at the moment of ingestion before they reach payment channels.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="volume-x" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Noise & Non-Invoice Quarantine</p>
-          <p class="mt-1 text-sm text-slate-300">Separates supplier statements, delivery dockets, and promotional noise from valid, payable claims.</p>
+          <p class="mt-1 text-sm text-slate-300">Instantly isolate spam, automated out-of-office replies, and vendor statement inquiries into designated sub-queues to preserve focus on high-value invoice verification.</p>
         </div>
       </div>
     </div>
 
     <div data-tab-panel="ar" class="tab-panel">
-      <h3 class="text-xl font-bold text-white">Phase 2: Line-Item Extraction & Staging</h3>
+      <h3 class="text-xl font-bold text-white">Line-Item Extraction & Variance Review (Local OCR)</h3>
       <p class="mt-2 text-sm text-slate-300">Local-first document parsing designed to convert unstructured attachments into structured staging datasets.</p>
       <div class="mt-6 grid sm:grid-cols-3 gap-4">
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="file-text" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Multi-Attachment Decomposition</p>
-          <p class="mt-1 text-sm text-slate-300">Unpacks nested zips, multi-page consolidated bills, and messy email bodies into distinct line-item records.</p>
+          <p class="mt-1 text-sm text-slate-300">Extract multi-page PDF packets into discrete invoice headers, supporting delivery notes, and tax schedules without sending raw documents off-site.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="search" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Local Header & Tax Validation</p>
-          <p class="mt-1 text-sm text-slate-300">Parses tax IDs, sub-totals, and payment terms directly on your secure workstation without sending documents to third-party public models.</p>
+          <p class="mt-1 text-sm text-slate-300">Execute local OCR key-value pairing against purchase order numbers, tax IDs, and currency calculations directly within your network perimeter.</p>
         </div>
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="check-circle" style="width:18px;height:18px;" class="text-brand-violetLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Exception-First Review Hub</p>
-          <p class="mt-1 text-sm text-slate-300">Presents processors with human-in-the-loop review packages for illegible scans, missing POs, or vendor calculation discrepancies.</p>
+          <p class="mt-1 text-sm text-slate-300">Highlight tax variances, unmapped line items, and missing PO metadata in an inline review dashboard designed for rapid human verification.</p>
         </div>
       </div>
     </div>
 
     <div data-tab-panel="treasury" class="tab-panel">
-      <h3 class="text-xl font-bold text-white">Phase 3: Autonomous Ledger Sync <span class="ml-2 inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-mono text-amber-400">ROADMAP / IN PREVIEW</span></h3>
-      <p class="mt-2 text-sm text-slate-300">Direct enterprise schema synchronization bridging your intake pipeline with your financial core.</p>
+      <h3 class="text-xl font-bold text-white">Multi-Entity Ledger Reconciliation (Masterpiece Horizon) <span class="ml-2 inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-mono text-amber-400">ROADMAP / IN PREVIEW</span></h3>
+      <p class="mt-2 text-sm text-slate-300">Direct enterprise schema synchronization bridging your Stream intake pipeline with the Masterpiece orchestration suite.</p>
       <div class="mt-6 grid sm:grid-cols-1 gap-4">
         <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
           <i data-lucide="database" style="width:18px;height:18px;" class="text-amber-400"></i>
           <p class="mt-2 text-sm font-semibold text-white">Enterprise ERP Reconciliation</p>
-          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Direct schema validation and 4-way matching against SAP, Oracle, and enterprise ledger tables. In active architectural staging. Available as an enterprise expansion module.</p>
+          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Direct schema validation and 4-way matching against SAP, Oracle, and enterprise ledger tables. In architectural validation. Available as a phased add-on once your Stage 1 intake layer is operational.</p>
         </div>
       </div>
     </div>
@@ -463,17 +505,17 @@
       <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
         <span class="font-mono text-sm text-brand-tealLight">01</span>
         <p class="mt-2 font-semibold text-white">Mailbox Ingestion & Quarantine</p>
-        <p class="mt-1 text-sm text-slate-300">AmritFlow connects via secure, read-only protocols to your shared AP mailbox. Inbound noise is stripped, and critical banking risks are immediately quarantined into a dedicated triage log.</p>
+        <p class="mt-1 text-sm text-slate-300">AmritFlow Stream connects via secure, read-only protocols to your shared AP mailbox. Inbound noise is stripped, and critical banking risks are immediately quarantined into a dedicated triage log.</p>
       </div>
       <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
         <span class="font-mono text-sm text-brand-tealLight">02</span>
         <p class="mt-2 font-semibold text-white">Workload Allocation & Triage</p>
-        <p class="mt-1 text-sm text-slate-300">Valid invoices are partitioned into balanced batches, logging associate assignments in your operational tracker to eliminate duplicate effort.</p>
+        <p class="mt-1 text-sm text-slate-300">Valid invoices are partitioned into balanced batches, logging associate assignments in your operational tracker to eliminate duplicate effort across Exception Analyst groups.</p>
       </div>
       <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-5">
         <span class="font-mono text-sm text-brand-violetLight">03</span>
         <p class="mt-2 font-semibold text-white">Progressive Extraction & Integration</p>
-        <p class="mt-1 text-sm text-slate-300">As confidence builds, toggle on automated line-item staging and ERP synchronization to feed verified voucher data straight into your core finance tables.</p>
+        <p class="mt-1 text-sm text-slate-300">As confidence builds, toggle on automated line-item staging and Masterpiece ERP synchronization to feed verified voucher data straight into your core finance tables.</p>
       </div>
     </div>
   </div>
@@ -516,8 +558,8 @@
           <div class="mt-6 rounded-lg border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto">
 <pre class="whitespace-pre">{
   "source": "ap-inbox",
-  "vendor": "verified",
-  "amount": "structured",
+  "engine": "stream",
+  "intake_status": "triaged",
   "sla_status": "<span class="text-brand-tealLight">on_track</span>",
   "privacy_mode": "<span class="text-brand-tealLight">local_first</span>",
   "approval": "<span class="text-brand-violetLight">awaiting_hitl</span>"
@@ -546,21 +588,96 @@
       We believe your supplier communications, pricing structures, and financial workflows should never be fed into external cloud-training loops.
     </p>
   </div>
-  <div class="mt-12 grid md:grid-cols-3 gap-5">
+  <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
     <div class="glass rounded-xl p-6">
       <i data-lucide="server" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
-      <h3 class="mt-4 font-semibold text-white">Local-First Perimeter</h3>
-      <p class="mt-2 text-sm text-slate-300 leading-relaxed">AmritFlow runs within your own network perimeter. Your financial data, email records, and vendor attachments remain under your absolute control.</p>
+      <h3 class="mt-4 font-semibold text-white">Local-First Perimeter Isolation</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Operations run entirely within your enterprise boundary or private network context. Your financial email traffic never feeds external AI training models.</p>
     </div>
     <div class="glass rounded-xl p-6">
       <i data-lucide="eye" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
-      <h3 class="mt-4 font-semibold text-white">Read-Only Inbound Architecture</h3>
-      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Initial deployment does not modify, move, or delete emails from your primary production mailbox, ensuring zero operational disruption.</p>
+      <h3 class="mt-4 font-semibold text-white">Multi-Protocol Shadow Integration</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Stream connects to your existing email infrastructure in read-only mode during evaluation. Supports Microsoft 365 / Exchange, Google Workspace, and enterprise IMAP/POP3 gateways with zero disruption to daily workflows.</p>
     </div>
     <div class="glass rounded-xl p-6">
       <i data-lucide="code" style="width:20px;height:20px;" class="text-brand-violetLight"></i>
-      <h3 class="mt-4 font-semibold text-white">Deterministic Code Over Stochastic Guesswork</h3>
-      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Critical rules like routing checks, duplicate identification, and fraud quarantine rely on strict, auditable programmatic logic rather than probabilistic AI guesses.</p>
+      <h3 class="mt-4 font-semibold text-white">Deterministic Audit Log</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Every automated queue allocation, vendor verification check, and exception flag generates a complete, immutable audit trail for compliance review.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="users" style="width:20px;height:20px;" class="text-brand-violetLight"></i>
+      <h3 class="mt-4 font-semibold text-white">The Human-Centric Covenant</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Stream is engineered to elevate operational capacity, not displace personnel. By eliminating manual keystrokes and morning email triage, AP processors are upgraded into certified Financial Exception Analysts — focused on catching supplier billing fraud, resolving PO discrepancies, and capturing dynamic early-payment discounts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTITUTIONAL IDENTITY & ORIGIN STORY ============ -->
+<section id="institutional" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Institutional Standing & Mandate</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Indigenous, Sovereign, Local-First Enterprise Automation.</h2>
+  </div>
+  <div class="mt-12 grid md:grid-cols-3 gap-5">
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="target" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Mission & Mandate</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Founded to eliminate the "Front Door Fallacy" in high-volume enterprise financial operations through indigenous, sovereign, local-first automation. We solve the chaotic intake layer before attempting complex ledger integration.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="book-open" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
+      <h3 class="mt-4 font-semibold text-white">The Origin Story</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Born out of real-world Accounts Payable frontline operational realities. AmritFlow was engineered after observing the immense human bottlenecks inside shared supplier mailboxes, vendor reconciliation backlogs, and premature ERP integration attempts.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="lock" style="width:20px;height:20px;" class="text-brand-violetLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Data Sovereignty Core Philosophy</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">True institutional data sovereignty. We believe enterprise financial intelligence and supplier communications should execute strictly behind company firewalls, never feeding external third-party cloud LLMs or public data lakes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORPORATE GOVERNANCE & WTHM CHARTER ============ -->
+<section id="governance" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Workforce Protection & ESG Alignment</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Workforce Transformation & Human-Centric Mandate (WTHM)</h2>
+  </div>
+  <div class="mt-12 grid md:grid-cols-2 gap-5">
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="handshake" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
+      <h3 class="mt-4 font-semibold text-white">The Formal WTHM Covenant</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">AmritFlow partners with enterprises under a formal, signed commitment to zero technology-induced layoffs. Our software is designed explicitly to transition manual keystroke operators into certified Financial Exception Analysts.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="building-2" style="width:20px;height:20px;" class="text-brand-violetLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Corporate Social & Labor Alignment</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Tailored directly for industrial conglomerates, apex dairy and agro-cooperatives, and public-interest enterprises operating with strict ESG mandates and unionized workforce-protection agreements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOVEREIGN TRUST & SECURITY PERIMETER ============ -->
+<section id="security" class="max-w-6xl mx-auto px-6 py-24 border-t border-slate-800/60">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold brand-gradient-text">Technical Verification & Compliance</p>
+    <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white tracking-tight">Absolute Privacy Through Architectural Air-Gapping.</h2>
+  </div>
+  <div class="mt-12 grid md:grid-cols-3 gap-5">
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="shield-check" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Zero Cloud Egress Guarantee</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Architectural execution featuring zero telemetry egress, local SQLite state caches, and offline cryptographic evaluation tokens. Financial records stay within your boundary.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="network" style="width:20px;height:20px;" class="text-brand-tealLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Universal Compatibility Perimeter</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Native compatibility across Microsoft 365 / Exchange, Google Workspace, and enterprise IMAP/POP3 environments, executing 100% within the enterprise perimeter.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <i data-lucide="file-badge" style="width:20px;height:20px;" class="text-brand-violetLight"></i>
+      <h3 class="mt-4 font-semibold text-white">Statutory & Regulatory Alignment</h3>
+      <p class="mt-2 text-sm text-slate-300 leading-relaxed">Registered under the Udyam (MSME) regulatory framework, built for Indian data sovereignty compliance, and structured for STQC-accredited air-gapped security evaluation.</p>
     </div>
   </div>
 </section>
@@ -575,22 +692,22 @@
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 1</span>
       <div>
-        <h3 class="font-semibold text-white">Phase 1: 24-Hour Offline Mailbox Diagnostic</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Share an anonymized export of 100–300 historical emails. We generate an immediate audit showing how AmritFlow categorizes noise, catches fraud, and partitions batch allocations.</p>
+        <h3 class="font-semibold text-white">24-Hour Offline Mailbox Diagnostic</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Analyze historical mailbox logs locally to quantify triage friction, duplicate volume, and bottleneck points for Financial Exception Analysts.</p>
       </div>
     </div>
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 2</span>
       <div>
-        <h3 class="font-semibold text-white">Phase 2: 14-Day Live Shadow Pilot</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Deploy AmritFlow alongside your existing mailbox via read-only auto-forwarding. Your AP team continues working normally while receiving daily morning batch allocation sheets.</p>
+        <h3 class="font-semibold text-white">14-Day Live Shadow Pilot</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Deploy Stream alongside your live AP inbox in read-only mode to measure allocation precision and fraud detection performance in real-time.</p>
       </div>
     </div>
     <div class="glass rounded-xl p-6 flex gap-5">
       <span class="font-mono text-sm text-brand-tealLight pt-0.5">Step 3</span>
       <div>
-        <h3 class="font-semibold text-white">Phase 3: Production Rollout & Extraction Activation</h3>
-        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Formalize the live intake layer and activate deeper line-item parsing and ERP reconciliation modules based on your IT timeline.</p>
+        <h3 class="font-semibold text-white">Production Rollout & Masterpiece Activation</h3>
+        <p class="mt-1.5 text-sm text-slate-300 leading-relaxed">Transition live triage to active routing and unlock staged line-item extraction as your operational baseline matures.</p>
       </div>
     </div>
   </div>
@@ -600,7 +717,7 @@
 <section class="max-w-6xl mx-auto px-6 pb-24">
   <div class="glass glow-violet rounded-2xl p-10 sm:p-14 text-center">
     <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ready to eliminate morning mailbox triage?</h2>
-    <p class="mt-3 text-slate-300 max-w-lg mx-auto">Evaluate AmritFlow on a non-intrusive 14-day shadow pilot with zero disruption to your daily operations.</p>
+    <p class="mt-3 text-slate-300 max-w-lg mx-auto">Evaluate AmritFlow Stream on a non-intrusive 14-day shadow pilot with zero disruption to your daily operations.</p>
     <button data-open-modal class="focus-ring mt-7 rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity">
       Request 14-Day Shadow Pilot
     </button>
@@ -610,109 +727,93 @@
 <!-- ============ FOOTER ============ -->
 <footer class="border-t border-slate-800/60">
   <div class="max-w-6xl mx-auto px-6 py-14">
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <div class="leading-tight">
-        <span class="text-lg font-extrabold text-white">Amrit<span class="font-medium text-slate-300">Flow</span></span>
-        <p class="text-xs text-slate-300">The Essence of Seamless Data.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Column 1: Institutional Standing -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="leading-tight">
+          <span class="text-lg font-extrabold text-white">Amrit<span class="font-medium text-slate-300">Flow</span></span>
+          <p class="text-xs text-slate-300">The Essence of Seamless Data.</p>
+        </div>
+        <p class="mt-4 text-xs text-slate-400 leading-relaxed">
+          AmritFlow Technologies — An Enterprise Sovereign Automation Initiative.<br />
+          Registered under Udyam (MSME) regulatory frameworks.<br />
+          Engineered with zero telemetry egress to guarantee total data privacy.
+        </p>
+        <p class="mt-3 text-xs text-slate-500 leading-relaxed">
+          Stream operates as an edge intake node natively compatible with Microsoft Exchange, Google Workspace, and custom enterprise mailbox architectures. Masterpiece governs downstream ERP reconciliation and multi-currency corridor state orchestration.
+        </p>
       </div>
-      <div class="flex items-center gap-3">
-        <svg width="28" height="28" viewBox="0 0 120 64" aria-hidden="true" style="width:28px;height:28px;flex-shrink:0;object-fit:contain" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="footFeather" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#00A896"/>
-              <stop offset="1" stop-color="#02C39A"/>
-            </linearGradient>
-            <linearGradient id="footRingL" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00A896"/>
-              <stop offset="1" stop-color="#02C39A"/>
-            </linearGradient>
-            <linearGradient id="footRingR" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#02C39A"/>
-              <stop offset="1" stop-color="#9D4EDD"/>
-            </linearGradient>
-          </defs>
-          <g>
-            <g transform="rotate(-66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#footFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
-            <g transform="rotate(-44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#footFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
-            <g transform="rotate(-22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#footFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
-            <g transform="rotate(0 16 32)"><ellipse cx="0" cy="32" rx="18" ry="6" fill="url(#footFeather)" opacity="0.85"/><circle cx="-11" cy="32" r="3.2" fill="#F8FAFC"/><circle cx="-11" cy="32" r="3.2" fill="none" stroke="#00A896" stroke-width="1.2"/></g>
-            <g transform="rotate(22 16 32)"><ellipse cx="0" cy="32" rx="17" ry="5.8" fill="url(#footFeather)" opacity="0.75"/><circle cx="-10.5" cy="32" r="3" fill="#F8FAFC" opacity="0.95"/><circle cx="-10.5" cy="32" r="3" fill="none" stroke="#00A896" stroke-width="1"/></g>
-            <g transform="rotate(44 16 32)"><ellipse cx="0" cy="32" rx="16" ry="5.6" fill="url(#footFeather)" opacity="0.65"/><circle cx="-10" cy="32" r="2.8" fill="#F8FAFC" opacity="0.9"/><circle cx="-10" cy="32" r="2.8" fill="none" stroke="#00A896" stroke-width="1"/></g>
-            <g transform="rotate(66 16 32)"><ellipse cx="0" cy="32" rx="15" ry="5.4" fill="url(#footFeather)" opacity="0.55"/><circle cx="-9" cy="32" r="2.6" fill="#F8FAFC" opacity="0.9"/><circle cx="-9" cy="32" r="2.6" fill="none" stroke="#00A896" stroke-width="1"/></g>
-          </g>
-          <circle cx="32" cy="32" r="16" fill="none" stroke="url(#footRingL)" stroke-width="6"/>
-          <circle cx="62" cy="32" r="16" fill="none" stroke="url(#footRingR)" stroke-width="6"/>
-          <line x1="72" y1="20" x2="80" y2="26" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
-          <line x1="80" y1="26" x2="78" y2="40" stroke="#E056FD" stroke-width="0.9" opacity="0.7"/>
-          <line x1="78" y1="40" x2="68" y2="45" stroke="#9D4EDD" stroke-width="0.9" opacity="0.7"/>
-          <circle cx="72" cy="20" r="1.8" fill="#E056FD"/>
-          <circle cx="80" cy="26" r="1.8" fill="#E056FD"/>
-          <circle cx="78" cy="40" r="1.8" fill="#9D4EDD"/>
-          <circle cx="68" cy="45" r="1.8" fill="#9D4EDD"/>
-          <circle cx="47" cy="32" r="3.6" fill="#F8FAFC"/>
-        </svg>
-        <span class="inline-flex items-center gap-2 rounded-full border border-brand-teal/30 bg-brand-teal/10 px-3 py-1.5 text-xs font-mono text-brand-tealLight">
-          <span class="status-dot bg-brand-teal text-brand-teal"></span>
-          System Status: On-Premise Engine Active
-        </span>
+
+      <!-- Column 2: Products -->
+      <div>
+        <h5 class="text-xs font-semibold text-slate-200 uppercase tracking-wide">Products</h5>
+        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+          <li><a href="#domains" class="hover:text-brand-tealLight transition-colors">AmritFlow Stream (Edge Triage)</a></li>
+          <li><a href="#domains" class="hover:text-brand-tealLight transition-colors">AmritFlow Masterpiece (Macro Ledger)</a></li>
+          <li><a href="#engagement" class="hover:text-brand-tealLight transition-colors">14-Day Shadow Pilot</a></li>
+          <li><a href="#engagement" class="hover:text-brand-tealLight transition-colors">24-Hour Offline Diagnostic</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Institutional & Governance -->
+      <div>
+        <h5 class="text-xs font-semibold text-slate-200 uppercase tracking-wide">Institutional</h5>
+        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+          <li><a href="#institutional" class="hover:text-brand-tealLight transition-colors">About Us & Mission</a></li>
+          <li><a href="#governance" class="hover:text-brand-tealLight transition-colors">WTHM Labor Charter</a></li>
+          <li><a href="#security" class="hover:text-brand-tealLight transition-colors">Security & Privacy Architecture</a></li>
+          <li><a href="#governance" class="hover:text-brand-tealLight transition-colors">ESG & Workforce Protection</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Legal & Contact -->
+      <div>
+        <h5 class="text-xs font-semibold text-slate-200 uppercase tracking-wide">Legal & Contact</h5>
+        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+          <li><a href="#" data-social-link class="hover:text-brand-tealLight transition-colors">Privacy Policy (Local-First)</a></li>
+          <li><a href="#" data-social-link class="hover:text-brand-tealLight transition-colors">Terms of Service</a></li>
+          <li><a href="#" data-social-link class="hover:text-brand-tealLight transition-colors">Pilot Covenant</a></li>
+          <li><a href="mailto:contact@amritflow.com" class="hover:text-brand-tealLight transition-colors">contact@amritflow.com</a></li>
+          <li><a href="mailto:institutional@amritflow.com" class="hover:text-brand-tealLight transition-colors">institutional@amritflow.com</a></li>
+        </ul>
       </div>
     </div>
 
-    <p class="mt-6 text-sm text-slate-300 max-w-2xl leading-relaxed">
-      Modular intake, triage, and reconciliation software engineered for enterprise accounts payable environments.
-    </p>
-
-    <div class="mt-10 grid sm:grid-cols-3 gap-8 text-xs text-slate-300 leading-relaxed">
-      <div>
-        <h4 class="font-semibold text-slate-300 mb-2">Evaluation terms</h4>
-        <p>The 14-day shadow pilot is provided for enterprise validation and operates on a non-intrusive, read-only basis.</p>
-      </div>
-      <div>
-        <h4 class="font-semibold text-slate-300 mb-2">Data sovereignty guarantee</h4>
-        <p>AmritFlow does not sell, share, or externally process client financial communications. All evaluation workflows operate under non-disclosure.</p>
-      </div>
-      <div>
-        <h4 class="font-semibold text-slate-300 mb-2">Advisory disclaimer</h4>
-        <p>AmritFlow is an operational workflow and intake software suite. It does not provide licensed tax, accounting, or statutory legal advice.</p>
-      </div>
+    <div class="mt-10 pt-6 border-t border-slate-800/60 flex flex-wrap items-center justify-between gap-4">
+      <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+        Microsoft Outlook, Exchange, and Google Workspace are registered trademarks of their respective holders. All parsing and triage execute strictly within your local network perimeter.
+      </p>
+      <span class="inline-flex items-center gap-2 rounded-full border border-brand-teal/30 bg-brand-teal/10 px-3 py-1.5 text-xs font-mono text-brand-tealLight">
+        <span class="status-dot bg-brand-teal text-brand-teal"></span>
+        System Status: On-Premise Engine Active
+      </span>
     </div>
 
-    <!--
-      SOCIAL LINKS: each icon below points to href="#" as a placeholder.
-      To activate one, just replace its href="#" with your real profile URL
-      (e.g. href="https://linkedin.com/company/amritflow") — nothing else
-      needs to change. Until then, clicking any of them opens the request
-      modal instead, so nothing is ever a dead link.
-    -->
-    <div class="mt-10 flex items-center gap-3">
-      <!-- LinkedIn — live link -->
+    <!-- Social row -->
+    <div class="mt-8 flex items-center gap-3">
       <a href="https://www.linkedin.com/in/amritflow" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on LinkedIn"
         class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <!-- X / Twitter — placeholder -->
       <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on X"
         class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
-      <!-- Facebook — placeholder -->
       <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on Facebook"
         class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
-      <!-- Instagram — placeholder -->
       <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on Instagram"
         class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       </a>
-      <!-- YouTube — placeholder -->
       <a href="#" data-social-link target="_blank" rel="noopener noreferrer" aria-label="AmritFlow on YouTube"
         class="focus-ring w-9 h-9 rounded-full border border-slate-700/50 flex items-center justify-center text-slate-400 hover:text-brand-tealLight hover:border-brand-teal/40 transition-colors">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </a>
     </div>
 
-    <p class="mt-6 text-xs text-slate-400">Copyright © 2026 AmritFlow. All Rights Reserved.</p>
+    <p class="mt-6 text-xs text-slate-500">© AmritFlow Technologies. All Rights Reserved.</p>
   </div>
 </footer>
 
@@ -723,7 +824,7 @@
     <div class="flex items-start justify-between px-7 pt-7 pb-4 sm:px-8 sm:pt-8 border-b border-slate-700/40 shrink-0">
       <div>
         <h3 class="text-xl font-bold text-white">Request an AP Mailbox Diagnostic & Shadow Pilot</h3>
-        <p class="mt-1.5 text-sm text-slate-300">See how AmritFlow organizes your daily inbound volume without touching your live ERP setup.</p>
+        <p class="mt-1.5 text-sm text-slate-300">See how AmritFlow Stream organizes your daily inbound volume without touching your live ERP setup.</p>
       </div>
       <button data-close-modal aria-label="Close" class="focus-ring text-slate-400 hover:text-slate-200 shrink-0 ml-4 mt-0.5">
         <i data-lucide="x" style="width:20px;height:20px;"></i>
@@ -732,7 +833,7 @@
     <!-- Tally embed — fills the remaining modal height -->
     <div style="flex:1;overflow:hidden;border-radius:0 0 1rem 1rem;">
       <iframe
-        data-tally-src="https://tally.so/embed/GxM7pz?alignLeft=1&hideTitle=1&dynamicHeight=1"
+        data-tally-src="https://tally.so/embed/GxM7pz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
         loading="lazy"
         width="100%"
         height="100%"
@@ -740,7 +841,7 @@
         marginheight="0"
         marginwidth="0"
         title="Request an AP Mailbox Diagnostic & Shadow Pilot"
-        style="min-height:520px;background:transparent;display:block;">
+        style="min-height:min(520px,60vh);background:transparent;display:block;">
       </iframe>
     </div>
     <!-- Confidential intake note -->
@@ -761,9 +862,6 @@
 </script>
 
 <script>
-  // Lucide icon init — runs after DOM is ready AND after the CDN script loads.
-  // The onload on the <script> tag above fires createIcons() immediately on load;
-  // this listener catches the case where the DOM wasn't fully parsed yet at that moment.
   document.addEventListener('DOMContentLoaded', function () {
     if (window.lucide) lucide.createIcons();
   });
@@ -779,7 +877,6 @@
       backdrop.classList.remove('hidden');
       backdrop.classList.add('flex');
       document.body.style.overflow = 'hidden';
-      // Re-init Lucide on the close button which gets re-rendered
       if (window.lucide) lucide.createIcons();
     }
     function closeModal() {
@@ -793,7 +890,6 @@
     backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
-    // Technical brief download (direct PDF link — no modal/email capture)
     const briefLink = document.querySelector('[data-telemetry="technical_brief_downloaded"]');
     if (briefLink) {
       briefLink.addEventListener('click', function () {
@@ -801,10 +897,7 @@
       });
     }
 
-    // Social links — placeholder until real URLs are added (see comment above
-    // the markup). Checked at click-time, so no JS edit is ever needed:
-    // href="#" still present -> opens the request modal instead of a dead link.
-    // href replaced with a real URL -> normal navigation happens untouched.
+    // Social links — placeholder href="#" opens request modal instead of a dead link.
     document.querySelectorAll('[data-social-link]').forEach(function (link) {
       link.addEventListener('click', function (e) {
         const href = link.getAttribute('href');
@@ -850,9 +943,7 @@
       syncThemeIcon();
     });
 
-    // ============ Type-then-drop reveal (Variation 4) ============
-    // Plays once per panel when it scrolls into view. Falls back to
-    // plain visible content (via <noscript>) if JS never runs.
+    // ============ Type-then-drop reveal ============
     function typeInto(el, text, speed) {
       return new Promise(function (resolve) {
         el.innerHTML = '<span class="anim-typed"></span><span class="anim-caret"></span>';
@@ -898,7 +989,7 @@
       for (let i = 0; i < items.length; i++) {
         const item = items[i];
         const el = child(container, item.rowClass);
-        const step = i % 2; // 0 = type, 1 = drop — alternating all the way down
+        const step = i % 2;
         if (step === 0) {
           await typeInto(el, item.text, item.speed || 26);
           el.innerHTML = item.html;
@@ -909,62 +1000,61 @@
       }
     }
 
-    const scenarioNames = ['AP Inbound Triage', 'Workload Allocation', 'Line-Item Extraction', 'ERP Reconciliation Bridge'];
+    const scenarioNames = ['Stream Multi-Mailbox Ingestion', 'Exception Analyst Routing', 'Local OCR Line-Item Staging', 'Masterpiece ERP Bridge'];
     const scenarios = [
-      // 0. AP Inbound Triage
+      // 0. Stream Multi-Mailbox Ingestion
       [
-        { text: '[AMRITFLOW AP RUNTIME v1.2]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW AP RUNTIME v1.2]</span>' },
-        { text: '> STATUS: Local Perimeter Isolated | Zero External Egress', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Local Perimeter Isolated | Zero External Egress</span></span>' },
-        { text: '> ACTIVE MONITOR: shared-ap-inbox', html: '<span class="text-slate-300">&gt; ACTIVE MONITOR: <span class="text-brand-tealLight">shared-ap-inbox</span></span>' },
-        { text: '> TRIAGE ENGINE: Intent & Attachment Classification Running', html: '<span class="text-slate-300">&gt; TRIAGE ENGINE: <span class="text-brand-violetLight">Intent & Attachment Classification Running</span></span>' },
+        { text: '[STREAM INGESTION] Multi-Mailbox Gateway Active', html: '<span class="text-brand-violetLight font-semibold">[STREAM INGESTION] Multi-Mailbox Gateway Active</span>' },
+        { text: '> Exchange: ap-inbox@enterprise.com | IMAP: vendor-desk@corp.local', html: '<span class="text-slate-300">&gt; Exchange: <span class="text-brand-tealLight">ap-inbox@enterprise.com</span> | IMAP: <span class="text-brand-tealLight">vendor-desk@corp.local</span></span>' },
+        { text: '> STATUS: Local Perimeter Active | Zero Telemetry Egress', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Local Perimeter Active | Zero Telemetry Egress</span></span>' },
         {
-          text: 'ap-inbox // vendor_invoice_9081.pdf   [EXTRACTED -> BATCH_A]',
+          text: 'triage // invoice_INV-88341.pdf   [PRIORITY -> HIGH]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">ap-inbox // vendor_invoice_9081.pdf</span><span class="text-brand-tealLight">[EXTRACTED → BATCH_A]</span>'
+          html: '<span class="text-slate-300">triage // invoice_INV-88341.pdf</span><span class="text-brand-tealLight">[PRIORITY → HIGH]</span>'
         },
         {
-          text: 'ap-inbox // urgent_banking_change.eml   [QUARANTINED -> SEC_OPS]',
+          text: 'triage // assigned Exception_Analyst_Group_A   [ROUTED]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">ap-inbox // urgent_banking_change.eml</span><span class="text-brand-violetLight">[QUARANTINED → SEC_OPS]</span>'
+          html: '<span class="text-slate-300">triage // assigned Exception_Analyst_Group_A</span><span class="text-brand-violetLight">[ROUTED]</span>'
         }
       ],
-      // 1. Workload Allocation Engine
+      // 1. Fraud Shield + Exception Analyst Routing
       [
-        { text: '[AMRITFLOW AP RUNTIME v1.2]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW AP RUNTIME v1.2]</span>' },
-        { text: '> TARGET: 15-Item Deterministic Processor Queues', html: '<span class="text-slate-300">&gt; TARGET: <span class="text-brand-tealLight">15-Item Deterministic Processor Queues</span></span>' },
-        { text: '> LOAD BALANCER: Active Across 6 AP Associates', html: '<span class="text-slate-300">&gt; LOAD BALANCER: <span class="text-brand-violetLight">Active Across 6 AP Associates</span></span>' },
+        { text: '[FRAUD SHIELD] Bank Account Change Request Detected', html: '<span class="text-brand-violetLight font-semibold">[FRAUD SHIELD] Bank Account Change Request Detected</span>' },
+        { text: '> Vendor: ACME Corp | Origin: external relay', html: '<span class="text-slate-300">&gt; Vendor: <span class="text-brand-tealLight">ACME Corp</span> | Origin: <span class="text-brand-tealLight">external relay</span></span>' },
+        { text: '> WARNING: Domain mismatch on SPF header', html: '<span class="text-slate-300">&gt; WARNING: <span class="text-brand-violetLight">Domain mismatch on SPF header</span></span>' },
         {
-          text: 'allocation // batch_0417_nam.xlsx   [ALLOCATED -> ASSOCIATE_1]',
+          text: 'banking_change // ACME_Corp_remit.eml   [ISOLATION VAULT]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">allocation // batch_0417_nam.xlsx</span><span class="text-brand-tealLight">[ALLOCATED → ASSOCIATE_1]</span>'
+          html: '<span class="text-slate-300">banking_change // ACME_Corp_remit.eml</span><span class="text-brand-violetLight">[ISOLATION VAULT]</span>'
         },
         {
-          text: 'allocation // statement_reconcile.pdf   [ROUTED -> RESEARCH_QUEUE]',
+          text: 'alert // SECURITY ALERT dispatched to Exception_Analyst_Group_A',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">allocation // statement_reconcile.pdf</span><span class="text-brand-violetLight">[ROUTED → RESEARCH_QUEUE]</span>'
+          html: '<span class="text-slate-300">alert // dispatched to Exception_Analyst_Group_A</span><span class="text-brand-tealLight">[FLAGGED]</span>'
         }
       ],
-      // 2. Line-Item Extraction (Staging Pipeline)
+      // 2. Local OCR Line-Item Staging
       [
-        { text: '[AMRITFLOW AP RUNTIME v1.2]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW AP RUNTIME v1.2]</span>' },
-        { text: '> EXTRACTION PIPELINE: Multi-Page OCR Staging', html: '<span class="text-slate-300">&gt; EXTRACTION PIPELINE: <span class="text-brand-tealLight">Multi-Page OCR Staging</span></span>' },
-        { text: '> STATUS: Local Staging Dry-Run Active', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-violetLight">Local Staging Dry-Run Active</span></span>' },
+        { text: '[LOCAL OCR] Multi-Attachment Decomposition Running', html: '<span class="text-brand-violetLight font-semibold">[LOCAL OCR] Multi-Attachment Decomposition Running</span>' },
+        { text: '> Source: consolidated_invoice_packet.pdf (14 pages)', html: '<span class="text-slate-300">&gt; Source: <span class="text-brand-tealLight">consolidated_invoice_packet.pdf (14 pages)</span></span>' },
+        { text: '> STATUS: Local Staging Dry-Run Active | Off-Site Egress: NONE', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-tealLight">Local Staging Dry-Run Active | Off-Site Egress: NONE</span></span>' },
         {
-          text: 'invoice_9081 // header_totals_matched   [CONFIRMED]',
+          text: 'packet // invoice_88341_header_totals   [CONFIRMED]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">invoice_9081 // header_totals_matched</span><span class="text-brand-tealLight">[CONFIRMED]</span>'
+          html: '<span class="text-slate-300">packet // invoice_88341_header_totals</span><span class="text-brand-tealLight">[CONFIRMED]</span>'
         },
         {
-          text: 'invoice_9081 // tax_breakdown_parsed   [READY FOR LEDGER PASS]',
+          text: 'packet // tax_breakdown_line_items   [READY FOR LEDGER PASS]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
-          html: '<span class="text-slate-300">invoice_9081 // tax_breakdown_parsed</span><span class="text-brand-violetLight">[READY FOR LEDGER PASS]</span>'
+          html: '<span class="text-slate-300">packet // tax_breakdown_line_items</span><span class="text-brand-violetLight">[READY FOR LEDGER PASS]</span>'
         }
       ],
-      // 3. ERP Reconciliation Bridge (Future Phase)
+      // 3. Masterpiece ERP Reconciliation Bridge (Roadmap Preview)
       [
-        { text: '[AMRITFLOW AP RUNTIME v1.2]', html: '<span class="text-brand-violetLight font-semibold">[AMRITFLOW AP RUNTIME v1.2]</span>' },
-        { text: '> PHASE 2/3 BRIDGE: Ledger Schema Validation', html: '<span class="text-slate-300">&gt; PHASE 2/3 BRIDGE: <span class="text-brand-tealLight">Ledger Schema Validation</span></span>' },
-        { text: '> STATUS: Architecture Validation Engine', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-violetLight">Architecture Validation Engine</span></span>' },
+        { text: '[MASTERPIECE] ERP Reconciliation Bridge — Preview', html: '<span class="text-brand-violetLight font-semibold">[MASTERPIECE] ERP Reconciliation Bridge — Preview</span>' },
+        { text: '> PHASE 3 PREVIEW: Ledger Schema Validation', html: '<span class="text-slate-300">&gt; PHASE 3 PREVIEW: <span class="text-brand-tealLight">Ledger Schema Validation</span></span>' },
+        { text: '> STATUS: Architecture Validation Engine | Multi-Entity Map', html: '<span class="text-slate-300">&gt; STATUS: <span class="text-brand-violetLight">Architecture Validation Engine | Multi-Entity Map</span></span>' },
         {
           text: 'erp_bridge // 4_way_po_matching   [SIMULATION VERIFIED]',
           rowClass: 'mt-2 flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/60 px-3 py-2',
@@ -979,14 +1069,14 @@
     ];
 
     const methodPanelItems = [
-      { text: 'AmritFlow intake layer', speed: 30, html: '<p class="text-xs font-mono uppercase tracking-widest text-brand-tealLight">AmritFlow intake layer</p>' },
+      { text: 'AmritFlow Stream intake layer', speed: 30, html: '<p class="text-xs font-mono uppercase tracking-widest text-brand-tealLight">AmritFlow Stream intake layer</p>' },
       { text: 'Deterministic Ingestion & Structured Output', html: '<h3 class="mt-3 text-xl font-bold text-white">Deterministic Ingestion &amp; Structured Output</h3>' },
       {
-        text: '{ "source": "ap-inbox", "intake_status": "triaged", "batch_id": "AP_BATCH_0417", "quarantine_flag": false, "assigned_queue": "associate_03", "extraction_layer": "staged_local" }',
+        text: '{ "source": "ap-inbox", "engine": "stream", "intake_status": "triaged", "batch_id": "STREAM_BATCH_0417", "quarantine_flag": false, "assigned_group": "exception_analyst_A", "extraction_layer": "staged_local" }',
         speed: 8,
         rowClass: 'mt-6',
         html: '<div class="rounded-lg border border-slate-700/50 bg-slate-900/60 p-4 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto">' +
-              '<pre class="whitespace-pre">{\n  "source": "ap-inbox",\n  "intake_status": "<span class="text-brand-tealLight">triaged</span>",\n  "batch_id": "<span class="text-brand-tealLight">AP_BATCH_0417</span>",\n  "quarantine_flag": <span class="text-brand-tealLight">false</span>,\n  "assigned_queue": "<span class="text-brand-violetLight">associate_03</span>",\n  "extraction_layer": "<span class="text-brand-violetLight">staged_local</span>"\n}</pre></div>'
+              '<pre class="whitespace-pre">{\n  "source": "ap-inbox",\n  "engine": "<span class="text-brand-tealLight">stream</span>",\n  "intake_status": "<span class="text-brand-tealLight">triaged</span>",\n  "batch_id": "<span class="text-brand-tealLight">STREAM_BATCH_0417</span>",\n  "quarantine_flag": <span class="text-brand-tealLight">false</span>,\n  "assigned_group": "<span class="text-brand-violetLight">exception_analyst_A</span>",\n  "extraction_layer": "<span class="text-brand-violetLight">staged_local</span>"\n}</pre></div>'
       },
       {
         text: 'Zero morning triage drag — batches partitioned before shift starts',
@@ -994,9 +1084,9 @@
         html: '<i data-lucide="check-circle" style="width:16px;height:16px;flex-shrink:0;" class="text-brand-tealLight"></i> Zero morning triage drag — batches partitioned before shift starts'
       },
       {
-        text: 'Ready-to-activate architecture for downstream extraction and ledger matching',
+        text: 'Ready-to-activate architecture for downstream extraction and Masterpiece ledger matching',
         rowClass: 'mt-2 flex items-center gap-2 text-sm text-slate-300',
-        html: '<i data-lucide="check-circle" style="width:16px;height:16px;flex-shrink:0;" class="text-brand-tealLight"></i> Ready-to-activate architecture for downstream extraction and ledger matching'
+        html: '<i data-lucide="check-circle" style="width:16px;height:16px;flex-shrink:0;" class="text-brand-tealLight"></i> Ready-to-activate architecture for downstream extraction and Masterpiece ledger matching'
       }
     ];
 
@@ -1022,13 +1112,7 @@
       playTypeDropSequence(document.getElementById('method-panel-anim'), methodPanelItems);
     }
 
-    // ============ Telemetry (no backend wired here — see note) ============
-    // This posts to a RELATIVE path, so it's ready to work the moment this
-    // page is served from an origin that has a real /api/telemetry/engagement
-    // route (a new public endpoint you deploy for this site — NOT the
-    // existing AP mailbox agent-swarm backend, which is intentionally
-    // bound to 127.0.0.1 only and unrelated to this static landing page).
-    // Fails silently and never blocks the UI if no such route exists yet.
+    // ============ Telemetry ============
     function sendTelemetry(eventName, payload) {
       const body = JSON.stringify(Object.assign({ event: eventName, ts: Date.now() }, payload || {}));
       try {
@@ -1059,7 +1143,7 @@
       let currentScenario = 0;
       let humanVerified = false;
       let autoplayPaused = false;
-      let videoAvailable = true; // flips to false permanently if the video never actually plays
+      let videoAvailable = true;
       let videoWatchdog = null;
       const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1083,10 +1167,6 @@
         if (!autoplayPaused) {
           safePlay();
           clearVideoWatchdog();
-          // If the video never actually starts producing frames (broken relative
-          // path, blocked sandbox, file missing, etc.) within a few seconds,
-          // stop trying and fall back to the simulation loop permanently rather
-          // than leaving visitors staring at a stuck black box.
           videoWatchdog = setTimeout(function () {
             if (video.readyState < 2) {
               markVideoUnavailable();
@@ -1125,7 +1205,6 @@
       video.addEventListener('error', function () { clearVideoWatchdog(); markVideoUnavailable(); runSimulation(currentScenario); });
 
       if (reduceMotion) {
-        // Skip the autoplaying video entirely; show one simulation, static, with controls immediately.
         showTerminalContainer();
         playTypeDropSequence(terminalEl, scenarios[0]).then(freezeWithControls);
       } else {
@@ -1153,7 +1232,7 @@
       document.addEventListener('touchstart', markHumanVerified, { passive: true, once: true });
       document.addEventListener('keydown', markHumanVerified, { once: true });
 
-      // --- Accessible pause control (WCAG 2.2.2 — independent of human detection) ---
+      // --- Accessible pause control (WCAG 2.2.2) ---
       pauseBtn.addEventListener('click', function () {
         autoplayPaused = !autoplayPaused;
         pauseBtn.setAttribute('aria-pressed', String(autoplayPaused));
@@ -1182,9 +1261,6 @@
       watchBtn.addEventListener('click', function () {
         sendTelemetry('simulation_interacted', { action: 'watch_video', scenario: scenarioNames[currentScenario] });
         controls.classList.add('hidden');
-        // An explicit click to watch the video always plays it, even if
-        // autoplay had been manually paused earlier — sync the pause
-        // control to reflect that.
         autoplayPaused = false;
         pauseBtn.setAttribute('aria-pressed', 'false');
         pauseBtn.setAttribute('aria-label', 'Pause autoplay');
