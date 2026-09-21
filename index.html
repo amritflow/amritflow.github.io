@@ -16,7 +16,7 @@
 <meta name="description" content="Eliminate morning triage drag, intercept bank fraud, and automate processor batch allocation with a local-first email intelligence layer built for modern finance teams.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
-<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@latest" onload="lucide.createIcons();" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
@@ -330,7 +330,7 @@
       <div class="relative bg-[#0b0f1a]" id="showcase-body" style="min-height: 320px;">
         <!-- Teaser video state -->
         <video id="showcase-video" class="w-full h-full block" style="min-height: 320px; object-fit: cover;" muted playsinline preload="auto">
-          <source src="assets/amritflow-teaser.mp4" type="video/mp4">
+          <source src="amritflow-teaser.mp4" type="video/mp4">
         </video>
 
         <!-- Simulation state (type/drop terminal reveal) -->
@@ -728,7 +728,7 @@
     <!-- Tally embed — fills the remaining modal height -->
     <div style="flex:1;overflow:hidden;border-radius:0 0 1rem 1rem;">
       <iframe
-        data-tally-src="https://tally.so/embed/GxM7pz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        data-tally-src="https://tally.so/embed/GxM7pz?alignLeft=1&hideTitle=1&dynamicHeight=1"
         loading="lazy"
         width="100%"
         height="100%"
@@ -757,10 +757,16 @@
 </script>
 
 <script>
-  (function () {
-    // Initialise all static Lucide icons declared as data-lucide attributes
+  // Lucide icon init — runs after DOM is ready AND after the CDN script loads.
+  // The onload on the <script> tag above fires createIcons() immediately on load;
+  // this listener catches the case where the DOM wasn't fully parsed yet at that moment.
+  document.addEventListener('DOMContentLoaded', function () {
     if (window.lucide) lucide.createIcons();
+  });
+</script>
 
+<script>
+  (function () {
     const backdrop = document.querySelector('[data-modal-backdrop]');
     const openBtns = document.querySelectorAll('[data-open-modal]');
     const closeBtns = document.querySelectorAll('[data-close-modal]');
