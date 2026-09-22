@@ -251,6 +251,54 @@
     border-color: rgba(15, 23, 42, 0.15);
     color: #334155;
   }
+
+  /* Mobile: disable backdrop blur to prevent GPU starvation during scroll.
+     The header and glass panels remain visually distinct via their
+     background colors and borders — they just lose the frosted effect
+     on phones, which is invisible at typical mobile viewing distances. */
+  @media (max-width: 768px) {
+    .glass,
+    .site-header,
+    #showcase-controls {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    .site-header {
+      background-color: rgba(9, 13, 22, 0.98);
+    }
+    html[data-theme="light"] .site-header {
+      background-color: rgba(248, 250, 252, 0.98);
+    }
+  }
+
+  /* ============ MOBILE OVERFLOW CONTAINMENT ============ */
+  /* Prevent horizontal wobble from any overflowing child. */
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Text wrapping — applied to normal content, NOT to <pre> or code
+     blocks (which must preserve their formatting). */
+  p, span, h1, h2, h3, h4, h5, h6, li, a, strong, em {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Flex/grid children default to min-width: auto, which prevents them
+     from shrinking below their content. On mobile this is the #1 cause
+     of right-overflow in Tailwind layouts. Force them to shrink. */
+  .flex > *,
+  .grid > * {
+    min-width: 0;
+  }
+
+  /* Code blocks: allow horizontal scroll INSIDE the block only.
+     The card stays fixed; the JSON scrolls within its own bounds. */
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
 </style>
 </head>
 <body class="text-slate-300 font-sans antialiased">
@@ -371,7 +419,7 @@
 
       <div class="relative bg-[#0b0f1a]" id="showcase-body" style="min-height: 320px;">
         <!-- Teaser video state -->
-        <video id="showcase-video" class="w-full block" style="min-height: 240px; max-height: 360px; object-fit: contain;" muted playsinline preload="auto">
+        <video id="showcase-video" class="w-full block" style="min-height: 240px; max-height: 360px; object-fit: contain;" muted playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload noplaybackrate" preload="metadata">
           <source src="amritflow-teaser.mp4" type="video/mp4">
         </video>
 
@@ -1390,7 +1438,7 @@
         if (humanVerified) return;
         humanVerified = true;
         sendTelemetry('visitor_type_verified_human', {});
-        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('pointermove', onMouseMove);
       }
       function onMouseMove(e) {
         if (lastX !== null) {
@@ -1400,7 +1448,7 @@
         lastX = e.clientX; lastY = e.clientY;
         if (travel > 50) markHumanVerified();
       }
-      document.addEventListener('mousemove', onMouseMove, { passive: true });
+      document.addEventListener('pointermove', onMouseMove, { passive: true });
       document.addEventListener('scroll', markHumanVerified, { passive: true, once: true });
       document.addEventListener('touchstart', markHumanVerified, { passive: true, once: true });
       document.addEventListener('keydown', markHumanVerified, { once: true });
