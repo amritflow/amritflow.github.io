@@ -1,1 +1,160 @@
-<!-- placeholder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — AmritFlow</title>
+<meta name="description" content="Essays, guides, and technical briefings on enterprise AP mailboxes, sovereign computing, and the future of financial operations.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF8; --ink: #1A1A1A; --ink-soft: #4A4A4A;
+    --ink-mute: #808080; --rule: #E5E5E0;
+    --teal: #00A896; --violet: #9D4EDD;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .site-header { background: rgba(250,250,248,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+  .nav-link { color: #334155; }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link.active { color: var(--ink); font-weight: 600; }
+  .brand-wordmark { color: var(--ink); }
+  .brand-sublabel { color: var(--ink-mute); }
+  .card { background: #FFFFFF; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: block; text-decoration: none; color: inherit; }
+  .card:hover { transform: translateY(-2px); border-color: #D4D4CE; box-shadow: 0 12px 32px -16px rgba(0,0,0,0.12); }
+  .card-img { aspect-ratio: 16 / 9; background: linear-gradient(135deg, #00A896 0%, #9D4EDD 100%); position: relative; overflow: hidden; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-img-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--rule); margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+  .section-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .section-head p { font-size: 13px; color: var(--ink-mute); max-width: 480px; }
+  .empty-state { padding: 60px 20px; text-align: center; color: var(--ink-mute); font-size: 14px; border: 1px dashed var(--rule); border-radius: 14px; }
+  footer { border-top: 1px solid var(--rule); color: var(--ink-mute); font-size: 12px; }
+  .pillar-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: linear-gradient(90deg, rgba(0,168,150,0.12), rgba(157,78,221,0.12)); color: #6B21A8; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="site-header sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <a href="../index.html" class="flex items-center gap-3">
+      <img src="../favicon.png" alt="AmritFlow" style="width:28px;height:28px;">
+      <div class="leading-tight">
+        <div class="brand-wordmark text-lg font-extrabold tracking-tight">Amrit<span>Flow</span></div>
+        <p class="brand-sublabel hidden sm:block text-xs font-medium -mt-0.5">Sovereign Mailbox Intelligence</p>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="../index.html#domains" class="nav-link">Products</a>
+      <a href="../index.html#institutional" class="nav-link">Institutional</a>
+      <a href="../index.html#engagement" class="nav-link">Deployment</a>
+      <a href="index.html" class="nav-link active">Blog</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="../index.html#contact" class="rounded-lg px-4 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity" style="background:#9D4EDD;">
+        Request Audit
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+  <div class="max-w-2xl">
+    <p class="mono text-xs font-semibold tracking-widest uppercase" style="color: var(--teal);">AmritFlow Blog</p>
+    <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight" style="color: var(--ink); letter-spacing: -0.02em;">Essays &amp; Briefings.</h1>
+    <p class="mt-4 text-base leading-relaxed" style="color: var(--ink-soft);">
+      Writing on enterprise AP mailboxes, sovereign computing, the operators behind the inbox, and the architecture of trustworthy financial automation.
+    </p>
+  </div>
+</section>
+
+<main id="blog-feed" class="max-w-6xl mx-auto px-6 pb-24">
+  <div class="empty-state" id="feed-loading">Loading posts…</div>
+</main>
+
+<footer class="py-10">
+  <div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+    <p>© AmritFlow. Sovereign Mailbox Intelligence &amp; Ledger Orchestration.</p>
+    <p class="mono text-xs">
+      <a href="../index.html" style="color: var(--teal);">← Back to amritflow.com</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+(async function () {
+  const feed = document.getElementById('blog-feed');
+  let data;
+  try {
+    const res = await fetch('posts.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('posts.json not found');
+    data = await res.json();
+  } catch (err) {
+    feed.innerHTML = '<div class="empty-state">Could not load <code>posts.json</code>.</div>';
+    return;
+  }
+  const published = (data.posts || []).filter(p => p.status === 'published');
+  if (published.length === 0) {
+    feed.innerHTML = '<div class="empty-state">No posts published yet. Set <code>"status": "published"</code> on a post in <code>posts.json</code>.</div>';
+    return;
+  }
+  published.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sections = data.sections || [];
+  const grouped = {};
+  sections.forEach(s => grouped[s.id] = []);
+  published.forEach(p => { if (!grouped[p.section]) grouped[p.section] = []; grouped[p.section].push(p); });
+  feed.innerHTML = '';
+  sections.forEach(section => {
+    const posts = grouped[section.id] || [];
+    if (posts.length === 0) return;
+    const sectionEl = document.createElement('section');
+    sectionEl.className = 'mb-16';
+    sectionEl.innerHTML = `
+      <div class="section-head">
+        <h2>${escapeHtml(section.name)}</h2>
+        <p>${escapeHtml(section.description || '')}</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="grid-${section.id}"></div>
+    `;
+    feed.appendChild(sectionEl);
+    const grid = sectionEl.querySelector(`#grid-${section.id}`);
+    posts.forEach(post => grid.appendChild(renderCard(post)));
+  });
+})();
+
+function renderCard(post) {
+  const a = document.createElement('a');
+  a.href = `post.html?slug=${encodeURIComponent(post.slug)}`;
+  a.className = 'card';
+  a.innerHTML = `
+    <div class="card-img">
+      <img src="../${post.cover_image}" alt="${escapeHtml(post.cover_alt || post.title)}" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.card-img-fallback').style.display='flex';">
+      <div class="card-img-fallback" style="display:none;">${escapeHtml((post.section || '').toUpperCase())}</div>
+    </div>
+    <div class="p-5">
+      ${post.type === 'pillar' ? '<span class="pillar-badge">Pillar Guide</span>' : ''}
+      ${post.type === 'essay' ? '<span class="pillar-badge" style="background:rgba(157,78,221,0.1);">Essay</span>' : ''}
+      <h3 class="font-semibold text-base leading-snug" style="color: var(--ink);">${escapeHtml(post.title)}</h3>
+      <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft);">${escapeHtml(post.excerpt || '')}</p>
+      <div class="mt-4 flex items-center gap-3 text-xs mono" style="color: var(--ink-mute);">
+        <span>${formatDate(post.date)}</span><span>·</span><span>${post.reading_time || 5} min read</span>
+      </div>
+    </div>
+  `;
+  return a;
+}
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+
+</body>
+</html>
