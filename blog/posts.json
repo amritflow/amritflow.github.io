@@ -40,7 +40,7 @@
       "cover_image": "assets/blog/covers/where-are-the-shelves.jpg",
       "cover_alt": "An empty store aisle with no shelves",
       "content_file": "posts/where-are-the-shelves.md",
-      "status": "draft"
+      "status": "published"
     },
     {
       "slug": "paradigm-shifts-build-from-within",
