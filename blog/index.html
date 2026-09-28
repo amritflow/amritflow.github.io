@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — AmritFlow</title>
-<meta name="description" content="Essays, guides, and technical briefings on enterprise AP mailboxes, sovereign computing, and the future of financial operations.">
+<title>Reading — AmritFlow</title>
+<meta name="description" content="An essay from the AmritFlow Blog.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,75 +34,82 @@
   }
   .nav-link { color: #334155; }
   .nav-link:hover { color: var(--ink); }
-  .nav-link.active { color: var(--ink); font-weight: 600; }
   .brand-wordmark { color: var(--ink); }
   .brand-sublabel { color: var(--ink-mute); }
-  .card {
-    background: #FFFFFF;
-    border: 1px solid var(--rule);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  /* === ARTICLE TYPOGRAPHY === */
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
   }
-  .card:hover {
-    transform: translateY(-2px);
-    border-color: #D4D4CE;
-    box-shadow: 0 12px 32px -16px rgba(0,0,0,0.12);
+  .article p { margin: 1.4em 0; }
+  .article h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 2.4em 0 0.8em;
+    color: var(--ink);
+    line-height: 1.25;
   }
-  .card-img {
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #00A896 0%, #9D4EDD 100%);
-    position: relative;
-    overflow: hidden;
+  .article h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin: 2em 0 0.6em;
+    color: var(--ink);
   }
-  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .card-img-fallback {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-  }
-  .tag {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 999px;
-    background: #F0F0EB;
+  .article ul, .article ol { margin: 1.4em 0; padding-left: 1.5em; }
+  .article li { margin: 0.5em 0; }
+  .article blockquote {
+    border-left: 3px solid var(--teal);
+    padding: 0.4em 0 0.4em 1.4em;
+    margin: 2em 0;
+    font-style: italic;
     color: var(--ink-soft);
   }
-  .tag-pillar {
-    background: rgba(0,168,150,0.1);
-    color: #0F766E;
-    font-weight: 600;
-  }
-  .tag-essay {
-    background: rgba(157,78,221,0.08);
+  .article code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: #F0F0EB;
+    padding: 2px 6px;
+    border-radius: 4px;
     color: #6B21A8;
-    font-weight: 600;
   }
-  .section-head {
-    display: flex; align-items: baseline; justify-content: space-between;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 24px;
-  }
-  .section-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
-  .section-head p { font-size: 13px; color: var(--ink-mute); max-width: 480px; }
-  .empty-state {
-    padding: 60px 20px;
-    text-align: center;
-    color: var(--ink-mute);
+  .article pre {
+    background: #1A1A1A;
+    color: #F0F0EB;
+    padding: 18px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 1.8em 0;
     font-size: 14px;
-    border: 1px dashed var(--rule);
-    border-radius: 14px;
+    line-height: 1.6;
   }
-  footer { border-top: 1px solid var(--rule); color: var(--ink-mute); font-size: 12px; }
+  .article pre code { background: none; padding: 0; color: inherit; }
+  .article a { color: var(--teal); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .article a:hover { color: var(--violet); }
+  .article hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3em 0;
+  }
+  .article img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 2em 0;
+  }
+
+  .meta-row {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 20px;
+  }
+  .meta-row .dot { color: var(--rule); }
+
   .pillar-badge {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
@@ -114,13 +121,60 @@
     border-radius: 6px;
     background: linear-gradient(90deg, rgba(0,168,150,0.12), rgba(157,78,221,0.12));
     color: #6B21A8;
-    margin-bottom: 8px;
   }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--teal); }
+
+  .related {
+    border-top: 1px solid var(--rule);
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+  .related h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+  .related a {
+    display: block;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.15s ease;
+  }
+  .related a:hover { color: var(--teal); }
+  .related a:last-child { border-bottom: none; }
+  .related .related-title { font-weight: 600; font-size: 16px; line-height: 1.4; }
+  .related .related-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-mute); margin-top: 4px; }
+
+  .pillar-callout {
+    background: linear-gradient(135deg, rgba(0,168,150,0.06), rgba(157,78,221,0.06));
+    border: 1px solid rgba(0,168,150,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 24px 0 32px;
+    font-size: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pillar-callout a { color: #0F766E; font-weight: 600; text-decoration: none; }
+  .pillar-callout a:hover { text-decoration: underline; }
+
+  footer { border-top: 1px solid var(--rule); color: var(--ink-mute); font-size: 12px; }
 </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
 <header class="site-header sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
     <a href="../index.html" class="flex items-center gap-3">
@@ -132,4 +186,144 @@
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm">
       <a href="../index.html#domains" class="nav-link">Products</a>
-     
+      <a href="../index.html#institutional" class="nav-link">Institutional</a>
+      <a href="../index.html#engagement" class="nav-link">Deployment</a>
+      <a href="index.html" class="nav-link">Blog</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="../index.html#contact" class="rounded-lg px-4 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity" style="background:#9D4EDD;">
+        Request Audit
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="post-root" class="max-w-3xl mx-auto px-6 py-16">
+  <div class="article" id="post-loading" style="color:var(--ink-mute); font-size:14px;">Loading…</div>
+</main>
+
+<footer class="py-10 mt-20">
+  <div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+    <p>© AmritFlow. Sovereign Mailbox Intelligence &amp; Ledger Orchestration.</p>
+    <p class="mono text-xs">
+      <a href="index.html" style="color: var(--teal);">← All posts</a>
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(async function () {
+  const root = document.getElementById('post-root');
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+
+  if (!slug) {
+    root.innerHTML = '<div class="article"><p>No post specified. <a href="index.html">Return to the blog.</a></p></div>';
+    return;
+  }
+
+  let data, post;
+  try {
+    const res = await fetch('posts.json', { cache: 'no-store' });
+    data = await res.json();
+    post = (data.posts || []).find(p => p.slug === slug);
+  } catch (err) {
+    root.innerHTML = '<div class="article"><p>Could not load post data.</p></div>';
+    return;
+  }
+
+  if (!post) {
+    root.innerHTML = '<div class="article"><p>Post not found. <a href="index.html">Return to the blog.</a></p></div>';
+    return;
+  }
+
+  document.title = post.title + ' — AmritFlow';
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', post.excerpt || post.title);
+
+  let bodyHtml = '';
+  try {
+    const mdRes = await fetch(post.content_file, { cache: 'no-store' });
+    if (mdRes.ok) {
+      const md = await mdRes.text();
+      bodyHtml = marked.parse(md, { mangle: false, headerIds: false });
+    } else {
+      bodyHtml = '<p><em>This post has not been written yet. Check back soon.</em></p>';
+    }
+  } catch (err) {
+    bodyHtml = '<p><em>Could not load post content.</em></p>';
+  }
+
+  // Find related posts: same section, same cluster (pillar or siblings), excluding current
+  const allPosts = data.posts || [];
+  let related = [];
+
+  if (post.type === 'child' && post.pillar_link) {
+    // Children link up to their pillar first
+    const pillar = allPosts.find(p => p.slug === post.pillar_link);
+    if (pillar) related.push(pillar);
+  }
+  if (post.type === 'pillar') {
+    // Pillar links down to its children
+    const children = allPosts.filter(p => p.pillar_link === post.slug);
+    related = related.concat(children);
+  }
+  // Fill remaining slots with same-section posts
+  const sameSection = allPosts.filter(p => p.section === post.section && p.slug !== post.slug && !related.find(r => r.slug === p.slug));
+  related = related.concat(sameSection);
+
+  related = related.slice(0, 3);
+
+  const relatedHtml = related.length ? `
+    <div class="related">
+      <h4>Read next</h4>
+      ${related.map(r => `
+        <a href="post.html?slug=${encodeURIComponent(r.slug)}">
+          <div class="related-title">${escapeHtml(r.title)}</div>
+          <div class="related-meta">${formatDate(r.date)} · ${r.reading_time || 5} min read</div>
+        </a>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const pillarCallout = (post.type === 'child' && post.pillar_link) ? `
+    <div class="pillar-callout">
+      <span class="pillar-badge">Part of</span>
+      <a href="post.html?slug=${encodeURIComponent(post.pillar_link)}">The Complete Guide →</a>
+    </div>
+  ` : '';
+
+  root.innerHTML = `
+    <a href="index.html" class="back-link">← All posts</a>
+    <article class="article" style="margin-top:32px;">
+      ${post.type === 'pillar' ? '<span class="pillar-badge">Pillar Guide</span>' : ''}
+      ${post.type === 'essay' ? '<span class="pillar-badge" style="background:rgba(157,78,221,0.1);">Essay</span>' : ''}
+      <h1 style="font-size:40px; font-weight:800; line-height:1.15; letter-spacing:-0.02em; margin-top:16px; margin-bottom:0;">${escapeHtml(post.title)}</h1>
+      <div class="meta-row">
+        <span>${escapeHtml(post.author || 'AmritFlow Team')}</span>
+        <span class="dot">·</span>
+        <span>${formatDate(post.date)}</span>
+        <span class="dot">·</span>
+        <span>${post.reading_time || 5} min read</span>
+      </div>
+      <hr style="margin: 2.4em 0 2em;">
+      ${pillarCallout}
+      ${bodyHtml}
+      ${relatedHtml}
+    </article>
+  `;
+})();
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+
+</body>
+</html>
