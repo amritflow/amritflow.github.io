@@ -14,6 +14,22 @@
   "posts": [
 
         {
+      "slug": "what-the-ap-operator-sees",
+      "title": "What the AP Operator Sees (And Why It Stops Making Sense by 10 AM)",
+      "section": "perspective",
+      "type": "essay",
+      "date": "2026-10-02",
+      "author": "AmritFlow Team",
+      "reading_time": 8,
+      "excerpt": "By 10:15 AM, the operator has scanned 60 messages, opened 25 attachments, and switched between seven browser tabs and two enterprise systems over 100 times. Then, something quiet and predictable happens: the screen stops making sense.",
+      "tags": ["decision-fatigue", "accounts-payable", "operators", "cognitive-load", "enterprise-ap"],
+      "cover_image": "assets/blog/covers/what-the-ap-operator-sees.png",
+      "cover_alt": "An AP operator at a dual-monitor workstation, mailbox unread counter reading 342, the screen beginning to blur at the edges",
+      "content_file": "posts/what-the-ap-operator-sees.md",
+      "status": "published"
+    },
+
+        {
       "slug": "vendor-outreach-the-missing-half",
       "title": "Vendor Outreach: The Missing Half of Mailbox Intelligence",
       "section": "perspective",
