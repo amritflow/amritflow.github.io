@@ -14,6 +14,22 @@
   "posts": [
 
         {
+      "slug": "vendor-outreach-the-missing-half",
+      "title": "Vendor Outreach: The Missing Half of Mailbox Intelligence",
+      "section": "perspective",
+      "type": "essay",
+      "date": "2026-10-01",
+      "author": "AmritFlow Team",
+      "reading_time": 6,
+      "excerpt": "A system that reads inbound documents but cannot manage outbound communication is only half a system. Vendor Outreach closes the loop between what leaves the AP mailbox and what returns to it.",
+      "tags": ["vendor-outreach", "roadmap", "sovereign-computing", "enterprise-ap"],
+      "cover_image": "assets/blog/covers/vendor-outreach-the-missing-half.png",
+      "cover_alt": "An illustration of a mailbox with two directional flows — inbound invoices on one side, outbound vendor communications on the other, both sealed inside a sovereign perimeter",
+      "content_file": "posts/vendor-outreach-the-missing-half.md",
+      "status": "published"
+    },
+
+        {
       "slug": "amritflow-sovereign-mailbox-intelligence",
       "title": "AmritFlow: Sovereign Mailbox Intelligence for the Enterprise",
       "section": "perspective",
