@@ -12,6 +12,23 @@
     { "id": "future", "name": "The Future of AP", "description": "Where accounts payable is heading — local-first, deterministic, and human-elevated." }
   ],
   "posts": [
+
+        {
+      "slug": "amritflow-sovereign-mailbox-intelligence",
+      "title": "AmritFlow: Sovereign Mailbox Intelligence for the Enterprise",
+      "section": "perspective",
+      "type": "essay",
+      "date": "2026-09-30",
+      "author": "AmritFlow Team",
+      "reading_time": 8,
+      "excerpt": "The name AmritFlow reflects two foundational principles — Amrit, the Sanskrit term for nectar, symbolizing that which preserves and protects; and Flow, the friction-free movement of critical assets. Here is what we built, and why.",
+      "tags": ["amritflow", "sovereign-computing", "enterprise-ap", "data-sovereignty"],
+      "cover_image": "assets/blog/covers/amritflow-sovereign-mailbox-intelligence.png",
+      "cover_alt": "An abstract illustration of a sovereign intelligence layer sitting between mailbox and ERP, sealed within a perimeter",
+      "content_file": "posts/amritflow-sovereign-mailbox-intelligence.md",
+      "status": "published"
+    },
+    
     {
       "slug": "ap-mailbox-operator-unknown-warrior",
       "title": "AP Mailbox: The Operator — The Unknown Warrior",
