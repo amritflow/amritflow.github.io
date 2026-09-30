@@ -14,6 +14,22 @@
   "posts": [
 
         {
+      "slug": "the-mailbox-end-to-end",
+      "title": "The Mailbox End to End: What AmritFlow Does Today",
+      "section": "perspective",
+      "type": "pillar",
+      "date": "2026-10-03",
+      "author": "AmritFlow Team",
+      "reading_time": 14,
+      "excerpt": "Most conversations about AP automation start with the ERP. They shouldn't. The ERP never sees the mess that arrives before it — the 400 unread messages, the twelve invoices in one PDF, the urgent bank change that almost looks real. Here is what AmritFlow does today, end to end.",
+      "tags": ["amritflow", "product", "sovereign-computing", "enterprise-ap", "capabilities"],
+      "cover_image": "assets/blog/covers/the-mailbox-end-to-end.png",
+      "cover_alt": "A horizontal flow diagram: mailbox on the left, a series of processing stages in the middle inside a sealed perimeter, ERP on the right",
+      "content_file": "posts/the-mailbox-end-to-end.md",
+      "status": "published"
+    },
+
+        {
       "slug": "what-the-ap-operator-sees",
       "title": "What the AP Operator Sees (And Why It Stops Making Sense by 10 AM)",
       "section": "perspective",
