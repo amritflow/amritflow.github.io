@@ -23,10 +23,10 @@
       "reading_time": 10,
       "excerpt": "The government sets the rules. Your ERP holds the records. But between an incoming supplier email and the release of corporate cash, there is no real-time gatekeeper. AmritFlow is built as that missing piece.",
       "tags": ["compliance", "gst", "ims", "e-way-bill", "enterprise-ap", "sovereign-computing"],
+      "cover_image": "assets/blog/covers/last-mile-of-compliance.png",
+      "cover_alt": "A sealed decision gate sitting between a supplier mailbox and an ERP ledger, with the GSTN and IMS portals depicted as statutory seals on either side",        
       "content_file": "posts/last-mile-of-compliance.md",
       "status": "published"
-      "cover_image": "assets/blog/covers/last-mile-of-compliance.png",
-      "cover_alt": "A sealed decision gate sitting between a supplier mailbox and an ERP ledger, with the GSTN and IMS portals depicted as statutory seals on either side",   
     },
 
         {
