@@ -6,7 +6,7 @@
     "blog_url": "https://amritflow.github.io/blog"
   },
    "sections": [
-    { "id": "perspective", "name": "Perspective", "description": "Essays on enterprise finance, sovereign computing, and the operators behind the mailbox." },
+    { "id": "perspective", "name": "Perspective", "description": "Perspectives on enterprise finance, sovereign computing, and the operators behind the mailbox." },
     { "id": "compliance", "name": "Compliance & Risk", "description": "How sovereign architecture enforces statutory compliance before cash leaves the bank." },
     { "id": "product", "name": "Product & Architecture", "description": "How AmritFlow's modules work inside your perimeter, end to end." }
   ],
