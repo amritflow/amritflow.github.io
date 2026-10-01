@@ -14,6 +14,20 @@
   "posts": [
 
         {
+      "slug": "last-mile-of-compliance",
+      "title": "The Last Mile of Compliance: Why Accounts Payable Needs an Edge-First Decision Layer",
+      "section": "perspective",
+      "type": "essay",
+      "date": "2026-10-04",
+      "author": "AmritFlow Team",
+      "reading_time": 10,
+      "excerpt": "The government sets the rules. Your ERP holds the records. But between an incoming supplier email and the release of corporate cash, there is no real-time gatekeeper. AmritFlow is built as that missing piece.",
+      "tags": ["compliance", "gst", "ims", "e-way-bill", "enterprise-ap", "sovereign-computing"],
+      "content_file": "posts/last-mile-of-compliance.md",
+      "status": "published"
+    },
+
+        {
       "slug": "the-mailbox-end-to-end",
       "title": "The Mailbox End to End: What AmritFlow Does Today",
       "section": "perspective",
