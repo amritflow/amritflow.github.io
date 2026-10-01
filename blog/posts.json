@@ -5,12 +5,12 @@
     "base_url": "https://amritflow.github.io",
     "blog_url": "https://amritflow.github.io/blog"
   },
-  "sections": [
-    { "id": "perspective", "name": "The AmritFlow Perspective", "description": "Essays on enterprise finance, sovereign computing, and the operators behind the mailbox." },
-    { "id": "intake", "name": "AP Intake & Triage", "description": "Everything AP teams need to know about sorting, routing, and allocating supplier emails." },
-    { "id": "security", "name": "Security & Fraud", "description": "How to protect the front door of enterprise finance from supplier fraud and data leakage." },
-    { "id": "future", "name": "The Future of AP", "description": "Where accounts payable is heading — local-first, deterministic, and human-elevated." }
+   "sections": [
+    { "id": "perspective", "name": "Perspective", "description": "Essays on enterprise finance, sovereign computing, and the operators behind the mailbox." },
+    { "id": "compliance", "name": "Compliance & Risk", "description": "How sovereign architecture enforces statutory compliance before cash leaves the bank." },
+    { "id": "product", "name": "Product & Architecture", "description": "How AmritFlow's modules work inside your perimeter, end to end." }
   ],
+  
   "posts": [
 
         {
