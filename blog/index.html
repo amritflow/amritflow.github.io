@@ -136,8 +136,7 @@ function renderCard(post) {
       <div class="card-img-fallback" style="display:none;">${escapeHtml((post.section || '').toUpperCase())}</div>
     </div>
     <div class="p-5">
-      ${post.type === 'pillar' ? '<span class="pillar-badge">Pillar Guide</span>' : ''}
-      ${post.type === 'essay' ? '<span class="pillar-badge" style="background:rgba(157,78,221,0.1);">Essay</span>' : ''}
+      ${post.badge ? `<span class="pillar-badge">${escapeHtml(post.badge)}</span>` : ''}
       <h3 class="font-semibold text-base leading-snug" style="color: var(--ink);">${escapeHtml(post.title)}</h3>
       <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft);">${escapeHtml(post.excerpt || '')}</p>
       <div class="mt-4 flex items-center gap-3 text-xs mono" style="color: var(--ink-mute);">
