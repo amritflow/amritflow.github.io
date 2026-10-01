@@ -25,6 +25,8 @@
       "tags": ["compliance", "gst", "ims", "e-way-bill", "enterprise-ap", "sovereign-computing"],
       "content_file": "posts/last-mile-of-compliance.md",
       "status": "published"
+      "cover_image": "assets/blog/covers/last-mile-of-compliance.png",
+      "cover_alt": "A sealed decision gate sitting between a supplier mailbox and an ERP ledger, with the GSTN and IMS portals depicted as statutory seals on either side",   
     },
 
         {
