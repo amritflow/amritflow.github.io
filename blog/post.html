@@ -192,8 +192,7 @@
   root.innerHTML = `
     <a href="index.html" class="back-link">← All posts</a>
     <article class="article" style="margin-top:32px;">
-      ${post.type === 'pillar' ? '<span class="pillar-badge">Pillar Guide</span>' : ''}
-      ${post.type === 'essay' ? '<span class="pillar-badge" style="background:rgba(157,78,221,0.1);">Essay</span>' : ''}
+      ${post.badge ? `<span class="pillar-badge">${escapeHtml(post.badge)}</span>` : ''}
       <h1>${escapeHtml(post.title)}</h1>
       <div class="meta-row">
         <span>${escapeHtml(post.author || 'AmritFlow Team')}</span>
