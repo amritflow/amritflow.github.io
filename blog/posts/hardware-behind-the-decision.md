@@ -103,17 +103,15 @@ Sovereign AI projects already show high vendor concentration — NVIDIA is named
 
 ## Who Benefits More — Client or Vendor?
 
-This is the question every CFO asks, and it deserves a straight answer.
+**For the client, sovereign architecture wins on total cost of ownership (TCO) and data rights.** While hardware requires an upfront capital investment, recurring operational expenses drop dramatically. There are no per-invoice processing fees that scale uncontrollably with transaction volume, no vendor lock-in, and no annual subscription inflation. Crucially, the enterprise owns the underlying data, the fine-tuned model weights, and the accumulated learning corpus. Over a five-year horizon, local compute delivers significantly lower TCO than public cloud AI models.
 
-**For the client, sovereign wins long-term.** The client bears hardware cost upfront but saves forever after. There are no per-invoice fees that grow with volume. The client owns the data, the model, and the learning corpus. There is no lock-in and no annual price escalation. Five-year total cost is usually lower than cloud.
+**For the vendor, sovereign economics yield superior software margins.** AmritFlow bears zero cloud hosting liabilities or variable GPU execution bills. Our cost structure is pure engineering — code, not compute. Instead of renting temporary cloud capacity, the client builds an owned, depreciable asset on their own balance sheet. This keeps gross margins above 90% without passing infrastructure overhead to the customer.
 
-**For the vendor, sovereign margins are healthier.** No infrastructure cost. No GPU bill. AmritFlow's cost is code, not compute. The client pays for their own server, power, and maintenance. Gross margin sits above 90%.
+The client secures permanent asset ownership; the vendor preserves software efficiency. Both sides win — differently. This is a structural alignment of incentives, not a compromise.
 
-The client absorbs the infrastructure. The vendor keeps the software margin. Both benefit — differently. This is a structural alignment, not a compromise.
+Legacy cloud finance platforms face a self-defeating dynamic. They are locked in a margin squeeze — paying public cloud providers for inference compute while competing for the same enterprise software budget. Their relationship with the AI infrastructure ecosystem is fundamentally adversarial.
 
-Cloud finance vendors face the opposite dynamic. They compete directly with AI companies for the same enterprise AI budget. They build or license models. They fight for the same procurement cycle. Their relationship with the AI ecosystem is adversarial.
-
-AmritFlow's relationship with the AI ecosystem is collaborative. Every deployment is a hardware requirement. Every hardware requirement is a new customer for someone else in the chain.
+AmritFlow's relationship with the AI ecosystem is collaborative. Every enterprise deployment creates a dedicated hardware footprint. Every node installed is a win for domestic data centers, hardware providers, and sovereign computing infrastructure.
 
 ## The Recurring Refresh Cycle
 
