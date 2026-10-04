@@ -14,6 +14,26 @@
   "posts": [
 
         {
+      "slug": "hardware-behind-the-decision",
+      "title": "The Hardware Behind the Decision: Why Sovereign Automation Creates Compute Demand",
+      "section": "product",
+      "badge": "WHITE PAPER",
+      "topics": ["Data Sovereignty", "AP Automation"],
+      "disciplines": ["CFO & Finance Leadership", "IT, Security & CISO"],
+      "products": ["AmritFlow Platform"],
+      "type": "essay",
+      "date": "2026-10-05",
+      "author": "AmritFlow Team",
+      "reading_time": 12,
+      "excerpt": "Every enterprise automation decision has a hardware consequence. Most finance leaders never see it. Here is an honest look at how sovereign automation connects to the largest infrastructure buildout in modern history.",
+      "tags": ["hardware", "sovereign-ai", "compute", "gpu", "enterprise-ap", "data-sovereignty"],
+      "cover_image": "assets/blog/covers/hardware-behind-the-decision.png",
+      "cover_alt": "A minimal GPU server rack rendered as fine line-art, sitting inside a glowing teal perimeter on an obsidian background",
+      "content_file": "posts/hardware-behind-the-decision.md",
+      "status": "published"
+    },
+
+        {
       "slug": "last-mile-of-compliance",
       "title": "The Last Mile of Compliance: Why Accounts Payable Needs an Edge-First Decision Layer",
       "section": "compliance",
