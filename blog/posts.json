@@ -13,6 +13,26 @@
   
   "posts": [
 
+    {
+      "slug": "sovereign-assembly-line",
+      "title": "The Sovereign Assembly Line: How Compute and AI Are Rebuilding the Financial Factory Floor",
+      "section": "perspective",
+      "badge": "BLUEPRINT",
+      "topics": ["Data Sovereignty", "AP Automation", "Enterprise Architecture"],
+      "disciplines": ["CFO & Finance Leadership", "IT, Security & CISO"],
+      "products": ["AmritFlow Platform"],
+      "type": "essay",
+      "date": "2026-10-05",
+      "author": "AmritFlow Team",
+      "reading_time": 10,
+      "excerpt": "ERP vendors spent 30 years perfecting the warehouse. The future belongs to enterprises that build a sovereign AI factory floor directly in front of it.",
+      "tags": ["sovereign-ai", "factory-vs-warehouse", "compute", "erp", "data-sovereignty"],
+      "cover_image": "assets/blog/covers/sovereign-assembly-line.png",
+      "cover_alt": "Architectural line-art comparing a sovereign AI processing factory floor feeding into an enterprise ERP ledger warehouse",
+      "content_file": "blog/sovereign-assembly-line.md",
+      "status": "published"
+    },
+
         {
       "slug": "hardware-behind-the-decision",
       "title": "The Hardware Behind the Decision: Why Sovereign Automation Creates Compute Demand",
