@@ -14,7 +14,7 @@
   "posts": [
 
     {
-      "slug": "sovereign-assembly-line",
+     "slug": "sovereign-assembly-line",
       "title": "The Sovereign Assembly Line: How Compute and AI Are Rebuilding the Financial Factory Floor",
       "section": "perspective",
       "badge": "BLUEPRINT",
@@ -29,7 +29,7 @@
       "tags": ["sovereign-ai", "factory-vs-warehouse", "compute", "erp", "data-sovereignty"],
       "cover_image": "assets/blog/covers/sovereign-assembly-line.png",
       "cover_alt": "Architectural line-art comparing a sovereign AI processing factory floor feeding into an enterprise ERP ledger warehouse",
-      "content_file": "blog/sovereign-assembly-line.md",
+      "content_file": "blog/posts/sovereign-assembly-line.md",
       "status": "published"
     },
 
