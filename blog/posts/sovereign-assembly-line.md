@@ -1,7 +1,3 @@
-# The Sovereign Assembly Line: How Compute and AI Are Rebuilding the Financial Factory Floor
-
-*By the AmritFlow Team*
-
 Imagine an enterprise finance department ten years from now.
 
 There are no cluttered shared inboxes. No manual spreadsheets tracking batch allocations. No panic during quarterly audits. No risk of financial data leaking into public cloud instances or feeding foreign LLM training sets.
