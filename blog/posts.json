@@ -13,6 +13,26 @@
   
   "posts": [
 
+        {
+      "slug": "cost-of-ignorance-statutory-enforcement",
+      "title": "The Cost of Ignorance: Why Your P&L Can’t Outrun Automated Statutory Enforcement",
+      "section": "compliance",
+      "badge": "BRIEFING",
+      "topics": ["Fraud Prevention", "AP Automation"],
+      "disciplines": ["CFO & Finance Leadership"],
+      "products": ["AmritFlow Platform"],
+      "type": "essay",
+      "date": "2026-10-24",
+      "author": "AmritFlow Team",
+      "reading_time": 8,
+      "excerpt": "Modern tax enforcement is no longer a manual inspector. It is an automated system algorithm. Here is how Section 43B(h), Rule 88C, and automated DRC-01B flags can trigger a non-deductible tax liability before your CA ever sees it.",
+      "tags": ["gst", "msme", "43bh", "compliance", "tax"],
+      "cover_image": "assets/blog/covers/cost-of-ignorance-statutory-enforcement.png",
+      "cover_alt": "A split illustration showing a traditional paper audit on one side, and an automated digital enforcement grid on the other, sealed in obsidian",
+      "content_file": "posts/cost-of-ignorance-statutory-enforcement.md",
+      "status": "published"
+    },
+
     {
      "slug": "sovereign-assembly-line",
       "title": "The Sovereign Assembly Line: How Compute and AI Are Rebuilding the Financial Factory Floor",
