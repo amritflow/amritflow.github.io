@@ -14,6 +14,26 @@
   "posts": [
 
         {
+      "slug": "the-invisible-bottleneck-stale-locks",
+      "title": "The Invisible Bottleneck: Eliminating Stale Locks in Accounts Payable",
+      "section": "product",
+      "badge": "BLUEPRINT",
+      "topics": ["AP Automation", "Decision Fatigue"],
+      "disciplines": ["Shared Services & AP Management", "IT, Security & CISO"],
+      "products": ["Decision Layer & Observer Engine"],
+      "type": "essay",
+      "date": "2026-11-02",
+      "author": "AmritFlow Team",
+      "reading_time": 6,
+      "excerpt": "In high-volume accounts payable, operational bottlenecks rarely announce themselves. An AP associate opens a high-value invoice, their browser crashes, and the system locks the record in total silence.",
+      "tags": ["workflow", "concurrency", "stale-locks", "msme-43bh", "ap-automation"],
+      "cover_image": "assets/blog/covers/the-invisible-bottleneck-stale-locks.png",
+      "cover_alt": "A glowing teal heartbeat pulse line recovering a frozen digital lock icon inside an obsidian server space",
+      "content_file": "posts/the-invisible-bottleneck-stale-locks.md",
+      "status": "published"
+    },
+
+        {
       "slug": "bounded-batches-better-books",
       "title": "Bounded Batches, Better Books: The Accuracy Case for 15-Invoice Reviews",
       "section": "product",
