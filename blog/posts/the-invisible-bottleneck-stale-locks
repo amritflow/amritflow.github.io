@@ -1,0 +1,105 @@
+# The Invisible Bottleneck: Eliminating Stale Locks in Accounts Payable
+
+**By the AmritFlow Team**
+
+In high-volume accounts payable departments, operational bottlenecks rarely announce themselves with loud system errors or red banners. More often, they happen in complete silence.
+
+An AP associate opens an urgent, high-value supplier invoice in their review queue. Mid-review, their browser tab crashes, their device disconnects, or they step away from the desk. To prevent multiple clerks from editing the same record at once, the system places a concurrency lock on the document.
+
+Then, everything stops.
+
+To the associate, the application simply closed. But to the database, that invoice remains checked out and marked "In Progress". No other associate can pick it up. It cannot be batch-allocated to another queue, and it cannot advance to ledger posting.
+
+Days slip by quietly until an escalated phone call arrives from an executive at the supplier firm. The AP manager opens the tracker, only to discover an invoice that was supposedly opened on Monday sitting completely untouched on Thursday afternoon.
+
+The cost of a stalled record is immediate:
+
+- Potential late fees and forfeited early-settlement terms.
+- Unnecessary friction with core manufacturing suppliers.
+- Acute statutory exposure: if an invoice from a Micro or Small supplier sits invisibly frozen past its statutory payment window, the business faces tax deduction deferrals under Section 43B(h) and mandatory, non-deductible penal interest under Section 16 of the MSMED Act.
+
+---
+
+## The Blind Spot: The Limits of Traditional Queue Locks
+
+Most transactional systems implement concurrency locking to prevent race conditions. If two clerks try to process the same invoice simultaneously, the ledger risks duplicate postings.
+
+However, many queue-based AP tools fail at the operational side of concurrency: active session tracking.
+
+- **Static Concurrency Flags:** Traditional workflow setups mark a record as locked or "In Progress" when opened, but they fail to verify whether the user's session is still active and functioning.
+- **The "In Progress" Camouflage:** On managerial oversight dashboards, the document looks fine. It sits marked "In Progress," leading supervisors to assume an associate is actively reviewing it when it is actually an abandoned, frozen entry.
+- **Manual Clearing Friction:** In many workflows, clearing a frozen record requires an associate to realize a file is stuck, raise an internal IT ticket, and wait for a database administrator to release the lock manually.
+
+Relying on human memory or supplier payment disputes to uncover stuck records is an operational vulnerability. Session integrity must be managed dynamically by the system itself.
+
+---
+
+## The Solution: Active Concurrency Sentinel
+
+To ensure processing queues never stall, queue state and session liveness cannot be left to passive database flags. AmritFlow addresses this through an autonomous, read-only diagnostic monitor: The Support Observer.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 STALE LOCK RECOVERY CYCLE                   │
+│                                                             │
+│  [ Dropped Session / Crash ] ──► Invoice Locked             │
+│                                        │                    │
+│                                        ▼                    │
+│                            [ Active Session Sentinel ]      │
+│                            • Periodic Heartbeat Validation  │
+│                            • Inactivity Threshold Trigger   │
+│                                        │                    │
+│                 ┌──────────────────────┴──────────────────┐ │
+│                 ▼                                         ▼ │
+│       [ Valid Live Session ]                    [ Stale Lock Found ]│
+│       Queue Continues                           • Auto-Release Lock │
+│                                                 • Re-queue Invoice  │
+│                                                 • Dispatch Alert    │
+│                                                           │ │
+│                                                           ▼ │
+│                                              [ Operational Alert ]  │
+│                                              "N Invoices Unlocked"  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+> **[ 📸 VISUAL PLACEHOLDER: The Operational Alert View ]**
+> *Insert Screenshot here: The system notification showing recovered invoices and the exact supplier files released back into the queue.*
+> *Caption: Managers receive immediate visibility when an inactive session is cleared, ensuring the queue keeps moving.*
+
+### 1. The Autonomous Background Sentinel
+
+Rather than overburdening the primary document ingestion pipeline with continuous lock verifications, an isolated background diagnostic monitor operates alongside the main workflow:
+
+- Functions in a decoupled, read-only capacity that avoids interfering with live ledger transactions.
+- Periodically cross-references locked records against live session states.
+- Automatically identifies orphaned locks where an invoice has remained checked out to an inactive or dropped session past the operational threshold.
+
+### 2. Automated Lock Reclamation
+
+When a stale lock is detected, the monitor resolves it without manual administrative overhead:
+
+- It safely clears the abandoned session reference and returns the document to the active, unassigned pool.
+- The invoice immediately re-surfaces in the team's intake batching queue, ready to be reviewed by the next available associate.
+- Concurrency protections remain intact: active sessions are left untouched, while abandoned sessions are cleanly reclaimed.
+
+### 3. Clear Management Visibility
+
+Queue recoveries do not occur invisibly in background logs. When records are unlocked, the system notifies supervisors with clear operational context:
+
+- Managers receive immediate visibility—such as "3 invoices were unlocked because the session expired"—pinpointing the exact supplier files recovered.
+- If repeated drops or workstation issues occur, diagnostic telemetry highlights the pattern in the system command center, allowing IT to resolve local network or browser instability before it affects the wider shift.
+
+---
+
+## Operational Impact: Queues That Never Freeze
+
+Implementing active stale lock detection removes an invisible, frustrating source of friction across daily accounting operations:
+
+- **Consistent Queue Velocity:** Inbound invoices move predictably through intake, review, and posting without silent interruptions or orphaned states.
+- **Protected Statutory Timelines:** Critical payment windows—including mandatory credit periods under Section 15 of the MSMED Act—are shielded from accidental internal delays.
+- **Automated Exception Recovery:** Stalled invoices are automatically recovered rather than remaining trapped unnoticed; managers are spared from guessing queue states.
+- **Measured Field Reliability:** In our pilot deployment, the system detected and safely unlocked 12 stalled invoices in the first week alone—invoices that otherwise would have sat unnoticed until suppliers called to dispute late payments.
+
+Accounts payable automation is about more than extracting data from a page. True operational resilience requires systems that monitor their own workflow health, clear their own bottlenecks, and keep financial operations moving forward without manual intervention.
+
+**AmritFlow. Sovereign by design. Intelligent by observation.**
