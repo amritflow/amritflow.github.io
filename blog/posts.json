@@ -14,6 +14,26 @@
   "posts": [
 
         {
+      "slug": "withholding-tax-trap-erp-ingestion",
+      "title": "The Withholding Tax Trap: Why ERP Ingestion Fails Without Frontline Tax Counsel",
+      "section": "compliance",
+      "badge": "BRIEFING",
+      "topics": ["Fraud Prevention", "AP Automation"],
+      "disciplines": ["CFO & Finance Leadership"],
+      "products": ["Decision Layer & Observer Engine"],
+      "type": "essay",
+      "date": "2026-11-02",
+      "author": "Ankit Patel",
+      "reading_time": 7,
+      "excerpt": "For corporate finance teams, one of the most persistent operational exposures in Accounts Payable is not a lost invoice—it is a routine booking decision made in seconds by a data-entry clerk.",
+      "tags": ["tds", "withholding-tax", "section-40a", "compliance", "erp"],
+      "cover_image": "assets/blog/covers/withholding-tax-trap-erp-ingestion.png",
+      "cover_alt": "An abstract split-screen illustration of a paper invoice crossing a glowing digital tax gate before entering an ERP ledger",
+      "content_file": "posts/withholding-tax-trap-erp-ingestion.md",
+      "status": "published"
+    },
+
+        {
       "slug": "cost-of-ignorance-statutory-enforcement",
       "title": "The Cost of Ignorance: Why Your P&L Can’t Outrun Automated Statutory Enforcement",
       "section": "compliance",
