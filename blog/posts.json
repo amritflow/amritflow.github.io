@@ -14,6 +14,26 @@
   "posts": [
 
         {
+      "slug": "bounded-batches-better-books",
+      "title": "Bounded Batches, Better Books: The Accuracy Case for 15-Invoice Reviews",
+      "section": "product",
+      "badge": "INSIGHT",
+      "topics": ["Decision Fatigue", "AP Automation"],
+      "disciplines": ["Shared Services & AP Management", "CFO & Finance Leadership"],
+      "products": ["Mailbox Intelligence"],
+      "type": "essay",
+      "date": "2026-11-02",
+      "author": "AmritFlow Team",
+      "reading_time": 5,
+      "excerpt": "Every finance manager knows the 3:30 PM slump in Accounts Payable. By the eighty-fifth invoice, mental fatigue is not an ergonomic annoyance—it is a direct balance-sheet liability.",
+      "tags": ["batching", "ergonomics", "decision-fatigue", "ap-automation"],
+      "cover_image": "assets/blog/covers/bounded-batches-better-books.png",
+      "cover_alt": "An illustration of a split screen interface, with a document on the left and clean data fields on the right, glowing in teal",
+      "content_file": "posts/bounded-batches-better-books.md",
+      "status": "published"
+    },
+
+        {
       "slug": "withholding-tax-trap-erp-ingestion",
       "title": "The Withholding Tax Trap: Why ERP Ingestion Fails Without Frontline Tax Counsel",
       "section": "compliance",
