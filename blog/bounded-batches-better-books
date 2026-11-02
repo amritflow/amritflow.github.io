@@ -1,0 +1,82 @@
+# Bounded Batches,  Better Books: The Accuracy Case for 15-Invoice Reviews
+
+**By the AmritFlow Team**
+
+Every finance manager knows the 3:30 PM slump in the Accounts Payable department.
+
+An AP specialist is eighty invoices into a dense, flat queue. Their eyes are strained, their attention is slipping, and they are stuck in a relentless "swivel chair" routine—toggling between an attached PDF scan, an Excel tracker, and the ERP screen. Every manual window switch and copied number is another opportunity for a keystroke error.
+
+By the eighty-fifth invoice, mental fatigue is not an ergonomic annoyance—it is a direct balance-sheet liability.
+
+Prolonged, unbroken screen work leads to measurable dips in focus and rising error rates. In high-volume corporate accounting, a tired reviewer misses a mismatched tax ID, overlooks a duplicate bill, or approves an altered line item. On a single ₹10 Lakh supplier bill, an overlooked compliance flaw can put up to ₹1.8 Lakh in Input Tax Credit (ITC) at risk under statutory review.
+
+## The Flawed Industry Pattern: Flat-Queue Overload
+
+Many OCR-first tools default to a single, flat queue built around bulk throughput rather than reviewer ergonomics.
+
+These massive lists treat human reviewers like automated machines that never tire. By presenting hundreds of unorganized files in a continuous stream, they leave clerks to review documents without clear operational boundaries or natural pauses. When software ignores human focus limits, discrepancies slip directly into downstream processes, leaving teams to spend days untangling mismatches during the month-end close.
+
+## The Shift: Controlled Intake and Cockpit Review
+
+High-accuracy accounting requires an interface designed around human focus and disciplined checkpoints.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 CONTROLLED INTAKE BATCHING                  │
+│                                                             │
+│  [ Inbound Invoices ] ──► Strict 15-Item Batches            │
+│                                 │                           │
+│                                 ▼                           │
+│               [ Split-Screen Review Cockpit ]               │
+│               • Original Document on Left                   │
+│               • Extracted Details on Right                  │
+│                                 │                           │
+│                 ┌───────────────┴───────────────┐           │
+│                 ▼                               ▼           │
+│        [ ✅ Data Correct ]             [ ⚠️ Report Issue ]  │
+│        Auto-advance to next            Quarantine to errors │
+└─────────────────────────────────────────────────────────────┘
+
+```
+
+> **\[ 📸 VISUAL PLACEHOLDER: The Split-Screen Cockpit \]**
+> *Insert Screenshot here: The split-screen review interface showing the original invoice on the left and the extracted data fields on the right.*
+> *Caption: Reviewers verify documents without switching tabs or copying text between windows.*
+
+### 1. The Strict 15-File Cap
+
+Instead of an unbroken queue, work is partitioned into disciplined batches of exactly 15 invoices. The intake gate enforces this limit, refusing to overload a queue with a 16th file until the active batch is addressed.
+
+A reviewer opens a batch, evaluates 15 documents with full focus, finishes the run, and steps back. Breaking daily volume into manageable checkpoints eliminates mental exhaustion and resets attention.
+
+### 2. The Split-Screen Cockpit
+
+The traditional multi-app "swivel chair" is eliminated:
+
+* **Left Side:** The original supplier document rendered clearly.
+
+* **Right Side:** The extracted core fields displayed side by side.
+
+Reviewers do not switch applications or copy-paste text between windows. The eye moves naturally across a single screen to cross-verify supplier identities, purchase references, and tax breakdowns.
+
+### 3. Single-Click Operational Decisions
+
+Verification is reduced to two immediate, auditable actions:
+
+* **"✅ Data Correct":** Confirms the document matches the records, stages the item for ledger posting, and automatically loads the next file in the 15-count batch.
+
+* **"⚠️ Report Issue":** Flags discrepancies (such as tax mismatches, missing purchase orders, or duplicate submissions), adds a required reason code, and diverts the file into an isolated exception queue.
+
+## The Outcome: Elevating Clerks to Quality Analysts
+
+Enforcing structured 15-file batches transforms day-to-day accounts payable operations:
+
+* **From Clerks to Analysts:** AP team members stop acting as manual data-entry bridges. Instead, they operate as frontline quality and compliance analysts who inspect verified records.
+
+* **Proactive Duplicate Defense:** Submissions are screened against historical records before a reviewer ever sees them, intercepting duplicate entries before they reach the payment cycle.
+
+* **Sustained Accuracy:** In our pilot runs, review error rates dropped sharply. We believe pacing was a key factor: when reviewers work in structured, bite-sized batches rather than endless lists, fatigue-driven oversight is substantially curtailed.
+
+Real operational efficiency does not come from dumping hundreds of files into an infinite list. It comes from disciplined intake, clean visibility, and workflows that protect accuracy before payments leave the door.
+
+**AmritFlow. Sovereign by design. Intelligent by observation.**
