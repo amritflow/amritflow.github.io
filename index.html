@@ -143,15 +143,17 @@
       radial-gradient(ellipse 900px 550px at 95% 5%, rgba(157,78,221,0.10), transparent 60%);
   }
   html[data-theme="light"] .glass {
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255,255,255,0.95);
     border: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   }
   html[data-theme="light"] .tab-btn[data-active="true"] { color: #0B192C; }
-  html[data-theme="light"] .text-white:not(.bg-gradient-to-r):not(.bg-brand-violet) { color: #0B192C !important; }
+  
   html[data-theme="light"] .text-slate-100 { color: #0F172A !important; }
+  html[data-theme="light"] h1, html[data-theme="light"] h2, html[data-theme="light"] h3 { color: #0B192C !important; }
   html[data-theme="light"] .text-slate-200 { color: #1E293B !important; }
-  html[data-theme="light"] .text-slate-300 { color: #334155 !important; }
-  html[data-theme="light"] .text-slate-400 { color: #475569 !important; }
+  html[data-theme="light"] .text-slate-300 { color: #1E293B !important; }
+  html[data-theme="light"] .text-slate-400 { color: #334155 !important; }
   html[data-theme="light"] .text-slate-500 { color: #64748B !important; }
   html[data-theme="light"] .border-slate-700,
   html[data-theme="light"] .border-slate-700\/50,
@@ -185,7 +187,7 @@
   }
   html[data-theme="light"] .term-box .text-slate-300 { color: #cbd5e1 !important; }
   html[data-theme="light"] .term-box .text-slate-400 { color: #94a3b8 !important; }
-  html[data-theme="light"] .term-box .text-white { color: #F8FAFC !important; }
+  html[data-theme="light"] .term-box h3, html[data-theme="light"] .term-box .text-white { color: #F8FAFC !important; }
   html[data-theme="light"] .bg-slate-900\/40 {
     background-color: rgba(255,255,255,0.5) !important;
   }
@@ -361,7 +363,7 @@
       <button id="theme-toggle" aria-label="Toggle light and dark mode" class="focus-ring w-9 h-9 rounded-full border flex items-center justify-center transition-colors">
         <i id="theme-toggle-icon" data-lucide="sun" style="width:14px;height:14px;"></i>
       </button>
-      <button data-open-modal class="focus-ring rounded-lg bg-brand-violet px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:opacity-90 transition-opacity whitespace-nowrap shrink-0">
+      <button data-open-modal class="focus-ring rounded-lg bg-gradient-to-r from-brand-teal to-brand-violet px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:opacity-90 transition-opacity whitespace-nowrap shrink-0">
         <span class="sm:hidden">Request Audit</span>
         <span class="hidden sm:inline">Request AP Mailbox Audit</span>
       </button>
@@ -593,7 +595,7 @@
     <div data-tab-panel="ap" data-active="true" class="tab-panel">
       <h3 class="text-xl font-bold text-white">Mailbox Ingestion & Triage (Stream Engine)</h3>
       <p class="mt-2 text-sm text-slate-300">Sovereign edge intake for shared-services teams handling 200–500+ daily vendor emails across multi-mailbox environments.</p>
-      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="layers" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Deterministic Batching</p>
@@ -615,7 +617,7 @@
     <div data-tab-panel="ar" class="tab-panel">
       <h3 class="text-xl font-bold text-white">Line-Item Extraction & Variance Review (Local OCR)</h3>
       <p class="mt-2 text-sm text-slate-300">Local-first document parsing designed to convert unstructured attachments into structured staging datasets.</p>
-      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
         <div class="rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
           <i data-lucide="file-text" style="width:18px;height:18px;" class="text-brand-tealLight"></i>
           <p class="mt-2 text-sm font-semibold text-white">Multi-Attachment Decomposition</p>
@@ -726,7 +728,7 @@
     <div class="rounded-xl border border-slate-800 bg-slate-900/40 backdrop-blur-md p-6 flex flex-col justify-between hover:border-slate-700 transition-colors">
       <div>
         <div class="flex items-center justify-between">
-          <span class="rounded bg-slate-800 px-2 py-0.5 text-[11px] font-mono font-semibold text-slate-300 border border-slate-700">SECURITY</span>
+          <span class="rounded bg-sky-500/10 px-2 py-0.5 text-[11px] font-mono font-semibold text-sky-400 border border-sky-500/20">SECURITY</span>
           <i data-lucide="lock" style="width:16px;height:16px;" class="text-slate-400"></i>
         </div>
         <h3 class="mt-4 text-base font-bold text-white">Air-Gap Evaluation Protocol</h3>
