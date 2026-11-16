@@ -14,6 +14,26 @@
   "posts": [
 
         {
+      "slug": "why-manual-grir-stalls-month-end-close",
+      "title": "Why Manual GR/IR Reconciliation Stalls Your Month-End Close",
+      "section": "product",
+      "badge": "BLUEPRINT",
+      "topics": ["GR/IR Reconciliation", "Month-End Close"],
+      "disciplines": ["Shared Services & AP Management", "CFO & Finance Leadership"],
+      "products": ["Decision Layer & Observer Engine"],
+      "type": "essay",
+      "date": "2026-10-15",
+      "author": "AmritFlow Team",
+      "reading_time": 6,
+      "excerpt": "It is 8:30 PM on day three of month-end close, and your best AP specialists are running manual VLOOKUPs while Controllership waits. The bottleneck is not discipline—it is a design gap between operations and finance.",
+      "tags": ["grir", "reconciliation", "month-end-close", "ap-automation", "working-capital"],
+      "cover_image": "assets/blog/covers/why-manual-grir-stalls-month-end-close.png",
+      "cover_alt": "A glowing control membrane dividing chaotic operational receipts from a clean teal financial ledger flow",
+      "content_file": "posts/why-manual-grir-stalls-month-end-close.md",
+      "status": "published"
+    },
+
+        {
       "slug": "the-invisible-bottleneck-stale-locks",
       "title": "The Invisible Bottleneck: Eliminating Stale Locks in Accounts Payable",
       "section": "product",
